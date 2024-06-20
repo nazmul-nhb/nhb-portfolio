@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IoIosArrowDropright } from "react-icons/io";
+import { IoIosArrowDropleft } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { GiQuillInk } from "react-icons/gi";
@@ -31,9 +31,9 @@ const Navbar = () => {
 
     const navigationItems = (
         <>
-            <NavLink className={navClasses} to={'/'}><IoHomeOutline className="sm:hidden" />Home</NavLink>
-            <NavLink className={navClasses} to={'/contact'}><RiContactsBook3Line className="sm:hidden" />Contact Me</NavLink>
-            <NavLink className={navClasses} to={'/blogs'}><GiQuillInk className="sm:hidden" />Blogs</NavLink>
+            <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/'}><IoHomeOutline className="sm:hidden" />Home</NavLink>
+            <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/contact'}><RiContactsBook3Line className="sm:hidden" />Contact Me</NavLink>
+            <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/blogs'}><GiQuillInk className="sm:hidden" />Blogs</NavLink>
         </>
     );
 
@@ -47,12 +47,12 @@ const Navbar = () => {
             </figure>
             <div
                 ref={sidebarRef} className="flex justify-between items-center text-sm xl:text-base">
-                <IoIosArrowDropright
+                <IoIosArrowDropleft
                     className={`sm:hidden text-4xl cursor-pointer z-50 transform transition-all duration-1000 ${!openNavbar && "rotate-180"}`}
                     onClick={() => setOpenNavbar(!openNavbar)}
                 />
                 <ul
-                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold duration-1000 absolute sm:static shadow-lg shadow-nhb sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'right-0 top-16 bg-nhbBG flex z-10' : '-right-full top-16'}`}>
+                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold duration-1000 absolute sm:static shadow-lg shadow-nhb sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'right-0 top-16 bg-nhbBG flex z-10' : 'right-full top-16'}`}>
                     {navigationItems}
                 </ul>
             </div>

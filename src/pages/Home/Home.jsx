@@ -4,6 +4,7 @@ import profile from '../../assets/pp-square.jpg'
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import 'react-photo-view/dist/react-photo-view.css';
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import Projects from "../../components/Projects/Projects";
 
 const Home = () => {
 
@@ -13,7 +14,7 @@ const Home = () => {
     });
 
     return (
-        <section className="md:py-8 p-6 md:px-12">
+        <section className="md:py-8 p-6 md:px-12 scroll-smooth">
             <Helmet>
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
@@ -22,10 +23,10 @@ const Home = () => {
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
                     <h3>I am a {stacks}</h3>
-                    <ul className="text-center md:text-left flex flex-col pl-4 md:list-disc animate-pulse">
-                        <li>Developing Responsive websites with user-friendly functionalities</li>
-                        <li>Passionate about crafting engaging user experiences</li>
-                        <li>Let&rsquo;s transform your ideas into dynamic experience</li>
+                    <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc animate-pulse">
+                        <li>Developing Responsive websites with user-friendly functionalities.</li>
+                        <li>Passionate about crafting engaging user experiences.</li>
+                        <li>Let&rsquo;s transform your ideas into dynamic experience!</li>
                     </ul>
                     <a target="_blank" rel="noopener noreferrer"
                         href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
@@ -42,6 +43,7 @@ const Home = () => {
                     </PhotoProvider>
                 </div>
             </div>
+            <Projects/>
         </section>
     );
 };
