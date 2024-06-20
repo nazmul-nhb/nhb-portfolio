@@ -10,6 +10,7 @@ const Home = () => {
     return (
         <section className="md:py-8 p-6 md:px-12">
             <h3>I am {text}</h3>
+            lorem1111
         </section>
     );
 };
