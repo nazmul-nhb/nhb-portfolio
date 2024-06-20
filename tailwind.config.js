@@ -12,6 +12,15 @@ export default {
       },
       colors: {
         nhb:'#0f2166',
+        whatsapp:'#24bb5d',
+        google:'#ce3c30',
+        facebook: '#0865fc',
+        linkedin:'#0a63bc',
+        stackOverflow:'#f48024',
+        telegram:'#2ba3df',
+        reddit:'#ff4500',
+        discord:'#5865f2',
+        yahoo:'#6001d2',
       },
       fontFamily: {
         kreonSerif: '"Kreon", serif;',
