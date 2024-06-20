@@ -2,6 +2,7 @@
     {
         "title": "Nexus News",
         "subtitle": "Simple News Portal Website",
+        "cover":"/covers/nexus.png",
         "link": "https://nexus-news-nhb.web.app",
         "client": "https://github.com/nazmul-nhb/nexus-news-client",
         "server": "https://github.com/nazmul-nhb/nexus-news-server",
@@ -9,13 +10,14 @@
         "features": [
             "Integrated Stripe for user subscription payments.",
             "Enabled search by title, filter by publisher or tags, and sort by date.",
-            "Admin Dashboard to manage user roles and article content.",
+            "Admin Dashboard for managing user roles and article content.",
             "Popup alerts for subscription expiration."
         ]
     },
     {
         "title": "Furry Friends Blogs",
         "subtitle": "Simple Blog Site for Pet Lovers",
+        "cover": "/covers/furry.png",
         "link": "https://furry-friends-blogs-nhb.vercel.app",
         "client": "https://github.com/nazmul-nhb/furry-friends-blogs-client",
         "server": "https://github.com/nazmul-nhb/furry-friends-blogs-server",
@@ -29,6 +31,7 @@
     {
         "title": "Hephaestus Creations",
         "subtitle": "Simple Arts & Crafts Store Website",
+        "cover": "/covers/hephaestus.png",
         "link": "https://hephaestus-creations.web.app",
         "client": "https://github.com/nazmul-nhb/hephaestus-creations-client",
         "server": "https://github.com/nazmul-nhb/hephaestus-creations-server",

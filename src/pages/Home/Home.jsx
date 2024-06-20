@@ -7,6 +7,12 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import Projects from "../../components/Projects/Projects";
 
 const Home = () => {
+    const scrollToSection = (sectionID) => {
+        const section = document.getElementById(sectionID);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const [stacks] = useTypewriter({
         words: ['Front-End Developer', 'Front-End React Developer', 'MERN-Stack Developer'],
@@ -18,7 +24,13 @@ const Home = () => {
             <Helmet>
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
-            <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 mt-6">
+            <ul className="" id="toc">
+                <li><a className="cursor-pointer" onClick={() => scrollToSection('bio')}>Bio</a></li>
+                <li><a className="cursor-pointer" onClick={() => scrollToSection('projects')}>Projects</a></li>
+                <li><a className="cursor-pointer" onClick={() => scrollToSection('skills')}>Skills</a></li>
+            </ul>
+<h2 id="bio" ></h2>
+            <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
                 {/* Bio */}
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
@@ -43,6 +55,8 @@ const Home = () => {
                     </PhotoProvider>
                 </div>
             </div>
+
+            <h2 id="projects" onClick={() => scrollToSection('toc')}>Projects</h2>
             <Projects/>
         </section>
     );
