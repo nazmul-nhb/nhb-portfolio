@@ -11,7 +11,7 @@ export default {
         blueBG: 'url("/src/assets/blue-bg.svg")',
       },
       colors: {
-
+        nhb:'#0f2166',
       },
       fontFamily: {
         kreonSerif: '"Kreon", serif;',
