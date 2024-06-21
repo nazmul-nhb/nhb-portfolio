@@ -2,7 +2,8 @@
     {
         "title": "Nexus News",
         "subtitle": "Simple News Portal Website",
-        "cover":"/covers/nexus.png",
+        "icon": "/nexus-logo.png",
+        "cover": "/covers/nexus.png",
         "link": "https://nexus-news-nhb.web.app",
         "client": "https://github.com/nazmul-nhb/nexus-news-client",
         "server": "https://github.com/nazmul-nhb/nexus-news-server",
@@ -17,6 +18,7 @@
     {
         "title": "Furry Friends Blogs",
         "subtitle": "Simple Blog Site for Pet Lovers",
+        "icon": "/furry-logo.png",
         "cover": "/covers/furry.png",
         "link": "https://furry-friends-blogs-nhb.vercel.app",
         "client": "https://github.com/nazmul-nhb/furry-friends-blogs-client",
@@ -31,6 +33,7 @@
     {
         "title": "Hephaestus Creations",
         "subtitle": "Simple Arts & Crafts Store Website",
+        "icon": "/hephaestus-logo.png",
         "cover": "/covers/hephaestus.png",
         "link": "https://hephaestus-creations.web.app",
         "client": "https://github.com/nazmul-nhb/hephaestus-creations-client",

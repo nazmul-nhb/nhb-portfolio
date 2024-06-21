@@ -17,6 +17,7 @@ export default {
         facebook: '#0865fc',
         linkedin:'#0a63bc',
         stackOverflow:'#f48024',
+        github:'#4a4a4a',
         telegram:'#2ba3df',
         reddit:'#ff4500',
         discord:'#5865f2',

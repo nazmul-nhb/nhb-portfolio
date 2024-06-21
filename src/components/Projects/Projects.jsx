@@ -27,11 +27,15 @@ const Projects = () => {
     return (
         <section className='grid lg:grid-cols-3 gap-6'>
             {projects?.map((project, index) => (
-                <div className='w-full flex flex-col gap-4' key={index}>
-                    <h3 className='text-2xl font-kreonSerif'>{project.title}</h3>
+                <div className='w-full flex flex-col gap-2 md:gap-4' key={index}>
+                    <h3 className='text-base sm:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
+                        <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
+                        {project.title}
+                        <span className='text-xs border px-1'>Full-Stack</span>
+                    </h3>
                     <img
                         onClick={() => setOpenProjectIndex(index)}
-                        className='w-full cursor-pointer hover:scale-105 transition-all duration-500'
+                        className='w-full cursor-pointer hover:scale-105 transition-all duration-500 rounded-md'
                         src={project.cover}
                         alt={project.title}
                     />
@@ -41,27 +45,30 @@ const Projects = () => {
                             <dialog open
                                 className={`modal-content ${closing ? 'modal-content-close' : ''} w-[96%] xl:w-auto h-3/4 bg-opacity-95 p-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-transparent rounded-lg z-50 text-white`}
                             >
-                                <div className='bg-blueBG bg-cover border-2 shadow-lg h-full rounded-lg p-6 flex flex-col overflow-y-auto !pb-6'>
+                                <div className='bg-blueBG bg-cover border-2 shadow-lg h-full rounded-lg p-1 flex flex-col overflow-y-auto !pb-6'>
                                     <IoIosCloseCircle
                                         onClick={handleClose}
                                         className='absolute -top-1 -right-1 text-3xl bg-white rounded-full text-red-700 hover:text-nhb transition-all duration-500 cursor-pointer'
                                         title='Close'
                                     />
-                                    <div className="flex flex-col gap-4 h-3/4 p-1 pb-6">
+                                    <div className="flex flex-col gap-4 h-3/4 p-1 pb-6 text-sm sm:text-base">
                                         <div className="border-b pb-1">
-                                            <h3 className='text-2xl font-kreonSerif'>
+                                            <h3 className='text-base sm:text-2xl font-kreonSerif flex items-center gap-2'>
+                                                <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
                                                 {project.title}
-                                                <span className='border px-1 ml-2'>Full Stack</span>
+                                                <span className='text-xs border px-1'>Full-Stack</span>
                                             </h3>
-                                            <h4 className='text-lg font-kreonSerif text-right mt-1'>{project.subtitle}</h4>
+                                            <h4 className='text-xs sm:text-sm md:text-lg font-kreonSerif text-right mt-1'>
+                                                {project.subtitle}
+                                            </h4>
                                         </div>
                                         <ul className='list-disc'>
-                                            <h4 className='font-bold text-lg'>Top Features:</h4>
+                                            <h4 className='font-bold'>Top Features:</h4>
                                             {project?.features?.map((feature, featureIndex) => (
                                                 <li key={featureIndex} className='ml-8'>{feature}</li>
                                             ))}
                                         </ul>
-                                        <h4 className='-indent-14 pl-14 w'>
+                                        <h4 className='-indent-8 pl-8'>
                                             <span className='font-bold'>Notable Technologies: </span>
                                             {project?.technologies}
                                         </h4>
