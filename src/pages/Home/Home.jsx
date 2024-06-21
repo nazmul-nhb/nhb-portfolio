@@ -119,7 +119,8 @@ const Home = () => {
             <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6">
 
                 {/* Bio */}
-                <div className="flex flex-col items-center md:items-start gap-2">
+                <div data-aos="zoom-in-up" data-aos-duration="500"
+                 className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
                     <h3>I am a {stacks}</h3>
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc animate-pulse">
@@ -128,7 +129,7 @@ const Home = () => {
                         <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
                     </ul>
                     <div className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif">
-                        <a
+                        <a data-aos="zoom-in-right" data-aos-duration="500" data-aos-delay="400"
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
@@ -136,7 +137,7 @@ const Home = () => {
                         >
                             <FaCloudDownloadAlt /> Resume
                         </a>
-                        <a
+                        <a data-aos="zoom-in-right" data-aos-duration="500" data-aos-delay="800"
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://linkedin.com/in/nazmul-nhb"
@@ -144,7 +145,7 @@ const Home = () => {
                         >
                             <FaLinkedin /> LinkedIn
                         </a>
-                        <a
+                        <a data-aos="zoom-in-right" data-aos-duration="500" data-aos-delay="1200"
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://github.com/nazmul-nhb"
@@ -159,7 +160,10 @@ const Home = () => {
                 <div className="p-2 border">
                     <PhotoProvider>
                         <PhotoView src={profile}>
-                            <img className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500" src={profile} alt="Nazmul Hassan" />
+                            <img data-aos="zoom-out-down" data-aos-duration="500" data-aos-delay="500"
+                                className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500"
+                                src={profile}
+                                alt="Nazmul Hassan" />
                         </PhotoView>
                     </PhotoProvider>
                 </div>

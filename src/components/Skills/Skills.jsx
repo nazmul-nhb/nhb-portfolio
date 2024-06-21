@@ -35,7 +35,9 @@ const Skills = () => {
     return (
         <section className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
             {skills.map((skill, index) => (
-                <div key={index} className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md"
+                <div key={index}
+                    data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
+                    className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}>
                     <div className="text-5xl group-hover:scale-125 transition-all duration-1000">
