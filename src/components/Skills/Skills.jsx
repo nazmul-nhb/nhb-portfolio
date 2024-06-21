@@ -33,7 +33,7 @@ const Skills = () => {
     };
 
     return (
-        <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
+        <section className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
             {skills.map((skill, index) => (
                 <div key={index} className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md"
                     onMouseEnter={() => handleMouseEnter(index)}

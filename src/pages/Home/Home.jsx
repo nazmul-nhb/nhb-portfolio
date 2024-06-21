@@ -11,6 +11,8 @@ import { useEffect, useRef, useState } from "react";
 import { GiSkills } from "react-icons/gi";
 import { GrProjects } from "react-icons/gr";
 import { RiShieldUserLine } from "react-icons/ri";
+import { FaLinkedin } from "react-icons/fa6";
+import { VscGithub } from "react-icons/vsc";
 
 const Home = () => {
     const [contentsVisible, setContentsVisible] = useState(false);
@@ -114,8 +116,8 @@ const Home = () => {
             </div>
 
             {/* Intro Section */}
-            <h2 id="bio"></h2>
-            <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
+            <div id="bio" className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
+
                 {/* Bio */}
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
@@ -125,15 +127,34 @@ const Home = () => {
                         <li>Passionate about crafting engaging user experiences.</li>
                         <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
                     </ul>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
-                        className="flex items-center gap-1 text-xl md:text-2xl px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold"
-                    >
-                        <FaCloudDownloadAlt /> Resume
-                    </a>
+                    <div className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif">
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold"
+                        >
+                            <FaCloudDownloadAlt /> Resume
+                        </a>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://linkedin.com/in/nazmul-nhb"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:bg-white transition-all duration-500 font-semibold"
+                        >
+                            <FaLinkedin /> LinkedIn
+                        </a>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white transition-all duration-500 font-semibold"
+                        >
+                            <VscGithub /> GitHub
+                        </a>
+                    </div>
                 </div>
+
                 {/* Image */}
                 <div className="">
                     <PhotoProvider>
@@ -143,12 +164,17 @@ const Home = () => {
                     </PhotoProvider>
                 </div>
             </div>
+
             {/* Skills Section */}
-            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl" id="skills">Skills</h2>
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="skills">
+                <GiSkills />Skills
+            </h2>
             <Skills />
 
             {/* Projects Section */}
-            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl" id="projects">Projects</h2>
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="projects">
+                <GrProjects />Projects
+            </h2>
             <Projects />
         </section>
     );
