@@ -20,6 +20,7 @@ const skillIcons = {
     "Figma": <FaFigma />,
     "TanStack Query": <SiReactquery />
 };
+
 const Skills = () => {
     const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
 

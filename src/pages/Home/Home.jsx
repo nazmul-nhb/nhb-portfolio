@@ -6,14 +6,41 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import Projects from "../../components/Projects/Projects";
 import Skills from "../../components/Skills/Skills";
+import { BiBookContent } from "react-icons/bi";
+import { useEffect, useRef, useState } from "react";
+import { GiSkills } from "react-icons/gi";
+import { GrProjects } from "react-icons/gr";
+import { RiShieldUserLine } from "react-icons/ri";
 
 const Home = () => {
+    const [contentsVisible, setContentsVisible] = useState(false);
+    const contentRef = useRef(null);
+
     const scrollToSection = (sectionID) => {
         const section = document.getElementById(sectionID);
         if (section) {
             section.scrollIntoView({ behavior: "smooth", block: "start" });
+            setContentsVisible(false);
         }
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (contentRef.current && !contentRef.current.contains(event.target)) {
+                setContentsVisible(false);
+            }
+        };
+
+        if (contentsVisible) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [contentsVisible]);
 
     const [stacks] = useTypewriter({
         words: ['Front-End Developer', 'Front-End React Developer', 'MERN-Stack Developer'],
@@ -21,15 +48,30 @@ const Home = () => {
     });
 
     return (
-        <section className="md:py-8 p-6 md:px-12 scroll-smooth">
+        <section className="md:py-8 p-6 md:px-12 scroll-smooth relative">
             <Helmet>
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
-            <ul className="" id="toc">
-                <li><a className="cursor-pointer" onClick={() => scrollToSection('bio')}>Bio</a></li>
-                <li><a className="cursor-pointer" onClick={() => scrollToSection('skills')}>Skills</a></li>
-                <li><a className="cursor-pointer" onClick={() => scrollToSection('projects')}>Projects</a></li>
-            </ul>
+
+            <div className="fixed top-20 right-4 z-50 flex items-center">
+                <BiBookContent
+                    className="cursor-pointer text-4xl hover:text-blue-500 transition-all duration-500"
+                    onClick={() => setContentsVisible(!contentsVisible)}
+                />
+                <div ref={contentRef}
+                    className={`absolute bg-nhb bg-opacity-75 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-10' : 'transform translate-x-full -left-full top-1'
+                        }`}
+                    style={{ marginLeft: '1rem' }}
+                >
+                        <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
+                        onClick={() => scrollToSection('bio')}><RiShieldUserLine />Bio</a>
+                        <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
+                            onClick={() => scrollToSection('skills')}><GiSkills />Skills</a>
+                        <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
+                            onClick={() => scrollToSection('projects')}><GrProjects />Projects</a>
+                </div>
+            </div>
+
             {/* Intro Section */}
             <h2 id="bio" ></h2>
             <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
