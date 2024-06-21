@@ -4,7 +4,8 @@ import { IoLogoCss3 } from 'react-icons/io5';
 import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery } from 'react-icons/si';
 import { TbBrandJavascript } from 'react-icons/tb';
 import CountUp from 'react-countup';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const skillIcons = {
     "HTML": <FaHtml5 />,
@@ -14,7 +15,7 @@ const skillIcons = {
     "Node.js": <FaNodeJs />,
     "Express.js": <SiExpress />,
     "MongoDB": <SiMongodb />,
-    "Tailwind CSS": <SiTailwindcss />,
+    "TailwindCSS": <SiTailwindcss />,
     "Firebase": <SiFirebase />,
     "Git": <FaGitAlt />,
     "Figma": <FaFigma />,
@@ -23,17 +24,38 @@ const skillIcons = {
 
 const Skills = () => {
     const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
+    const [viewedSkills, setViewedSkills] = useState({});
+
+    const { ref, inView } = useInView({
+        triggerOnce: false,
+        threshold: 0.5,
+        delay: 3
+    });
 
     const handleMouseEnter = (index) => {
         setHoveredSkillIndex(index);
+        setViewedSkills((prevViewedSkills) => ({
+            ...prevViewedSkills,
+            [index]: Date.now(),
+        }));
     };
 
     const handleMouseLeave = () => {
         setHoveredSkillIndex(null);
     };
 
+    useEffect(() => {
+        if (inView) {
+            const newViewedSkills = {};
+            skills.forEach((_, index) => {
+                newViewedSkills[index] = Date.now();
+            });
+            setViewedSkills(newViewedSkills);
+        }
+    }, [inView]);
+
     return (
-        <section className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
+        <section ref={ref} className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
             {skills.map((skill, index) => (
                 <div key={index}
                     data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
@@ -47,11 +69,14 @@ const Skills = () => {
                         <h3 className="text-lg font-semibold flex items-center justify-between group-hover:text-xl transition-all duration-1000">
                             <span>{skill.title}</span>
                             <span>
-                                {
-                                    hoveredSkillIndex === index
-                                        ? <CountUp end={skill.level} duration={2} suffix="%" />
-                                        : `${skill.level}%`
-                                }
+                                {(hoveredSkillIndex === index || viewedSkills[index]) && (
+                                    <CountUp key={viewedSkills[index]}
+                                        delay={0.15} start={0} end={skill.level} duration={2}
+                                        suffix="%" />
+                                )}
+                                {!(hoveredSkillIndex === index || viewedSkills[index]) && (
+                                    `${skill.level}%`
+                                )}
                             </span>
                         </h3>
                         <p className="text-sm text-gray-400">{skill.description}</p>

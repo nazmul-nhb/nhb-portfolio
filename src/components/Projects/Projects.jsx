@@ -28,7 +28,7 @@ const Projects = () => {
         <section className='grid lg:grid-cols-3 gap-6 mb-12'>
             {projects?.map((project, index) => (
                 <div key={index}
-                    data-aos="fade-down" data-aos-duration="500" data-aos-delay="400" data-aos-easing="linear"
+                    // data-aos="fade-down" data-aos-duration="500" data-aos-delay="400" data-aos-easing="linear"
                     className='w-full flex flex-col gap-2 md:gap-4'>
                     <h3 onClick={() => setOpenProjectIndex(index)}
                         className='cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base sm:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
