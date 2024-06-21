@@ -25,13 +25,12 @@ const Projects = () => {
     };
 
     return (
-        <section className='grid lg:grid-cols-3 gap-6 mb-12'>
+        <section className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>
             {projects?.map((project, index) => (
                 <div key={index}
-                    // data-aos="fade-down" data-aos-duration="500" data-aos-delay="400" data-aos-easing="linear"
                     className='w-full flex flex-col gap-2 md:gap-4'>
                     <h3 onClick={() => setOpenProjectIndex(index)}
-                        className='cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base sm:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
+                        className='flex-grow cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base md:text-xl lg:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
                         <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
                         {project.title}
                         <span className='text-xs border px-1 group-hover:border-blue-500'>Full-Stack</span>
