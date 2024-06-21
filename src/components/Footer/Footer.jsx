@@ -21,7 +21,7 @@ const Footer = () => {
                 </div>
                 {/* Social Links */}
                 <div className="text-2xl grid grid-cols-3 gap-4 !bg-transparent">
-                    <a className="flex items-center gap-2 hover:text-github hover:scale-150 transition-all duration-500" href="https://github.com/nazmul-nhb/" target="_blank" rel="noopener noreferrer">
+                    <a className="flex items-center gap-2 hover:text-github hover:scale-150 transition-all duration-500" href="https://github.com/nazmul-nhb" target="_blank" rel="noopener noreferrer">
                         <VscGithub />
                     </a>
                     <a className="flex items-center gap-2 hover:text-linkedin hover:scale-150 hover:bg-white rounded-sm transition-all duration-500" href="https://linkedin.com/in/nazmul-nhb" target="_blank" rel="noopener noreferrer">

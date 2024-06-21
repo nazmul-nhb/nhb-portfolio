@@ -38,7 +38,7 @@ const Navbar = () => {
     );
 
     return (
-        <nav className="max-w-[1920px] bg-nhbBG text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-nhb px-2 sm:px-6 py-3 md:px-12 sticky top-0 bg-opacity-75 h-16 z-20">
+        <nav className="max-w-[1920px] bg-nhbBG text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 sm:px-6 py-3 md:px-12 sticky top-0 bg-opacity-75 h-16 z-20">
             <figure className="flex items-center justify-start gap-2 font-kreonSerif">
                 <img className="w-10 sm:w-11 h-10 sm:h-11 rounded-full p-0.5 border" src={profile} alt="profile" />
                 <NavLink className="text-2xl sm:text-3xl font-semibold" to={'/'}>

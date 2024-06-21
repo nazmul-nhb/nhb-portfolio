@@ -91,23 +91,23 @@ const Home = () => {
                 />
                 <div
                     ref={contentRef}
-                    className={`absolute bg-nhb bg-opacity-75 space-y-1 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-9 md:right-10' : 'transform translate-x-full -left-full top-1'
+                    className={`absolute bg-nhb bg-opacity-85 space-y-1 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-9 md:right-10' : 'transform translate-x-full -left-full top-1'
                         }`}
                 >
                     <a
-                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'bio' ? 'font-bold text-blue-700' : ''}`}
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'bio' ? 'font-bold text-blue-300' : ''}`}
                         onClick={() => scrollToSection('bio')}
                     >
                         <RiShieldUserLine />Bio
                     </a>
                     <a
-                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'skills' ? 'font-bold text-blue-700' : ''}`}
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'skills' ? 'font-bold text-blue-300' : ''}`}
                         onClick={() => scrollToSection('skills')}
                     >
                         <GiSkills />Skills
                     </a>
                     <a
-                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'projects' ? 'font-bold text-blue-700' : ''}`}
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'projects' ? 'font-bold text-blue-300' : ''}`}
                         onClick={() => scrollToSection('projects')}
                     >
                         <GrProjects />Projects
@@ -116,7 +116,7 @@ const Home = () => {
             </div>
 
             {/* Intro Section */}
-            <div id="bio" className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
+            <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6">
 
                 {/* Bio */}
                 <div className="flex flex-col items-center md:items-start gap-2">
@@ -147,7 +147,7 @@ const Home = () => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
+                            href="https://github.com/nazmul-nhb"
                             className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white transition-all duration-500 font-semibold"
                         >
                             <VscGithub /> GitHub
@@ -156,10 +156,10 @@ const Home = () => {
                 </div>
 
                 {/* Image */}
-                <div className="">
+                <div className="p-2 border">
                     <PhotoProvider>
                         <PhotoView src={profile}>
-                            <img className="cursor-pointer w-64 p-2 border" src={profile} alt="Nazmul Hassan" />
+                            <img className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500" src={profile} alt="Nazmul Hassan" />
                         </PhotoView>
                     </PhotoProvider>
                 </div>
