@@ -38,7 +38,8 @@ const Navbar = () => {
     );
 
     return (
-        <nav className="max-w-[1920px] bg-nhbBG text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 sm:px-6 py-3 md:px-12 sticky top-0 bg-opacity-75 h-16 z-20">
+        <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
+            <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <figure className="flex items-center justify-start gap-2 font-kreonSerif">
                 <img className="w-10 sm:w-11 h-10 sm:h-11 rounded-full p-0.5 border" src={profile} alt="profile" />
                 <NavLink className="text-2xl sm:text-3xl font-semibold" to={'/'}>
@@ -52,7 +53,8 @@ const Navbar = () => {
                     onClick={() => setOpenNavbar(!openNavbar)}
                 />
                 <ul
-                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold duration-1000 absolute sm:static shadow-lg shadow-nhb sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'right-0 top-16 bg-nhbBG flex z-10' : 'right-full top-16'}`}>
+                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold duration-1000 absolute sm:static sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-0 top-16 bg-nhb bg-opacity-80 flex z-10' : 'right-full top-16 shadow-none'}`}>
+                    <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
                     {navigationItems}
                 </ul>
             </div>

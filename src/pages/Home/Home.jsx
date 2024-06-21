@@ -77,7 +77,7 @@ const Home = () => {
     });
 
     return (
-        <section className="md:py-8 p-6 md:px-16 scroll-smooth relative">
+        <section className="md:py-8 p-6 md:px-16 relative">
             <Helmet>
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
@@ -85,14 +85,14 @@ const Home = () => {
             {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
                 <BiBookContent
-                    className="cursor-pointer text-3xl md:text-4xl hover:text-blue-500 transition-all duration-500"
+                    className="cursor-pointer text-3xl md:text-4xl hover:text-blue-500 hover:scale-105 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
                 <div
                     ref={contentRef}
-                    className={`absolute bg-nhb bg-opacity-85 space-y-1 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-9 md:right-10' : 'transform translate-x-full -left-full top-1'
-                        }`}
+                    className={`absolute flex gap-5 items-center bg-nhb bg-opacity-60 space-y-1 font-semibold sm:text-lg shadow-md shadow-blue-500 p-2 transition-transform duration-1000 ease-in-out ${contentsVisible ? 'transform translate-x-0 -top-2 right-9 md:right-11' : 'transform translate-x-full -right-full -top-2'}`}
                 >
+                    <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
                     <a
                         className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'bio' ? 'font-bold text-blue-300' : ''}`}
                         onClick={() => scrollToSection('bio')}
@@ -115,7 +115,7 @@ const Home = () => {
             </div>
 
             {/* Intro Section */}
-            <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6">
+            <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6 mb-12">
 
                 {/* Bio */}
                 <div data-aos="zoom-in-up" data-aos-duration="1000"

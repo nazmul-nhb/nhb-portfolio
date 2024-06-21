@@ -6,7 +6,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="max-w-[1920px] mx-auto md:py-8 p-6 md:px-12 bg-nhbBG text-white">
+        <footer className="max-w-[1920px] mx-auto md:py-8 p-6 md:px-12 bg-blueBG bg-bottom bg-cover text-white border-t">
             <section className="mx-16 flex sm:flex-row flex-col items-center sm:justify-between text-center sm:text-left gap-6">
                 {/* Contacts */}
                 <div className="flex flex-col gap-3 items-center sm:items-start justify-start">

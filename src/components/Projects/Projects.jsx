@@ -38,7 +38,7 @@ const Projects = () => {
                     </h3>
                     <img
                         onClick={() => setOpenProjectIndex(index)}
-                        className='w-full cursor-pointer hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500'
+                        className='w-full cursor-pointer hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500'
                         src={project.cover}
                         alt={project.title}
                     />
