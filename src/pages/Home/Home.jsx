@@ -48,20 +48,19 @@ const Home = () => {
     });
 
     return (
-        <section className="md:py-8 p-6 md:px-12 scroll-smooth relative">
+        <section className="md:py-8 p-6 md:px-16 scroll-smooth relative">
             <Helmet>
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
 
-            <div className="fixed top-20 right-4 z-50 flex items-center">
+            <div className="fixed top-20 right-1 md:right-4 z-50 flex items-center">
                 <BiBookContent
-                    className="cursor-pointer text-4xl hover:text-blue-500 transition-all duration-500"
+                    className="cursor-pointer text-3xl md:text-4xl hover:text-blue-500 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
                 <div ref={contentRef}
                     className={`absolute bg-nhb bg-opacity-75 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-10' : 'transform translate-x-full -left-full top-1'
                         }`}
-                    style={{ marginLeft: '1rem' }}
                 >
                         <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
                         onClick={() => scrollToSection('bio')}><RiShieldUserLine />Bio</a>
