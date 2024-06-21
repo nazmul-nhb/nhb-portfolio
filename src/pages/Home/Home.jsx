@@ -9,10 +9,9 @@ import Skills from "../../components/Skills/Skills";
 import { BiBookContent } from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 import { GiSkills } from "react-icons/gi";
-import { GrProjects } from "react-icons/gr";
 import { RiShieldUserLine } from "react-icons/ri";
 import { FaLinkedin } from "react-icons/fa6";
-import { VscGithub } from "react-icons/vsc";
+import { VscGithub, VscGithubProject } from "react-icons/vsc";
 
 const Home = () => {
     const [contentsVisible, setContentsVisible] = useState(false);
@@ -110,7 +109,7 @@ const Home = () => {
                         className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'projects' ? 'font-bold text-blue-300' : ''}`}
                         onClick={() => scrollToSection('projects')}
                     >
-                        <GrProjects />Projects
+                        <VscGithubProject />Projects
                     </a>
                 </div>
             </div>
@@ -119,7 +118,7 @@ const Home = () => {
             <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6">
 
                 {/* Bio */}
-                <div data-aos="zoom-in-up" data-aos-duration="700"
+                <div data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
                     <h3>I am a {stacks}</h3>
@@ -128,8 +127,8 @@ const Home = () => {
                         <li>Passionate about crafting engaging user experiences.</li>
                         <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
                     </ul>
-                    <div data-aos="zoom-in-right" data-aos-duration="600" data-aos-delay="500"
-                        className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif">
+                    <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="700"
+                        className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif mt-2">
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -161,12 +160,11 @@ const Home = () => {
                 <div className="p-2 border shadow-md shadow-blue-400">
                     <PhotoProvider>
                         <PhotoView src={profile}>
-                            <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="100">
+                            <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
                                 <img
                                     className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500"
                                     src={profile}
                                     alt="Nazmul Hassan" />
-
                             </figure>
                         </PhotoView>
                     </PhotoProvider>
@@ -181,7 +179,7 @@ const Home = () => {
 
             {/* Projects Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="projects">
-                <GrProjects />Projects
+                <VscGithubProject />Projects
             </h2>
             <Projects />
         </section>
