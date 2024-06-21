@@ -25,7 +25,7 @@ const Projects = () => {
     };
 
     return (
-        <section className='grid lg:grid-cols-3 gap-6'>
+        <section className='grid lg:grid-cols-3 gap-6 mb-12'>
             {projects?.map((project, index) => (
                 <div className='w-full flex flex-col gap-2 md:gap-4' key={index}>
                     <h3 className='text-base sm:text-2xl font-kreonSerif font-bold flex items-center gap-2'>

@@ -6,6 +6,21 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        rotate360: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        flip: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '50%': { transform: 'rotateY(180deg)' },
+          '100%': { transform: 'rotateY(360deg)' },
+        },
+      },
+      animation: {
+        rotate: 'rotate360 1s linear',
+        flip: 'flip 1s linear',
+      },
       backgroundImage: {
         nhbBG: 'linear-gradient(110deg, #0f2d79 0%, #171157 50%, #17186a 100%)',
         blueBG: 'url("/src/assets/blue-bg.svg")',

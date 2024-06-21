@@ -5,12 +5,13 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import 'react-photo-view/dist/react-photo-view.css';
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import Projects from "../../components/Projects/Projects";
+import Skills from "../../components/Skills/Skills";
 
 const Home = () => {
     const scrollToSection = (sectionID) => {
         const section = document.getElementById(sectionID);
         if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
@@ -26,10 +27,11 @@ const Home = () => {
             </Helmet>
             <ul className="" id="toc">
                 <li><a className="cursor-pointer" onClick={() => scrollToSection('bio')}>Bio</a></li>
-                <li><a className="cursor-pointer" onClick={() => scrollToSection('projects')}>Projects</a></li>
                 <li><a className="cursor-pointer" onClick={() => scrollToSection('skills')}>Skills</a></li>
+                <li><a className="cursor-pointer" onClick={() => scrollToSection('projects')}>Projects</a></li>
             </ul>
-<h2 id="bio" ></h2>
+            {/* Intro Section */}
+            <h2 id="bio" ></h2>
             <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
                 {/* Bio */}
                 <div className="flex flex-col items-center md:items-start gap-2">
@@ -38,7 +40,7 @@ const Home = () => {
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc animate-pulse">
                         <li>Developing Responsive websites with user-friendly functionalities.</li>
                         <li>Passionate about crafting engaging user experiences.</li>
-                        <li>Let&rsquo;s transform your ideas into dynamic experience!</li>
+                        <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
                     </ul>
                     <a target="_blank" rel="noopener noreferrer"
                         href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
@@ -55,9 +57,13 @@ const Home = () => {
                     </PhotoProvider>
                 </div>
             </div>
+            {/* Skills Section */}
+            <h2 className="pb-1 border-b my-6 font-bold text-3xl" id="skills">Skills</h2>
+            <Skills />
 
-            <h2 id="projects" onClick={() => scrollToSection('toc')}>Projects</h2>
-            <Projects/>
+            {/* Projects Section */}
+            <h2 className="pb-1 border-b my-6 font-bold text-3xl" id="projects">Projects</h2>
+            <Projects />
         </section>
     );
 };
