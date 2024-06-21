@@ -14,8 +14,10 @@ import { RiShieldUserLine } from "react-icons/ri";
 
 const Home = () => {
     const [contentsVisible, setContentsVisible] = useState(false);
+    const [activeSection, setActiveSection] = useState(null);
     const contentRef = useRef(null);
 
+    // Function to handle scrolling to a section
     const scrollToSection = (sectionID) => {
         const section = document.getElementById(sectionID);
         if (section) {
@@ -24,6 +26,32 @@ const Home = () => {
         }
     };
 
+    // Function to handle scroll events and update active section
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY + 128;
+        const bioSection = document.getElementById('bio');
+        const skillsSection = document.getElementById('skills');
+        const projectsSection = document.getElementById('projects');
+
+        if (projectsSection && scrollPosition >= projectsSection.offsetTop) {
+            setActiveSection('projects');
+        } else if (skillsSection && scrollPosition >= skillsSection.offsetTop) {
+            setActiveSection('skills');
+        } else if (bioSection && scrollPosition >= bioSection.offsetTop) {
+            setActiveSection('bio');
+        }
+    };
+
+    // Effect to add scroll event listener and clean up
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll);
+
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    // Effect to handle click outside menu to close it
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (contentRef.current && !contentRef.current.contains(event.target)) {
@@ -53,26 +81,40 @@ const Home = () => {
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
 
+            {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
                 <BiBookContent
                     className="cursor-pointer text-3xl md:text-4xl hover:text-blue-500 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
-                <div ref={contentRef}
-                    className={`absolute bg-nhb bg-opacity-75 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-9 md:right-10' : 'transform translate-x-full -left-full top-1'
+                <div
+                    ref={contentRef}
+                    className={`absolute bg-nhb bg-opacity-75 space-y-1 font-semibold text-lg shadow-lg rounded-md shadow-nhb p-2 transition-transform duration-500 ease-in-out ${contentsVisible ? 'transform translate-x-0 top-1 right-9 md:right-10' : 'transform translate-x-full -left-full top-1'
                         }`}
                 >
-                        <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
-                        onClick={() => scrollToSection('bio')}><RiShieldUserLine />Bio</a>
-                        <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
-                            onClick={() => scrollToSection('skills')}><GiSkills />Skills</a>
-                        <a className="cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500"
-                            onClick={() => scrollToSection('projects')}><GrProjects />Projects</a>
+                    <a
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'bio' ? 'font-bold text-blue-700' : ''}`}
+                        onClick={() => scrollToSection('bio')}
+                    >
+                        <RiShieldUserLine />Bio
+                    </a>
+                    <a
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'skills' ? 'font-bold text-blue-700' : ''}`}
+                        onClick={() => scrollToSection('skills')}
+                    >
+                        <GiSkills />Skills
+                    </a>
+                    <a
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'projects' ? 'font-bold text-blue-700' : ''}`}
+                        onClick={() => scrollToSection('projects')}
+                    >
+                        <GrProjects />Projects
+                    </a>
                 </div>
             </div>
 
             {/* Intro Section */}
-            <h2 id="bio" ></h2>
+            <h2 id="bio"></h2>
             <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6">
                 {/* Bio */}
                 <div className="flex flex-col items-center md:items-start gap-2">
@@ -83,9 +125,12 @@ const Home = () => {
                         <li>Passionate about crafting engaging user experiences.</li>
                         <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
                     </ul>
-                    <a target="_blank" rel="noopener noreferrer"
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
                         href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
-                        className="flex items-center gap-1 text-xl md:text-2xl px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold">
+                        className="flex items-center gap-1 text-xl md:text-2xl px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold"
+                    >
                         <FaCloudDownloadAlt /> Resume
                     </a>
                 </div>
@@ -99,11 +144,11 @@ const Home = () => {
                 </div>
             </div>
             {/* Skills Section */}
-            <h2 className="pb-1 border-b my-6 font-bold text-3xl" id="skills">Skills</h2>
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl" id="skills">Skills</h2>
             <Skills />
 
             {/* Projects Section */}
-            <h2 className="pb-1 border-b my-6 font-bold text-3xl" id="projects">Projects</h2>
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl" id="projects">Projects</h2>
             <Projects />
         </section>
     );

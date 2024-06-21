@@ -51,7 +51,7 @@ const Projects = () => {
                                         className='absolute -top-1 -right-1 text-3xl bg-white rounded-full text-red-700 hover:text-nhb transition-all duration-500 cursor-pointer'
                                         title='Close'
                                     />
-                                    <div className="flex flex-col gap-4 h-3/4 p-1 pb-6 text-sm sm:text-base">
+                                    <div className="flex flex-col gap-4 h-3/4 p-1 sm:p-6 pb-6 text-sm sm:text-base">
                                         <div className="border-b pb-1">
                                             <h3 className='text-base sm:text-2xl font-kreonSerif flex items-center gap-2'>
                                                 <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
