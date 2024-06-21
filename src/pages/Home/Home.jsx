@@ -19,7 +19,7 @@ const Home = () => {
     const [activeSection, setActiveSection] = useState(null);
     const contentRef = useRef(null);
 
-    // Function to handle scrolling to a section
+    // function to handle scrolling to a section
     const scrollToSection = (sectionID) => {
         const section = document.getElementById(sectionID);
         if (section) {
@@ -28,7 +28,7 @@ const Home = () => {
         }
     };
 
-    // Function to handle scroll events and update active section
+    // function to handle scroll events and update active section
     const handleScroll = () => {
         const scrollPosition = window.scrollY + 128;
         const bioSection = document.getElementById('bio');
@@ -44,7 +44,7 @@ const Home = () => {
         }
     };
 
-    // Effect to add scroll event listener and clean up
+    // effect to add scroll event listener and clean up
     useEffect(() => {
         document.addEventListener('scroll', handleScroll);
 
@@ -53,7 +53,7 @@ const Home = () => {
         };
     }, []);
 
-    // Effect to handle click outside menu to close it
+    // effect to handle click outside menu to close it
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (contentRef.current && !contentRef.current.contains(event.target)) {
@@ -119,8 +119,8 @@ const Home = () => {
             <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6">
 
                 {/* Bio */}
-                <div data-aos="zoom-in-up" data-aos-duration="500"
-                 className="flex flex-col items-center md:items-start gap-2">
+                <div data-aos="zoom-in-up" data-aos-duration="700"
+                    className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
                     <h3>I am a {stacks}</h3>
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc animate-pulse">
@@ -128,28 +128,29 @@ const Home = () => {
                         <li>Passionate about crafting engaging user experiences.</li>
                         <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
                     </ul>
-                    <div className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif">
-                        <a data-aos="zoom-in-right" data-aos-duration="500" data-aos-delay="400"
+                    <div data-aos="zoom-in-right" data-aos-duration="600" data-aos-delay="500"
+                        className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif">
+                        <a
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaCloudDownloadAlt /> Resume
                         </a>
-                        <a data-aos="zoom-in-right" data-aos-duration="500" data-aos-delay="800"
+                        <a
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://linkedin.com/in/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:bg-white transition-all duration-500 font-semibold"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:bg-white transition-all duration-500 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaLinkedin /> LinkedIn
                         </a>
-                        <a data-aos="zoom-in-right" data-aos-duration="500" data-aos-delay="1200"
+                        <a
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://github.com/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white transition-all duration-500 font-semibold"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white transition-all duration-500 font-semibold shadow-md shadow-blue-400"
                         >
                             <VscGithub /> GitHub
                         </a>
@@ -157,13 +158,16 @@ const Home = () => {
                 </div>
 
                 {/* Image */}
-                <div className="p-2 border">
+                <div className="p-2 border shadow-md shadow-blue-400">
                     <PhotoProvider>
                         <PhotoView src={profile}>
-                            <img data-aos="zoom-out-down" data-aos-duration="500" data-aos-delay="500"
-                                className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500"
-                                src={profile}
-                                alt="Nazmul Hassan" />
+                            <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="100">
+                                <img
+                                    className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500"
+                                    src={profile}
+                                    alt="Nazmul Hassan" />
+
+                            </figure>
                         </PhotoView>
                     </PhotoProvider>
                 </div>
