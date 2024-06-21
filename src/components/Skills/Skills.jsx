@@ -33,9 +33,9 @@ const Skills = () => {
     };
 
     return (
-        <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12'>
+        <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
             {skills.map((skill, index) => (
-                <div key={index} className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-500 rounded-lg shadow-md"
+                <div key={index} className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}>
                     <div className="text-5xl group-hover:scale-125 transition-all duration-1000">
@@ -55,7 +55,7 @@ const Skills = () => {
                         <p className="text-sm text-gray-400">{skill.description}</p>
                         <div className="w-full bg-gray-500 rounded-full h-2 mt-2">
                             <div
-                                className="bg-blue-500 h-2 rounded-full group-hover:animate-progress"
+                                className="bg-blue-300 h-2 rounded-full group-hover:animate-progress"
                                 style={{ '--progress-width': `${skill.level}%`, width: `${skill.level}%` }}
                             ></div>
                         </div>
