@@ -134,7 +134,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaCloudDownloadAlt /> Resume
                         </a>
@@ -142,7 +142,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://linkedin.com/in/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:bg-white transition-all duration-500 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaLinkedin /> LinkedIn
                         </a>
@@ -150,7 +150,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://github.com/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white transition-all duration-500 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <VscGithub /> GitHub
                         </a>
