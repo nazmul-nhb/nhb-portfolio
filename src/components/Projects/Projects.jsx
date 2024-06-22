@@ -35,12 +35,14 @@ const Projects = () => {
                         {project.title}
                         <span className='text-xs border px-1 group-hover:border-blue-500'>Full-Stack</span>
                     </h3>
-                    <img
-                        onClick={() => setOpenProjectIndex(index)}
-                        className='w-full cursor-pointer hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500'
-                        src={project.cover}
-                        alt={project.title}
-                    />
+                    <figure data-aos="fade-down" data-aos-duration="500" data-aos-delay="300">
+                        <img
+                            onClick={() => setOpenProjectIndex(index)}
+                            className='w-full cursor-pointer hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 hover:opacity-100'
+                            src={project.cover}
+                            alt={project.title}
+                        />
+                    </figure>
                     {openProjectIndex === index && (
                         <>
                             <div className="modal-background" onClick={handleClose}></div>

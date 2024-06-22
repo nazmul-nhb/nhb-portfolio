@@ -85,7 +85,7 @@ const Home = () => {
             {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
                 <BiBookContent
-                    className="cursor-pointer text-3xl md:text-4xl hover:text-blue-500 hover:scale-105 transition-all duration-500"
+                    className="cursor-pointer text-3xl md:text-4xl text-blue-300 hover:text-blue-500 hover:scale-105 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
                 <div
@@ -120,7 +120,7 @@ const Home = () => {
                 {/* Bio */}
                 <div data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
-                    <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m Nazmul Hassan</h2>
+                    <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">Nazmul Hassan</span></h2>
                     <h3>I am a {stacks}</h3>
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc animate-pulse">
                         <li>Developing Responsive websites with user-friendly functionalities.</li>
@@ -133,7 +133,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
                         >
                             <FaCloudDownloadAlt /> Resume
                         </a>
@@ -141,7 +141,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://linkedin.com/in/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white transition-all duration-700 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
                         >
                             <FaLinkedin /> LinkedIn
                         </a>
@@ -149,7 +149,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://github.com/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
                         >
                             <VscGithub /> GitHub
                         </a>
@@ -162,7 +162,7 @@ const Home = () => {
                         <PhotoView src={profile}>
                             <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
                                 <img
-                                    className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500"
+                                    className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500 hover:animate-pulse"
                                     src={profile}
                                     alt="Nazmul Hassan" />
                             </figure>

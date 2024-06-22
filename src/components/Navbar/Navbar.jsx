@@ -38,7 +38,7 @@ const Navbar = () => {
     );
 
     return (
-        <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
+        <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <figure className="flex items-center justify-start gap-2 font-kreonSerif">
                 <img className="w-10 sm:w-11 h-10 sm:h-11 rounded-full p-0.5 border" src={profile} alt="profile" />
