@@ -1,21 +1,19 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-// import Error404 from '../../assets/error-404.svg';
+import Lottie from "lottie-react";
+import errorAnimation from "../../assets/error-animation.json"
 
 const ErrorPage = () => {
     return (
-        <section className="flex items-center h-svh sm:p-16 dark:bg-gray-50 dark:text-gray-800">
+        <section className="flex items-center justify-center h-screen sm:p-16">
             <Helmet>
                 <title>Error : : 404</title>
             </Helmet>
-            <div className="container flex flex-col items-center justify-center px-5 mx-auto my-6 space-y-2 text-center">
-                <div className="w-full text-center">
-                    <h2 className="mb-8 font-extrabold text-9xl text-red-600">404</h2>
-                </div>
-                {/* <img src={Error404} alt="404" /> */}
-                <p className="text-lg font-semibold md:text-3xl">Page Not Found!</p>
-                <p className="mt-4 mb-8 dark:text-gray-600">But don&rsquo;t worry, you can find plenty of other things on our homepage.</p>
-                <Link to={'/'} className="px-8 py-3 font-semibold bg-[#8c8c8c] text-white border border-[#8c8c8c] rounded-3xl hover:bg-white hover:text-[#8c8c8c] transition duration-500">Back to Homepage</Link>
+            <div className="container flex flex-col items-center justify-center px-5 pb-6 mx-auto my-6 space-y-2 text-center">
+                <Lottie className='mt-8' animationData={errorAnimation} />
+                <p className="font-bold text-xl md:text-3xl text-white">Page Not Found!</p>
+                <p className="mt-4 mb-8 text-blue-200">But You can Find More Info on Homepage!</p>
+                <Link to={'/'} className="px-4 py-2 rounded-3xl font-bold text-lg md:text-2xl bg-transparent text-white border border-white hover:text-nhb hover:bg-white hover:scale-105 transition-all duration-700 shadow-md shadow-blue-400 hover:animate-pulse active:animate-none">Back to Homepage</Link>
             </div>
         </section>
     );

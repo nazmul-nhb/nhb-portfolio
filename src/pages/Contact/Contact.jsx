@@ -59,52 +59,62 @@ const Contact = () => {
     };
 
     return (
-        <section className="md:py-8 p-6 md:px-16">
+        <section className="md:py-8 p-6 md:px-16 flex justify-between">
             <Helmet>
                 <title>Contact - Nazmul Hassan</title>
             </Helmet>
-            <form
-                onSubmit={handleSubmit(handleSendMessage)} className="flex flex-col gap-4 justify-between text-white">
-                <div className="flex items-center gap-2 pl-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='name' className="flex items-center gap-1 md:text-lg w-20 md:w-24"><FaRegUser /> Name</label>
-                    <input
-                        {...register("name", {
-                            required:
-                                { value: true, message: "You must provide your name!" }
-                        })}
-                        name='name' id="name" type="text" placeholder="Your Name" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
-                </div>
+
+            {/* Contact Buttons */}
+            <div className="">
+
+            </div>
+            <div className="flex-1">
+                <h3>Let&rsquo;s Build Something Great together</h3>
+                {/* Contact Form */}
+                <form
+                    onSubmit={handleSubmit(handleSendMessage)} className="flex flex-col gap-4 justify-between text-white">
+                    <div className="flex items-center gap-2 pl-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
+                        <label htmlFor='name' className="flex items-center gap-1 md:text-lg w-20 md:w-24"><FaRegUser /> Name</label>
+                        <input
+                            {...register("name", {
+                                required:
+                                    { value: true, message: "You must provide your name!" }
+                            })}
+                            name='name' id="name" type="text" placeholder="Your Name" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
+                    </div>
                     {
                         errors.name && <p className="animate-bounce">{errors.name.message}</p>
                     }
-                <div className="flex items-center gap-2 pl-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='email' className="flex items-center gap-1 md:text-lg w-20 md:w-24"><CgMail/> Email</label>
-                    <input
-                        {...register("email", {
-                            required:
-                                { value: true, message: "You must provide a valid email address!" }
-                        })}
-                        name='email' id="email" type="email" placeholder="Your Email Address" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
-                </div>
+                    <div className="flex items-center gap-2 pl-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
+                        <label htmlFor='email' className="flex items-center gap-1 md:text-lg w-20 md:w-24"><CgMail /> Email</label>
+                        <input
+                            {...register("email", {
+                                required:
+                                    { value: true, message: "You must provide a valid email address!" }
+                            })}
+                            name='email' id="email" type="email" placeholder="Your Email Address" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
+                    </div>
                     {
                         errors.email && <p className="animate-bounce">{errors.email.message}</p>
                     }
-                <div className="flex md:flex-row flex-col items-start justify-around gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='msg' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-24"><TbMessage2Question /> Message</label>
-                    <textarea
-                        {...register("msg", {
-                            required:
-                                { value: true, message: "You must write something to send a message!" }
-                        })}
-                        name='msg' id="msg" placeholder="Write Your Message Here" className="h-64 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
-                </div>
+                    <div className="flex md:flex-row flex-col items-start justify-around gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
+                        <label htmlFor='msg' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-24"><TbMessage2Question /> Message</label>
+                        <textarea
+                            {...register("msg", {
+                                required:
+                                    { value: true, message: "You must write something to send a message!" }
+                            })}
+                            name='msg' id="msg" placeholder="Write Your Message Here" className="h-64 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
+                    </div>
                     {
                         errors.msg && <p className="animate-bounce">{errors.msg.message}</p>
                     }
-                <button type="submit" className="w-full flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-transparent text-white border border-white hover:text-nhb hover:bg-white hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-pulse active:animate-none">
-                    {mailSending ? <CgMail className="animate-horizontal text-3xl" /> : <span className=" flex items-center gap-1"> <CgMail /> Send Message</span>}
-                </button>
-            </form>
+                    <button type="submit" className="w-full flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-transparent text-white border border-white hover:text-nhb hover:bg-white hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-pulse active:animate-none">
+                        {mailSending ? <CgMail className="animate-horizontal text-3xl" /> : <span className=" flex items-center gap-1"> <CgMail /> Send Message</span>}
+                    </button>
+                </form>
+            </div>
+
         </section>
     );
 };
