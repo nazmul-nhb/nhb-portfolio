@@ -20,11 +20,17 @@ export default {
           '0%': { width: '0%' },
           '100%': { width: 'var(--progress-width)' },
         },
+        move: {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
         rotate: 'rotate360 1s linear',
         flip: 'flip 1s linear',
         progress: 'progress 1s linear',
+        horizontal: 'move 1s ease-in-out infinite',
       },
       backgroundImage: {
         nhbBG: 'linear-gradient(110deg, #0f2d79 0%, #171157 50%, #17186a 100%)',
