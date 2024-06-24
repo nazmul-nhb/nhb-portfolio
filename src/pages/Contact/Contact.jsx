@@ -18,6 +18,8 @@ const Contact = () => {
         setMailSending(true);
         Swal.fire({
             title: 'Sending Message, Please Wait...',
+            icon: 'info',
+            color: '#fff',
             background: '#05030efc',
             allowOutsideClick: false,
             didOpen: () => {
@@ -34,6 +36,7 @@ const Contact = () => {
                     text: `Hi, ${msgData?.name}, Check Your Inbox or Spam Folder!`,
                     icon: 'success',
                     confirmButtonText: 'Okay',
+                    color: '#fff',
                     background: '#05030efc'
                 });
                 reset();
@@ -43,6 +46,7 @@ const Contact = () => {
                     text: "Something Went Wrong! Please, Try Again Later.",
                     icon: 'error',
                     confirmButtonText: 'Close',
+                    color: '#fff',
                     background: '#05030efc'
                 });
             }
@@ -53,6 +57,7 @@ const Contact = () => {
                 text: "Something Went Wrong! Please, Try Again Later.",
                 icon: 'error',
                 confirmButtonText: 'Close',
+                color: '#fff',
                 background: '#05030ef'
             });
         } finally {
@@ -113,8 +118,8 @@ const Contact = () => {
                     {
                         errors.msg && <p className="animate-bounce">{errors.msg.message}</p>
                     }
-                    <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-transparent text-white border border-white hover:text-nhb hover:bg-white hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-pulse active:animate-none">
-                        {mailSending ? <CgMail className="animate-horizontal text-3xl" /> : <span className=" flex items-center gap-1"> <CgMail /> Send Message</span>}
+                    <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-nhbBG text-white border border-white hover:text-nhb hover:bg-white hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-pulse active:animate-none">
+                        {mailSending ? <CgMail className="animate-horizontal text-2xl" /> : <span className="flex items-center gap-1"> <CgMail /> Send Message</span>}
                     </button>
                 </form>
             </div>
