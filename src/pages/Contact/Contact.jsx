@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { CgMail } from "react-icons/cg";
 import { FaRegUser } from "react-icons/fa";
 import { TbMessage2Question } from "react-icons/tb";
-import Lottie from "lottie-react";
+import Lottie from "react-lottie-player";
 import contactAnimation from "../../assets/contact-animation.json"
 
 const Contact = () => {
@@ -61,26 +61,28 @@ const Contact = () => {
     };
 
     return (
-        <section className="md:py-8 p-6 md:px-16 flex flex-col md:flex-row justify-between">
+        <section className="md:py-8 p-6 md:px-16 flex flex-col lg:flex-row justify-between">
             <Helmet>
                 <title>Contact - Nazmul Hassan</title>
             </Helmet>
 
-            {/* Contact Buttons */}
-            <div className="w-full md:w-1/2 flex items-center justify-center">
-                <Lottie className='w-3/4' animationData={contactAnimation} />
+            {/* Animation */}
+            <div data-aos="zoom-in-down" data-aos-duration="1500"
+                className="w-full lg:w-1/2 flex items-center justify-center gap-5">
+                <Lottie className='w-3/4' loop animationData={contactAnimation} play />
             </div>
-            <div className="flex-1">
-                <h3 className="text-lg md:text-3xl mb-4 md:mb-8">Let&rsquo;s Build Something <span className="font-bold">Great Together</span></h3>
+            <div data-aos="zoom-in-up" data-aos-duration="1500" className="flex-1">
+                <h3 className="text-lg md:text-3xl lg:text-2xl xl:text-3xl text-center mb-4 md:mb-8">Let&rsquo;s Create Something <span className="font-bold animate-pulse">Great Together</span></h3>
                 {/* Contact Form */}
                 <form
-                    onSubmit={handleSubmit(handleSendMessage)} className="flex flex-col gap-4 justify-between text-white">
-                    <div className="flex items-center gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
+                    onSubmit={handleSubmit(handleSendMessage)}
+                    className="flex flex-col gap-4 justify-between bg-nhb bg-opacity-80 text-white p-2 sm:p-5 rounded-lg shadow-md shadow-blue-500">
+                    <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
                         <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg w-24 md:w-28"><FaRegUser /> Name</label>
                         <input
                             {...register("name", {
                                 required:
-                                    { value: true, message: "You must provide your name!" }
+                                    { value: true, message: "Please, provide your name!" }
                             })}
                             name='name' id="name" type="text" placeholder="Your Name" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
                     </div>
@@ -92,7 +94,7 @@ const Contact = () => {
                         <input
                             {...register("email", {
                                 required:
-                                    { value: true, message: "You must provide a valid email address!" }
+                                    { value: true, message: "Please, provide a valid email address!" }
                             })}
                             name='email' id="email" type="email" placeholder="Your Email Address" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
                     </div>
@@ -104,7 +106,7 @@ const Contact = () => {
                         <textarea
                             {...register("msg", {
                                 required:
-                                    { value: true, message: "You must write something to send a message!" }
+                                    { value: true, message: "Please, write something to send a message!" }
                             })}
                             name='msg' id="msg" placeholder="Write Your Message Here" className="h-64 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                     </div>

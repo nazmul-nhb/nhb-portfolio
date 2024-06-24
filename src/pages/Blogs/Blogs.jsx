@@ -6,7 +6,7 @@ const Blogs = () => {
             <Helmet>
                 <title>Blogs - Nazmul Hassan</title>
             </Helmet>
-            <h3>Blogs Coming Soon!</h3>
+            <h3 className="text-2xl text-center font-semibold animate-bounce">Blogs Coming Soon!</h3>
         </section>
     );
 };
