@@ -4,7 +4,7 @@
         "subtitle": "Simple News Portal Website",
         "icon": "/nexus-logo.png",
         "cover": "/covers/nexus.png",
-        "link": "https://nexus-news-nhb.web.app",
+        "link": "https://nexus-news-nhb.vercel.app",
         "client": "https://github.com/nazmul-nhb/nexus-news-client",
         "server": "https://github.com/nazmul-nhb/nexus-news-server",
         "technologies": "ReactJS, JavaScript, TailwindCSS, Tanstack Query, Stripe, Firebase, MongoDB, Express.js",
