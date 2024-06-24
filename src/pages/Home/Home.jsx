@@ -85,7 +85,7 @@ const Home = () => {
             {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
                 <BiBookContent
-                    className="cursor-pointer text-3xl md:text-4xl text-blue-300 hover:text-blue-500 hover:scale-105 transition-all duration-500"
+                    className="cursor-pointer text-3xl md:text-4xl text-blue-300 animate-flip hover:text-blue-500 hover:scale-105 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
                 <div

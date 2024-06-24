@@ -37,12 +37,12 @@ const ScrollButtons = () => {
     return (
         <div className={`fixed right-1 md:right-3 text-blue-300 bottom-4 text-4xl md:text-5xl flex flex-col gap-1 z-10`}>
             {showTopButton && (
-                <button onClick={scrollToTop} className={`cursor-pointer hover:text-blue-500 transition-all duration-500`}>
+                <button onClick={scrollToTop} className={`cursor-pointer hover:text-blue-500 transition-all duration-500 animate-pulse`}>
                     <IoIosArrowDropup />
                 </button>
             )}
             {showBottomButton && (
-                <button onClick={scrollToBottom} className={`cursor-pointer hover:text-blue-500 transition-all duration-500`}>
+                <button onClick={scrollToBottom} className={`cursor-pointer hover:text-blue-500 animate-pulse transition-all duration-500`}>
                     <IoIosArrowDropdown />
                 </button>
             )}

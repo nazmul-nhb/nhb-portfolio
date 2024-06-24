@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { CgMail } from "react-icons/cg";
-import { FaRegUser } from "react-icons/fa";
+import { LuMailCheck, LuUserCheck } from "react-icons/lu";
 import { TbMessage2Question } from "react-icons/tb";
 import Lottie from "react-lottie-player";
 import contactAnimation from "../../assets/contact-animation.json"
@@ -78,7 +78,7 @@ const Contact = () => {
                     onSubmit={handleSubmit(handleSendMessage)}
                     className="flex flex-col gap-4 justify-between bg-nhb bg-opacity-80 text-white p-2 sm:p-5 rounded-lg shadow-md shadow-blue-500">
                     <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
-                        <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg w-24 md:w-28"><FaRegUser /> Name</label>
+                        <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg w-24 md:w-28"><LuUserCheck /> Name</label>
                         <input
                             {...register("name", {
                                 required:
@@ -90,7 +90,7 @@ const Contact = () => {
                         errors.name && <p className="animate-bounce">{errors.name.message}</p>
                     }
                     <div className="flex items-center gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
-                        <label htmlFor='email' className="flex items-center gap-1 pl-2 md:text-lg w-24 md:w-28"><CgMail /> Email</label>
+                        <label htmlFor='email' className="flex items-center gap-1 pl-2 md:text-lg w-24 md:w-28"><LuMailCheck /> Email</label>
                         <input
                             {...register("email", {
                                 required:
