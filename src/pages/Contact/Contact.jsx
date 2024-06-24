@@ -17,7 +17,8 @@ const Contact = () => {
     const handleSendMessage = async (msgData) => {
         setMailSending(true);
         Swal.fire({
-            title: 'Sending Message, Please Wait...',
+            title: 'Sending Your Message...',
+            text: 'Please, wait a moment!',
             icon: 'info',
             color: '#fff',
             background: '#05030efc',
@@ -33,7 +34,7 @@ const Contact = () => {
                 toast.success(response.data.message);
                 Swal.fire({
                     title: 'Message Sent!',
-                    text: `Hi, ${msgData?.name}, Check Your Inbox or Spam Folder!`,
+                    text: `Thank You, ${msgData?.name}. Please, Check Your Email!`,
                     icon: 'success',
                     confirmButtonText: 'Okay',
                     color: '#fff',
