@@ -17,7 +17,7 @@ const Contact = () => {
     const handleSendMessage = async (msgData) => {
         setMailSending(true);
         Swal.fire({
-            title: 'Sending Your Message...',
+            title: 'Sending Message...',
             text: 'Please, wait a moment!',
             icon: 'info',
             color: '#fff',
@@ -29,7 +29,7 @@ const Contact = () => {
         });
         try {
             const response = await axios.post('https://nhb-portfolio-server.vercel.app/email/send', msgData);
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 toast.success(response.data.message);
                 Swal.fire({
@@ -67,7 +67,7 @@ const Contact = () => {
     };
 
     return (
-        <section className="md:py-8 p-6 md:px-16 flex flex-col lg:flex-row justify-between">
+        <section className="md:py-8 p-6 md:px-16 flex flex-col lg:flex-row justify-between mb-12">
             <Helmet>
                 <title>Contact - Nazmul Hassan</title>
             </Helmet>
@@ -119,7 +119,7 @@ const Contact = () => {
                     {
                         errors.msg && <p className="animate-bounce">{errors.msg.message}</p>
                     }
-                    <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-nhbBG text-white border border-white hover:text-nhb hover:bg-white hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-pulse active:animate-none">
+                    <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-nhbBG text-white border border-white hover:text-blue-50 hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-spin">
                         {mailSending ? <CgMail className="animate-horizontal text-2xl" /> : <span className="flex items-center gap-1"> <CgMail /> Send Message</span>}
                     </button>
                 </form>

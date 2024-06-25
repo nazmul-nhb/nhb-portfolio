@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 const Blogs = () => {
     return (
-        <section className="md:py-8 p-6 md:px-16">
+        <section className="md:py-8 p-6 md:px-16 mb-12">
             <Helmet>
                 <title>Blogs - Nazmul Hassan</title>
             </Helmet>

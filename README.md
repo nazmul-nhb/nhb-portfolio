@@ -2,5 +2,5 @@
 
 ## Live Links
 
-- [Firebase](https://nazmul-nhb.web.app/)
 - [Vercel](https://nazmul-nhb.vercel.app/)
+- [Firebase](https://nazmul-nhb.web.app/) (May Not Work Properly)
