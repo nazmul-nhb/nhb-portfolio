@@ -7,13 +7,16 @@ import { router } from './routes/Routes';
 
 import './index.css';
 import ScrollButtons from './components/ScrollButtons/ScrollButtons';
+import AuthProvider from './providers/AuthProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
       <HelmetProvider>
         <RouterProvider router={router} />
-        <ScrollButtons/>
+        <ScrollButtons />
         <Toaster />
       </HelmetProvider>
+    </AuthProvider>
   </React.StrictMode>
 )

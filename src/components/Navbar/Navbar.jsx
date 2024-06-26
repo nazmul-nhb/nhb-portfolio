@@ -8,22 +8,67 @@ import profile from "../../assets/pp-square.jpg"
 import Swal from "sweetalert2";
 import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
 import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
     const [openNavbar, setOpenNavbar] = useState(false);
     const sidebarRef = useRef(null);
     const navigate = useNavigate();
     const axiosPortfolio = useAxiosPortfolio();
+    const { user, googleLogin } = useAuth();
+
+    const handleGoogleLogin = (randomURL) => {
+        googleLogin()
+            .then(() => {
+                navigate(`/update/${randomURL}`, { state: { randomURL } });
+                toast.success("Successfully Logged in!");
+            })
+            .catch(error => {
+                if (error.message === "Firebase: Error (auth/popup-closed-by-user).") {
+                    Swal.fire({
+                        title: 'Login Failed!',
+                        text: "Popup Closed by User!",
+                        icon: 'warning',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                } else if (error.message === "Firebase: Error (auth/account-exists-with-different-credential).") {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: "Account Exists for this Email with Different Credential!",
+                        icon: 'error',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                } else if (error.message === "Firebase: Error (auth/network-request-failed).") {
+                    Swal.fire({
+                        title: 'Network Error!',
+                        text: "Please, Check Your Network Connection!",
+                        icon: 'error',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: "Error Occurred! Login Again Later!",
+                        icon: 'error',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                }
+            })
+    }
 
     // generate random url suffix
     const generateRandomURL = () => {
         const random64BitHexCode = Array.from({ length: 32 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
         return random64BitHexCode;
     };
-
-    const loginPortfolio = () => {
-        console.log('Logging in...');
-    }
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -53,6 +98,16 @@ const Navbar = () => {
     );
 
     const handleOwnerLogin = () => {
+        if (user) {
+            return Swal.fire({
+                title: 'Already Logged in!',
+                text: "You're Already Logged in!",
+                icon: 'error',
+                confirmButtonText: 'Close',
+                color: '#fff',
+                background: '#05030efc'
+            });
+        }
         Swal.fire({
             title: "Secret Code!",
             text: 'This is Option is Only for Nazmul',
@@ -92,10 +147,10 @@ const Navbar = () => {
             allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
             if (result.isConfirmed && result.value) {
-                const urlPrefix = result.value; 
+                const urlPrefix = result.value;
                 Swal.fire({
-                    title: "Log in Now!",
-                    text: `Log in to Update Your Portfolio?`,
+                    title: "Login Now!",
+                    text: `Login to Update Your Portfolio?`,
                     icon: "info",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -105,10 +160,9 @@ const Navbar = () => {
                     background: '#05030efc'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        loginPortfolio();
                         // console.log(urlPrefix);
                         const randomURL = urlPrefix + generateRandomURL();
-                        navigate(`/update/${randomURL}`, { state: { randomURL } });
+                        handleGoogleLogin(randomURL);
                     }
                 });
             }
