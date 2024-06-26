@@ -43,7 +43,6 @@ const AuthProvider = ({ children }) => {
                 localStorage.removeItem('portfolio-token');
                 setUserLoading(false);
             }
-            setUserLoading(false);
         });
         return () => {
             unsubscribe();
