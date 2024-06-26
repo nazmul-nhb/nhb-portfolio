@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import projects from './projects.json';
 import { IoIosCloseCircle } from 'react-icons/io';
 import './Projects.css';
 import { useQuery } from '@tanstack/react-query';
@@ -7,7 +6,7 @@ import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
 import Spinner from '../Spinner/Spinner';
 
 const Projects = () => {
-    const [openProjectIndex, setOpenProjectIndex] = useState(null);
+    const [openProjectID, setOpenProjectID] = useState(null);
     const [closing, setClosing] = useState(false);
     const axiosPortfolio = useAxiosPortfolio();
 
@@ -21,17 +20,17 @@ const Projects = () => {
 
     // disable background scrolling when modal is open
     useEffect(() => {
-        if (openProjectIndex !== null) {
+        if (openProjectID !== null) {
             document.body.classList.add('modal-open');
         } else {
             document.body.classList.remove('modal-open');
         }
-    }, [openProjectIndex]);
+    }, [openProjectID]);
 
     const handleClose = () => {
         setClosing(true);
         setTimeout(() => {
-            setOpenProjectIndex(null);
+            setOpenProjectID(null);
             setClosing(false);
         }, 500); // match timeout with the animation duration
     };
@@ -40,10 +39,10 @@ const Projects = () => {
 
     return (
         <section className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>
-            {projects?.map((project, index) => (
+            {projects?.map((project) => (
                 <div key={project._id}
                     className='w-full flex flex-col gap-2 md:gap-4'>
-                    <h3 onClick={() => setOpenProjectIndex(index)}
+                    <h3 onClick={() => setOpenProjectID(project._id)}
                         className='flex-grow cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base md:text-xl lg:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
                         <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
                         {project.title}
@@ -51,13 +50,13 @@ const Projects = () => {
                     </h3>
                     <figure data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
                         <img
-                            onClick={() => setOpenProjectIndex(index)}
+                            onClick={() => setOpenProjectID(project._id)}
                             className='w-full cursor-pointer hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 hover:opacity-100'
                             src={project.cover}
                             alt={project.title}
                         />
                     </figure>
-                    {openProjectIndex === index && (
+                    {openProjectID === project._id && (
                         <>
                             <div className="modal-background" onClick={handleClose}></div>
                             <dialog open

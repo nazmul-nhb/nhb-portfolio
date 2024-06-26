@@ -30,7 +30,7 @@ const skillIcons = {
 };
 
 const Skills = () => {
-    const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
+    const [hoveredSkillId, setHoveredSkillId] = useState(null);
     const [viewedSkills, setViewedSkills] = useState({});
     const axiosPortfolio = useAxiosPortfolio();
 
@@ -44,26 +44,26 @@ const Skills = () => {
 
     const { ref, inView } = useInView({
         triggerOnce: false,
-        threshold: 0.5,
+        threshold: [0.4, 0.6, 0.8],
     });
 
-    const handleMouseEnter = (index) => {
-        setHoveredSkillIndex(index);
+    const handleMouseEnter = (id) => {
+        setHoveredSkillId(id);
         setViewedSkills((prevViewedSkills) => ({
             ...prevViewedSkills,
-            [index]: Date.now(),
+            [id]: Date.now(),
         }));
     };
 
     const handleMouseLeave = () => {
-        setHoveredSkillIndex(null);
+        setHoveredSkillId(null);
     };
 
     useEffect(() => {
         if (inView) {
             const newViewedSkills = {};
-            skills.forEach((_, index) => {
-                newViewedSkills[index] = Date.now();
+            skills.forEach((skill) => {
+                newViewedSkills[skill._id] = Date.now();
             });
             setViewedSkills(newViewedSkills);
         }
@@ -73,11 +73,11 @@ const Skills = () => {
 
     return (
         <section ref={ref} className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
-            {skills.map((skill, index) => (
+            {skills.map((skill) => (
                 <div key={skill._id}
                     data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
                     className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400"
-                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseEnter={() => handleMouseEnter(skill._id)}
                     onMouseLeave={handleMouseLeave}>
                     <div className="text-5xl group-hover:scale-125 transition-all duration-1000">
                         {skillIcons[skill.title]}
@@ -86,12 +86,12 @@ const Skills = () => {
                         <h3 className="text-lg font-semibold flex items-center justify-between group-hover:text-xl transition-all duration-1000">
                             <span>{skill.title}</span>
                             <span>
-                                {(hoveredSkillIndex === index || viewedSkills[index]) && (
-                                    <CountUp key={viewedSkills[index]}
-                                        delay={0.15} start={0} end={skill.level} duration={2}
+                                {(hoveredSkillId === skill._id || viewedSkills[skill._id]) && (
+                                    <CountUp key={viewedSkills[skill._id]}
+                                        delay={0.1} start={0} end={skill.level} duration={2}
                                         suffix="%" />
                                 )}
-                                {!(hoveredSkillIndex === index || viewedSkills[index]) && (
+                                {!(hoveredSkillId === skill._id || viewedSkills[skill._id]) && (
                                     `${skill.level}%`
                                 )}
                             </span>
