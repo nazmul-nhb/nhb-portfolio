@@ -6,13 +6,14 @@ import { GiQuillInk } from "react-icons/gi";
 import { NavLink, useNavigate } from "react-router-dom";
 import profile from "../../assets/pp-square.jpg"
 import Swal from "sweetalert2";
-
-const loginSecret = import.meta.env.VITE_LOGIN_SECRET;
+import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
     const [openNavbar, setOpenNavbar] = useState(false);
     const sidebarRef = useRef(null);
     const navigate = useNavigate();
+    const axiosPortfolio = useAxiosPortfolio();
 
     // generate random url suffix
     const generateRandomURL = () => {
@@ -66,23 +67,32 @@ const Navbar = () => {
             confirmButtonText: "Submit",
             showLoaderOnConfirm: true,
             preConfirm: async (code) => {
-                if (code !== loginSecret) {
-                    Swal.showValidationMessage("Invalid Secret Code! Try Again!");
-                    // Swal.fire({
-                    //     title: "Error",
-                    //     text: "Invalid Secret Code!",
-                    //     icon: "error",
-                    //     color: '#fff',
-                    //     background: '#05030efc',
-                    //     confirmButtonText: "OK"
-                    // });
-                    return false;
+                try {
+                    const secretResponse = await axiosPortfolio.post(`/secret`, { code });
+                    // console.log(secretResponse);
+                    if (secretResponse?.status !== 200) {
+                        toast.error(secretResponse?.data?.message);
+                        Swal.showValidationMessage("Invalid Secret Code! Try Again!");
+                        return false;
+                    }
+                    toast.success(secretResponse?.data?.message);
+                    return secretResponse?.data?.urlPrefix;
+                } catch (error) {
+                    // console.error(error);
+                    if (error.response && error.response.status === 422) {
+                        toast.error(error.response.data.message);
+                        Swal.showValidationMessage("Invalid Secret Code! Try Again!");
+                        return false;
+                    } else {
+                        Swal.showValidationMessage("Error Occurred! Try Again!");
+                        return false;
+                    }
                 }
-                return true;
             },
             allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
-            if (result.isConfirmed) {
+            if (result.isConfirmed && result.value) {
+                const urlPrefix = result.value; 
                 Swal.fire({
                     title: "Log in Now!",
                     text: `Log in to Update Your Portfolio?`,
@@ -96,7 +106,8 @@ const Navbar = () => {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         loginPortfolio();
-                        const randomURL = generateRandomURL();
+                        // console.log(urlPrefix);
+                        const randomURL = urlPrefix + generateRandomURL();
                         navigate(`/update/${randomURL}`, { state: { randomURL } });
                     }
                 });

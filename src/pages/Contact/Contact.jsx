@@ -1,4 +1,3 @@
-import axios from "axios";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { useState } from "react";
@@ -9,10 +8,12 @@ import { LuMailCheck, LuUserCheck } from "react-icons/lu";
 import { TbMessage2Question } from "react-icons/tb";
 import Lottie from "react-lottie-player";
 import contactAnimation from "../../assets/contact-animation.json"
+import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
 
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [mailSending, setMailSending] = useState(false);
+    const axiosPortfolio = useAxiosPortfolio();
 
     const handleSendMessage = async (msgData) => {
         setMailSending(true);
@@ -28,7 +29,7 @@ const Contact = () => {
             }
         });
         try {
-            const response = await axios.post('https://nhb-portfolio-server.vercel.app/email/send', msgData);
+            const response = await axiosPortfolio.post('/email/send', msgData);
             // console.log(response);
             if (response.status === 200) {
                 toast.success(response.data.message);
