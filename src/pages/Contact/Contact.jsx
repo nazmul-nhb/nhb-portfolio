@@ -55,11 +55,11 @@ const Contact = () => {
             console.error(error);
             Swal.fire({
                 title: 'Message Sending Failed!',
-                text: "Something Went Wrong! Please, Try Again Later.",
+                text: error?.message || "Something Went Wrong! Please, Try Again Later.",
                 icon: 'error',
                 confirmButtonText: 'Close',
                 color: '#fff',
-                background: '#05030ef'
+                background: '#05030efc'
             });
         } finally {
             setMailSending(false);

@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Root from "../layouts/Root";
 import Contact from "../pages/Contact/Contact";
 import Blogs from "../pages/Blogs/Blogs";
+import UpdatePortfolio from "../pages/UpdatePortfolio/UpdatePortfolio";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path:'/blogs',
                 element: <Blogs/>
+            },
+            {
+                path:'/update/:random',
+                element: <UpdatePortfolio/>
             },
           ],
     },

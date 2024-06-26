@@ -3,12 +3,26 @@ import { IoIosArrowDropleft } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { GiQuillInk } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import profile from "../../assets/pp-square.jpg"
+import Swal from "sweetalert2";
+
+const loginSecret = import.meta.env.VITE_LOGIN_SECRET;
 
 const Navbar = () => {
     const [openNavbar, setOpenNavbar] = useState(false);
     const sidebarRef = useRef(null);
+    const navigate = useNavigate();
+
+    // generate random url suffix
+    const generateRandomURL = () => {
+        const random64BitHexCode = Array.from({ length: 32 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+        return random64BitHexCode;
+    };
+
+    const loginPortfolio = () => {
+        console.log('Logging in...');
+    }
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -37,11 +51,66 @@ const Navbar = () => {
         </>
     );
 
+    const handleOwnerLogin = () => {
+        Swal.fire({
+            title: "Secret Code!",
+            text: 'This is Option is Only for Nazmul',
+            input: "password",
+            color: '#fff',
+            inputPlaceholder: 'Enter Your Secret Code',
+            background: '#05030efc',
+            inputAttributes: {
+                autocapitalize: "off"
+            },
+            showCancelButton: true,
+            confirmButtonText: "Submit",
+            showLoaderOnConfirm: true,
+            preConfirm: async (code) => {
+                if (code !== loginSecret) {
+                    Swal.showValidationMessage("Invalid Secret Code! Try Again!");
+                    // Swal.fire({
+                    //     title: "Error",
+                    //     text: "Invalid Secret Code!",
+                    //     icon: "error",
+                    //     color: '#fff',
+                    //     background: '#05030efc',
+                    //     confirmButtonText: "OK"
+                    // });
+                    return false;
+                }
+                return true;
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Log in Now!",
+                    text: `Log in to Update Your Portfolio?`,
+                    icon: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes!",
+                    color: '#fff',
+                    background: '#05030efc'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        loginPortfolio();
+                        const randomURL = generateRandomURL();
+                        navigate(`/update/${randomURL}`, { state: { randomURL } });
+                    }
+                });
+            }
+        });
+    }
+
     return (
         <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <figure className="flex items-center justify-start gap-2 font-kreonSerif">
-                <img className="w-10 sm:w-11 h-10 sm:h-11 rounded-full p-0.5 border" src={profile} alt="profile" />
+                <img onClick={handleOwnerLogin}
+                    className="w-10 sm:w-11 h-10 sm:h-11 rounded-full p-0.5 border cursor-pointer"
+                    src={profile} alt="profile" />
                 <NavLink className="text-2xl sm:text-3xl font-semibold" to={'/'}>
                     Nazmul Hassan
                 </NavLink>
