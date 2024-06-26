@@ -27,7 +27,7 @@ const UpdatePortfolio = () => {
     return (
         <section className="md:py-8 p-6 md:px-16 mb-12">
             <Helmet>
-                <title>UpdatePortfolio - Nazmul Hassan</title>
+                <title>Update Portfolio - Nazmul Hassan</title>
             </Helmet>
             <h3 className="text-2xl text-center font-semibold animate-bounce">Update Portfolio Coming Soon!</h3>
         </section>

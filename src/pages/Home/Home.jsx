@@ -72,7 +72,7 @@ const Home = () => {
     }, [contentsVisible]);
 
     const [stacks] = useTypewriter({
-        words: ['Front-End Developer', 'Front-End React Developer', 'MERN-Stack Developer'],
+        words: ['Developer', 'Front-End Developer', 'Front-End React Developer', 'MERN-Stack Developer'],
         loop: true,
     });
 
@@ -121,7 +121,7 @@ const Home = () => {
                 <div data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">Nazmul Hassan</span></h2>
-                    <h3>I am a {stacks}</h3>
+                    <h3 className="text-xl">I am a {stacks}</h3>
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc">
                         <li>Developing Responsive websites with user-friendly functionalities.</li>
                         <li>Passionate about crafting engaging user experiences.</li>
@@ -132,7 +132,7 @@ const Home = () => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://drive.google.com/file/d/1iwJMSanbWC3HGd98BPs9Q_X6YaZSWXL7/view"
+                            href="https://drive.google.com/file/d/1ROQhAJxo109FMw5fgYqV45gNKQ_SPUbp/view"
                             className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
                         >
                             <FaCloudDownloadAlt /> Resume

@@ -15,54 +15,7 @@ const Navbar = () => {
     const sidebarRef = useRef(null);
     const navigate = useNavigate();
     const axiosPortfolio = useAxiosPortfolio();
-    const { user, googleLogin } = useAuth();
-
-    const handleGoogleLogin = (randomURL) => {
-        googleLogin()
-            .then(() => {
-                navigate(`/update/${randomURL}`, { state: { randomURL } });
-                toast.success("Successfully Logged in!");
-            })
-            .catch(error => {
-                if (error.message === "Firebase: Error (auth/popup-closed-by-user).") {
-                    Swal.fire({
-                        title: 'Login Failed!',
-                        text: "Popup Closed by User!",
-                        icon: 'warning',
-                        confirmButtonText: 'Close',
-                        color: '#fff',
-                        background: '#05030efc'
-                    });
-                } else if (error.message === "Firebase: Error (auth/account-exists-with-different-credential).") {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: "Account Exists for this Email with Different Credential!",
-                        icon: 'error',
-                        confirmButtonText: 'Close',
-                        color: '#fff',
-                        background: '#05030efc'
-                    });
-                } else if (error.message === "Firebase: Error (auth/network-request-failed).") {
-                    Swal.fire({
-                        title: 'Network Error!',
-                        text: "Please, Check Your Network Connection!",
-                        icon: 'error',
-                        confirmButtonText: 'Close',
-                        color: '#fff',
-                        background: '#05030efc'
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: "Error Occurred! Login Again Later!",
-                        icon: 'error',
-                        confirmButtonText: 'Close',
-                        color: '#fff',
-                        background: '#05030efc'
-                    });
-                }
-            })
-    }
+    const { user, googleLogin, logOut } = useAuth();
 
     // generate random url suffix
     const generateRandomURL = () => {
@@ -70,6 +23,7 @@ const Navbar = () => {
         return random64BitHexCode;
     };
 
+    // sidebar clicking in small devices
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (
@@ -87,8 +41,10 @@ const Navbar = () => {
         };
     }, [sidebarRef]);
 
+    // classes for navbar links
     const navClasses = ({ isActive }) => isActive ? 'font-bold border-b-2 border-white flex items-center gap-2' : 'hover:border-b-2 border-b-2 border-transparent hover:border-white font-semibold flex items-center gap-2 transition-all duration-500 text-gray-400 hover:text-white';
 
+    // navbar links
     const navigationItems = (
         <>
             <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/'}><IoHomeOutline className="sm:hidden" />Home</NavLink>
@@ -97,23 +53,81 @@ const Navbar = () => {
         </>
     );
 
-    const handleOwnerLogin = () => {
-        if (user) {
-            return Swal.fire({
-                title: 'Already Logged in!',
-                text: "You're Already Logged in!",
-                icon: 'error',
-                confirmButtonText: 'Close',
-                color: '#fff',
-                background: '#05030efc'
-            });
-        }
+    // google login
+    const handleGoogleLogin = (randomURL) => {
+        googleLogin()
+            .then(() => {
+                navigate(`/update/${randomURL}`, { state: { randomURL } });
+                toast.success("Successfully Logged in!");
+            })
+            .catch(error => {
+                if (error?.message === "Firebase: Error (auth/popup-closed-by-user).") {
+                    Swal.fire({
+                        title: 'Login Failed!',
+                        text: "Popup Closed by User!",
+                        icon: 'warning',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                } else if (error?.message === "Firebase: Error (auth/account-exists-with-different-credential).") {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: "Account Exists for this Email with Different Credential!",
+                        icon: 'error',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                } else if (error?.message === "Firebase: Error (auth/network-request-failed).") {
+                    Swal.fire({
+                        title: 'Network Error!',
+                        text: "Please, Check Your Network Connection!",
+                        icon: 'error',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: error?.message || "Error Occurred! Login Later!",
+                        icon: 'error',
+                        confirmButtonText: 'Close',
+                        color: '#fff',
+                        background: '#05030efc'
+                    });
+                }
+            })
+    }
+
+    // logout function
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                toast.success("Logged Out Successfully!");
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: error?.message.split(': ')[1] || "Error Occurred! Try Again Later!",
+                    icon: 'error',
+                    confirmButtonText: 'Close',
+                    color: '#fff',
+                    background: '#05030efc'
+                });
+            })
+    }
+
+    // prompt for secret code
+    const promptForSecretCode = () => {
         Swal.fire({
-            title: "Secret Code!",
+            title: "Expecto Patronum!",
             text: 'This is Option is Only for Nazmul',
+            // icon: "info",
             input: "password",
             color: '#fff',
-            inputPlaceholder: 'Enter Your Secret Code',
+            inputPlaceholder: 'Your Secret Patronus Charm!',
             background: '#05030efc',
             inputAttributes: {
                 autocapitalize: "off"
@@ -148,25 +162,72 @@ const Navbar = () => {
         }).then((result) => {
             if (result.isConfirmed && result.value) {
                 const urlPrefix = result.value;
-                Swal.fire({
-                    title: "Login Now!",
-                    text: `Login to Update Your Portfolio?`,
-                    icon: "info",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes!",
-                    color: '#fff',
-                    background: '#05030efc'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // console.log(urlPrefix);
-                        const randomURL = urlPrefix + generateRandomURL();
-                        handleGoogleLogin(randomURL);
-                    }
-                });
+                // console.log(urlPrefix);
+                const randomURL = urlPrefix + generateRandomURL();
+                // show login prompt if not logged in
+                if (!user) {
+                    Swal.fire({
+                        title: "Login Now?",
+                        text: `Login to Update Your Portfolio!`,
+                        icon: "info",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Login!",
+                        color: '#fff',
+                        background: '#05030efc'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            handleGoogleLogin(randomURL);
+                        }
+                    });
+                } else {
+                    navigate(`/update/${randomURL}`, { state: { randomURL } });
+                }
             }
         });
+    }
+
+    const handleOwnerLogin = () => {
+        // if user is logged in, prompt to go to update page or log out
+        if (user) {
+            return Swal.fire({
+                title: "You're Logged in!",
+                text: `Update Your Portfolio or Log Out Now!`,
+                icon: "info",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Update",
+                denyButtonText: "Log Out",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                color: '#fff',
+                background: '#05030efc'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    return promptForSecretCode();
+                } else if (result.isDenied) {
+                    Swal.fire({
+                        title: "Are You Sure?",
+                        text: `You Want to Log Out Now?`,
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Log Out!",
+                        color: '#fff',
+                        background: '#05030efc'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            handleLogout();
+                        }
+                    });
+                }
+            });
+        }
+
+        // prompt for secret code
+        promptForSecretCode();
     }
 
     return (
