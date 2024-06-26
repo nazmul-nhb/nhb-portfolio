@@ -1,4 +1,4 @@
-import skills from './skills.json';
+// import skills from './skills.json';
 import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt } from 'react-icons/fa';
 import { IoLogoCss3 } from 'react-icons/io5';
 import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery } from 'react-icons/si';
@@ -6,6 +6,9 @@ import { TbBrandJavascript } from 'react-icons/tb';
 import CountUp from 'react-countup';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../Spinner/Spinner';
 
 const skillIcons = {
     "HTML": <FaHtml5 />,
@@ -25,11 +28,19 @@ const skillIcons = {
 const Skills = () => {
     const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
     const [viewedSkills, setViewedSkills] = useState({});
+    const axiosPortfolio = useAxiosPortfolio();
+
+    const { data: skills = [], isLoading } = useQuery({
+        queryKey: ['skills'],
+        queryFn: async () => {
+            const { data } = await axiosPortfolio(`/skills`);
+            return data;
+        }
+    });
 
     const { ref, inView } = useInView({
         triggerOnce: false,
         threshold: 0.5,
-        delay: 3
     });
 
     const handleMouseEnter = (index) => {
@@ -52,12 +63,14 @@ const Skills = () => {
             });
             setViewedSkills(newViewedSkills);
         }
-    }, [inView]);
+    }, [inView, skills]);
+
+    if (isLoading) return <Spinner />;
 
     return (
         <section ref={ref} className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
             {skills.map((skill, index) => (
-                <div key={index}
+                <div key={skill._id}
                     data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
                     className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400"
                     onMouseEnter={() => handleMouseEnter(index)}
