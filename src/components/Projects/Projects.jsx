@@ -47,7 +47,7 @@ const Projects = () => {
                         <>
                             <div className="modal-background" onClick={handleClose}></div>
                             <dialog open
-                                className={`modal-content ${closing ? 'modal-content-close' : ''} w-[96%] xl:w-auto h-3/4 bg-opacity-95 p-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-transparent rounded-lg z-50 text-white`}
+                                className={`modal-content ${closing ? 'modal-content-close' : ''} w-[96%] md:w-3/4 lg:w-3/4 xl:w-3/5 2xl:w-auto h-3/4 bg-opacity-95 p-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-transparent rounded-lg z-50 text-white`}
                             >
                                 <div className='bg-blueBG bg-cover border-2 shadow-lg h-full rounded-lg p-1 flex flex-col overflow-y-auto !pb-6'>
                                     <IoIosCloseCircle

@@ -122,7 +122,7 @@ const Home = () => {
                     className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">Nazmul Hassan</span></h2>
                     <h3>I am a {stacks}</h3>
-                    <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc animate-pulse">
+                    <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc">
                         <li>Developing Responsive websites with user-friendly functionalities.</li>
                         <li>Passionate about crafting engaging user experiences.</li>
                         <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
