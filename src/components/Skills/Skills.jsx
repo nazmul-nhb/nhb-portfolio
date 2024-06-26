@@ -1,20 +1,24 @@
-// import skills from './skills.json';
 import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt } from 'react-icons/fa';
 import { IoLogoCss3 } from 'react-icons/io5';
-import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery } from 'react-icons/si';
-import { TbBrandJavascript } from 'react-icons/tb';
+import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiTypescript, SiRedux } from 'react-icons/si';
+import { TbBrandJavascript, TbBrandReactNative } from 'react-icons/tb';
 import CountUp from 'react-countup';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../Spinner/Spinner';
+import { RiNextjsLine } from 'react-icons/ri';
 
 const skillIcons = {
     "HTML": <FaHtml5 />,
     "CSS": <IoLogoCss3 />,
     "JavaScript": <TbBrandJavascript />,
     "React": <FaReact />,
+    "TypeScript": <SiTypescript />,
+    "Next.js": <RiNextjsLine />,
+    "Redux": <SiRedux />,
+    "React Native": <TbBrandReactNative />,
     "Node.js": <FaNodeJs />,
     "Express.js": <SiExpress />,
     "MongoDB": <SiMongodb />,

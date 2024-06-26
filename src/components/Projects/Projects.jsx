@@ -1,11 +1,23 @@
 import { useState, useEffect } from 'react';
-import projects from './projects.json';
+// import projects from './projects.json';
 import { IoIosCloseCircle } from 'react-icons/io';
 import './Projects.css';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
+import Spinner from '../Spinner/Spinner';
 
 const Projects = () => {
     const [openProjectIndex, setOpenProjectIndex] = useState(null);
     const [closing, setClosing] = useState(false);
+    const axiosPortfolio = useAxiosPortfolio();
+
+    const { data: projects = [], isFetching } = useQuery({
+        queryKey: ['projects'],
+        queryFn: async () => {
+            const { data } = await axiosPortfolio(`/projects`);
+            return data;
+        }
+    });
 
     // disable background scrolling when modal is open
     useEffect(() => {
@@ -24,10 +36,12 @@ const Projects = () => {
         }, 500); // match timeout with the animation duration
     };
 
+    if (isFetching) return <Spinner />;
+
     return (
         <section className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>
             {projects?.map((project, index) => (
-                <div key={index}
+                <div key={project._id}
                     className='w-full flex flex-col gap-2 md:gap-4'>
                     <h3 onClick={() => setOpenProjectIndex(index)}
                         className='flex-grow cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base md:text-xl lg:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
