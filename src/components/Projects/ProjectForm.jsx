@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 
-const ProjectForm = ({ project, handleUpdateProject, refetch, setShowUpdateForm }) => {
+const ProjectForm = ({ project, handleUpdateProject, setShowUpdateForm }) => {
     const initialProjectValues = { ...project, features: project.features.join('\n') }
     const { register, handleSubmit } = useForm({
         defaultValues: initialProjectValues
     });
 
     return (
-        <form onSubmit={handleSubmit((updatedProject) => handleUpdateProject(updatedProject, refetch, setShowUpdateForm))} className="w-full mx-auto">
+        <form onSubmit={handleSubmit((updatedProject) => handleUpdateProject(updatedProject, setShowUpdateForm))} className="w-full mx-auto">
             {/* Title */}
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
             <input type="text" id="title" {...register('title')} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring bg-transparent focus:ring-opacity-50" />
@@ -56,7 +56,6 @@ const ProjectForm = ({ project, handleUpdateProject, refetch, setShowUpdateForm 
 
 ProjectForm.propTypes = {
     project: PropTypes.object,
-    refetch: PropTypes.func,
     handleUpdateProject: PropTypes.func,
     setShowUpdateForm: PropTypes.func,
 }

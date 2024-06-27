@@ -2,26 +2,18 @@ import { useState, useEffect } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import './Projects.css';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
 import Spinner from '../Spinner/Spinner';
 import { CiEdit } from 'react-icons/ci';
 import ProjectForm from './ProjectForm';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import useGetProjects from '../../hooks/useGetProjects';
 
 const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) => {
     const [openProjectID, setOpenProjectID] = useState(null);
     const [closing, setClosing] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
-    const axiosPortfolio = useAxiosPortfolio();
-
-    const { data: projects = [], isFetching, refetch } = useQuery({
-        queryKey: ['projects'],
-        queryFn: async () => {
-            const { data } = await axiosPortfolio(`/projects`);
-            return data;
-        }
-    });
+    // get projects from server
+    const { projects, isFetching } = useGetProjects();
 
     // disable background scrolling when modal is open
     useEffect(() => {
@@ -82,7 +74,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                                 title='Close'
                                             />
                                             <RiDeleteBin6Line
-                                                onClick={() => handleDeleteProject(project?._id, refetch)}
+                                                onClick={() => handleDeleteProject(project?._id)}
                                                 className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
                                                 title='Close'
                                             />
@@ -120,7 +112,6 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                         </div>
                                         : <ProjectForm
                                             project={project}
-                                            refetch={refetch}
                                             setShowUpdateForm={setShowUpdateForm}
                                             handleUpdateProject={handleUpdateProject} />
                                     }

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Projects from "../../components/Projects/Projects";
+import useGetProjects from "../../hooks/useGetProjects";
 
 const UpdatePortfolio = () => {
     // const [updateProject, setUpdateProject] = useState(true);
@@ -14,6 +15,7 @@ const UpdatePortfolio = () => {
     const expectedRandom = location?.state?.randomURL;
     const axiosSecure = useAxiosSecure();
     const { user, userLoading } = useAuth();
+   const { refetchProjects } = useGetProjects();
 
     useEffect(() => {
         if (random !== expectedRandom || !user) {
@@ -33,19 +35,20 @@ const UpdatePortfolio = () => {
     // add anew project
     const handleAddProject = () => {
         console.log('Add Project');
+        refetchProjects();
     }
 
     // delete a project
-    const handleUpdateProject = (updatedProject, refetch, setShowUpdateForm) => {
+    const handleUpdateProject = (updatedProject, setShowUpdateForm) => {
         updatedProject.features = updatedProject.features.split('\n').map(feature => feature.trim());
         console.log(updatedProject);
         setShowUpdateForm(false);
-        refetch();
+        refetchProjects();
     }
 
-    const handleDeleteProject = (id, refetch) => {
+    const handleDeleteProject = (id) => {
         console.log(id);
-        refetch();
+        refetchProjects();
     }
 
     return (
@@ -53,7 +56,7 @@ const UpdatePortfolio = () => {
             <Helmet>
                 <title>Update Portfolio - Nazmul Hassan</title>
             </Helmet>
-            <h3 className="text-2xl text-center font-semibold animate-bounce">Update Portfolio Coming Soon!</h3>
+            <button onClick={handleAddProject} className="text-2xl text-center font-semibold animate-bounce">Add Project</button>
             <Projects
                 handleUpdateProject={handleUpdateProject}
                 handleDeleteProject={handleDeleteProject}
