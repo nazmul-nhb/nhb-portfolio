@@ -122,12 +122,12 @@ const Navbar = () => {
     // prompt for secret code
     const promptForSecretCode = () => {
         Swal.fire({
-            title: "Expecto Patronum!",
-            text: 'This is Option is Only for Nazmul',
+            title: "Restricted Action!",
+            text: 'This Option is Only for Nazmul',
             // icon: "info",
             input: "password",
             color: '#fff',
-            inputPlaceholder: 'Your Secret Patronus Charm!',
+            inputPlaceholder: 'Enter Your Secret Code!',
             background: '#05030efc',
             inputAttributes: {
                 autocapitalize: "off"
@@ -148,11 +148,12 @@ const Navbar = () => {
                     return secretResponse?.data?.urlPrefix;
                 } catch (error) {
                     // console.error(error);
-                    if (error.response && error.response.status === 422) {
+                    if (error?.response && error?.response?.status === 422) {
                         toast.error(error.response.data.message);
                         Swal.showValidationMessage("Invalid Secret Code! Try Again!");
                         return false;
                     } else {
+                        toast.error("Error Occurred! Try Again!");
                         Swal.showValidationMessage("Error Occurred! Try Again!");
                         return false;
                     }

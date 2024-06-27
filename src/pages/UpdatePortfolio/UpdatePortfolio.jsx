@@ -1,21 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import Projects from "../../components/Projects/Projects";
 
 const UpdatePortfolio = () => {
+    // const [updateProject, setUpdateProject] = useState(true);
     const { random } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const expectedRandom = location.state?.randomURL;
+    const expectedRandom = location?.state?.randomURL;
     const axiosSecure = useAxiosSecure();
-    const {user, userLoading} = useAuth();
+    const { user, userLoading } = useAuth();
 
     useEffect(() => {
-        if (random !== expectedRandom) {
+        if (random !== expectedRandom || !user) {
             Swal.fire({
                 title: "Access Denied!",
                 text: "Unauthorized Access Attempt!",
@@ -27,18 +28,25 @@ const UpdatePortfolio = () => {
                 navigate('/')
             });
         }
-    }, [expectedRandom, navigate, random]);
+    }, [expectedRandom, navigate, random, user, userLoading]);
 
-    const { data: skills = [] } = useQuery({
-        queryKey: ['skills'],
-        enabled:!!user && !userLoading,
-        queryFn: async () => {
-            const { data } = await axiosSecure(`/skills`);
-            return data;
-        }
-    })
+    // add anew project
+    const handleAddProject = () => {
+        console.log('Add Project');
+    }
 
-    console.log(skills);
+    // delete a project
+    const handleUpdateProject = (updatedProject, refetch, setShowUpdateForm) => {
+        updatedProject.features = updatedProject.features.split('\n').map(feature => feature.trim());
+        console.log(updatedProject);
+        setShowUpdateForm(false);
+        refetch();
+    }
+
+    const handleDeleteProject = (id, refetch) => {
+        console.log(id);
+        refetch();
+    }
 
     return (
         <section className="md:py-8 p-6 md:px-16 mb-12">
@@ -46,6 +54,10 @@ const UpdatePortfolio = () => {
                 <title>Update Portfolio - Nazmul Hassan</title>
             </Helmet>
             <h3 className="text-2xl text-center font-semibold animate-bounce">Update Portfolio Coming Soon!</h3>
+            <Projects
+                handleUpdateProject={handleUpdateProject}
+                handleDeleteProject={handleDeleteProject}
+                updateProject={true} />
         </section>
     );
 };

@@ -3,6 +3,7 @@ import { useState, createContext, useEffect } from "react";
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import useAxiosPortfolio from '../hooks/useAxiosPortfolio';
+import Spinner from "../components/Spinner/Spinner";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            if(currentUser){
+            if (currentUser) {
                 const userInfo = { email: currentUser.email };
                 axiosPortfolio.post('/secret/jwt', userInfo)
                     .then(res => {
@@ -50,6 +51,10 @@ const AuthProvider = ({ children }) => {
     }, [axiosPortfolio])
 
     const authInfo = { user, setUser, googleLogin, logOut, userLoading, setUserLoading };
+
+    if (userLoading) {
+        return <Spinner />
+    }
 
     return (
         <AuthContext.Provider value={authInfo}>

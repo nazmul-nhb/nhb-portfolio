@@ -5,6 +5,7 @@ import Root from "../layouts/Root";
 import Contact from "../pages/Contact/Contact";
 import Blogs from "../pages/Blogs/Blogs";
 import UpdatePortfolio from "../pages/UpdatePortfolio/UpdatePortfolio";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -14,20 +15,20 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home/>
+                element: <Home />
             },
             {
-                path:'/contact',
-                element: <Contact/>
+                path: '/contact',
+                element: <Contact />
             },
             {
-                path:'/blogs',
-                element: <Blogs/>
+                path: '/blogs',
+                element: <Blogs />
             },
             {
-                path:'/update/:random',
-                element: <UpdatePortfolio/>
+                path: '/update/:random',
+                element: <PrivateRoute> <UpdatePortfolio /> </PrivateRoute>
             },
-          ],
+        ],
     },
 ]);

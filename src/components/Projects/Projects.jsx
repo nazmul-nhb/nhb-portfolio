@@ -1,16 +1,21 @@
 import { useState, useEffect } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
+import PropTypes from 'prop-types';
 import './Projects.css';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
 import Spinner from '../Spinner/Spinner';
+import { CiEdit } from 'react-icons/ci';
+import ProjectForm from './ProjectForm';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
-const Projects = () => {
+const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) => {
     const [openProjectID, setOpenProjectID] = useState(null);
     const [closing, setClosing] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
     const axiosPortfolio = useAxiosPortfolio();
 
-    const { data: projects = [], isFetching } = useQuery({
+    const { data: projects = [], isFetching, refetch } = useQuery({
         queryKey: ['projects'],
         queryFn: async () => {
             const { data } = await axiosPortfolio(`/projects`);
@@ -29,6 +34,7 @@ const Projects = () => {
 
     const handleClose = () => {
         setClosing(true);
+        setShowUpdateForm(false);
         setTimeout(() => {
             setOpenProjectID(null);
             setClosing(false);
@@ -65,38 +71,59 @@ const Projects = () => {
                                 <div className='bg-blueBG bg-cover border-2 shadow-lg h-full rounded-lg p-1 flex flex-col overflow-y-auto !pb-6'>
                                     <IoIosCloseCircle
                                         onClick={handleClose}
-                                        className='absolute -top-1 -right-1 text-3xl bg-white rounded-full text-red-700 hover:text-nhb transition-all duration-500 cursor-pointer'
+                                        className='absolute -top-1 -right-1 text-2xl bg-white rounded-full text-red-700 hover:text-nhb transition-all duration-500 cursor-pointer'
                                         title='Close'
                                     />
-                                    <div className="flex flex-col gap-4 h-3/4 p-1 sm:p-6 pb-6 text-sm sm:text-base">
-                                        <div className="border-b pb-1">
-                                            <h3 className='text-base sm:text-2xl font-kreonSerif flex items-center gap-2'>
-                                                <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
-                                                {project.title}
-                                                <span className='text-xs border px-1'>Full-Stack</span>
-                                            </h3>
-                                            <h4 className='text-xs sm:text-sm md:text-lg font-kreonSerif text-right mt-1'>
-                                                {project.subtitle}
+                                    {updateProject &&
+                                        <div className='absolute top-4 right-8 text-3xl flex items-center gap-4'>
+                                            <CiEdit
+                                                onClick={() => setShowUpdateForm(!showUpdateForm)}
+                                                className='text-blue-300 hover:text-white transition-all duration-500 cursor-pointer'
+                                                title='Close'
+                                            />
+                                            <RiDeleteBin6Line
+                                                onClick={() => handleDeleteProject(project?._id, refetch)}
+                                                className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
+                                                title='Close'
+                                            />
+                                        </div>
+                                    }
+                                    {!showUpdateForm ?
+                                        <div className="flex flex-col gap-4 h-3/4 p-1 sm:p-6 pb-6 text-sm sm:text-base">
+                                            <div className="border-b pb-1">
+                                                <h3 className='text-base sm:text-2xl font-kreonSerif flex items-center gap-2'>
+                                                    <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
+                                                    {project.title}
+                                                    <span className='text-xs border px-1'>Full-Stack</span>
+                                                </h3>
+                                                <h4 className='text-xs sm:text-sm md:text-lg font-kreonSerif text-right mt-1'>
+                                                    {project.subtitle}
+                                                </h4>
+                                            </div>
+                                            <ul className='list-disc'>
+                                                <h4 className='font-bold'>Top Features:</h4>
+                                                {project?.features?.map((feature, featureIndex) => (
+                                                    <li key={featureIndex} className='ml-8'>{feature}</li>
+                                                ))}
+                                            </ul>
+                                            <h4 className='-indent-8 pl-8'>
+                                                <span className='font-bold'>Notable Technologies: </span>
+                                                {project?.technologies}
                                             </h4>
+                                            <div className='flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 font-semibold'>
+                                                <span className='font-bold'>Links:</span>
+                                                <a href={project?.link} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Live Link</a>
+                                                <a href={project?.client} className="border px-3  border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Client Side Repository</a>
+                                                <a href={project?.server} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Server Side Repository</a>
+                                                <div className='h-4'></div>
+                                            </div>
                                         </div>
-                                        <ul className='list-disc'>
-                                            <h4 className='font-bold'>Top Features:</h4>
-                                            {project?.features?.map((feature, featureIndex) => (
-                                                <li key={featureIndex} className='ml-8'>{feature}</li>
-                                            ))}
-                                        </ul>
-                                        <h4 className='-indent-8 pl-8'>
-                                            <span className='font-bold'>Notable Technologies: </span>
-                                            {project?.technologies}
-                                        </h4>
-                                        <div className='flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 font-semibold'>
-                                            <span className='font-bold'>Links:</span>
-                                            <a href={project?.link} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Live Link</a>
-                                            <a href={project?.client} className="border px-3  border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Client Side Repository</a>
-                                            <a href={project?.server} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Server Side Repository</a>
-                                            <div className='h-4'></div>
-                                        </div>
-                                    </div>
+                                        : <ProjectForm
+                                            project={project}
+                                            refetch={refetch}
+                                            setShowUpdateForm={setShowUpdateForm}
+                                            handleUpdateProject={handleUpdateProject} />
+                                    }
                                 </div>
                             </dialog>
                         </>
@@ -106,5 +133,11 @@ const Projects = () => {
         </section>
     );
 };
+
+Projects.propTypes = {
+    updateProject: PropTypes.bool,
+    handleDeleteProject: PropTypes.func,
+    handleUpdateProject: PropTypes.func,
+}
 
 export default Projects;
