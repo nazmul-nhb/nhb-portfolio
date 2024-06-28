@@ -236,7 +236,7 @@ const Navbar = () => {
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <div className="flex items-center justify-start gap-3 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
-                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer">
+                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-bounce hover:animate-none">
                     <img
                         className="w-9 sm:w-10 aspect-square hover:animate-rotate transition-all duration-1000"
                         src={logo} alt="profile" />

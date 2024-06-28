@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPortfolio = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://nhb-portfolio-server.vercel.app'
 })
 
 const useAxiosPortfolio = () => {

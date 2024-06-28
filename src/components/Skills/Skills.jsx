@@ -1,6 +1,6 @@
 import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass } from 'react-icons/si';
 import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaRegSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker } from 'react-icons/fa';
-import { RiDeleteBin6Line, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
+import { RiDeleteBin6Line, RiFlutterFill, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { BiLogoTypescript } from 'react-icons/bi';
 import { IoLogoCss3 } from 'react-icons/io5';
@@ -25,6 +25,7 @@ const skillIcons = {
     "Python": <FaPython />,
     "React": <FaReact />,
     "Angular": <FaAngular  />,
+    "Flutter": <RiFlutterFill />,
     "Vue.js": <FaVuejs  />,
     "Preact": <SiPreact />,
     "TypeScript": <BiLogoTypescript />,
