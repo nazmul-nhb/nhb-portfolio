@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPortfolio from "./useAxiosPortfolio";
 
 const useGetProjects = () => {
-        const axiosPortfolio = useAxiosPortfolio();
+    const axiosPortfolio = useAxiosPortfolio();
 
     const { data: projects = [], isFetching, refetch: refetchProjects } = useQuery({
         queryKey: ['projects'],
@@ -13,6 +13,7 @@ const useGetProjects = () => {
     });
 
     return { projects, isFetching, refetchProjects };
+
 };
 
 export default useGetProjects;

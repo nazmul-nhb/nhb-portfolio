@@ -1,35 +1,50 @@
-import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaRegSave } from 'react-icons/fa';
+import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass } from 'react-icons/si';
+import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaRegSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker } from 'react-icons/fa';
+import { RiDeleteBin6Line, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
+import { TbBrandReactNative } from 'react-icons/tb';
+import { BiLogoTypescript } from 'react-icons/bi';
 import { IoLogoCss3 } from 'react-icons/io5';
-import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiTypescript, SiRedux } from 'react-icons/si';
-import { TbBrandJavascript, TbBrandReactNative } from 'react-icons/tb';
+import { BsStripe } from 'react-icons/bs';
+import { CiEdit } from 'react-icons/ci';
 import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import useAxiosPortfolio from '../../hooks/useAxiosPortfolio';
-import { useQuery } from '@tanstack/react-query';
-import Spinner from '../Spinner/Spinner';
-import { RiDeleteBin6Line, RiNextjsLine } from 'react-icons/ri';
-import { CiEdit } from 'react-icons/ci';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import Spinner from '../Spinner/Spinner';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+import useGetSkills from '../../hooks/useGetSkills';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const skillIcons = {
     "HTML": <FaHtml5 />,
     "CSS": <IoLogoCss3 />,
-    "JavaScript": <TbBrandJavascript />,
+    "SASS": <SiSass />,
+    "JavaScript": <RiJavascriptFill />,
+    "Python": <FaPython />,
     "React": <FaReact />,
-    "TypeScript": <SiTypescript />,
+    "Angular": <FaAngular  />,
+    "Vue.js": <FaVuejs  />,
+    "Preact": <SiPreact />,
+    "TypeScript": <BiLogoTypescript />,
     "Next.js": <RiNextjsLine />,
     "Redux": <SiRedux />,
     "React Native": <TbBrandReactNative />,
     "Node.js": <FaNodeJs />,
     "Express.js": <SiExpress />,
     "MongoDB": <SiMongodb />,
+    "Mongoose": <SiMongoosedotws />,
     "TailwindCSS": <SiTailwindcss />,
+    "Bootstrap": <FaBootstrap />,
     "Firebase": <SiFirebase />,
     "Git": <FaGitAlt />,
+    "ChakraUI": <SiChakraui />,
+    "MaterialUI": <SiMui  />,
+    "Axios": <SiAxios />,
+    "Stripe": <BsStripe />,
     "Figma": <FaFigma />,
+    "Docker": <FaDocker  />,
     "TanStack Query": <SiReactquery />
 };
 
@@ -38,16 +53,10 @@ const Skills = ({ updateSkill }) => {
     const [viewedSkills, setViewedSkills] = useState({});
     const [showUpdateForm, setShowUpdateForm] = useState(null);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const axiosPortfolio = useAxiosPortfolio();
+    const axiosSecure = useAxiosSecure();
 
-    const { data: skills = [], isLoading } = useQuery({
-        queryKey: ['skills'],
-        queryFn: async () => {
-            const { data } = await axiosPortfolio(`/skills`);
-            return data;
-        }
-    });
-
+    // get skills
+    const { skills, isLoading, refetchSkills } = useGetSkills()
 
     const { ref, inView } = useInView({
         triggerOnce: false,
@@ -84,15 +93,115 @@ const Skills = ({ updateSkill }) => {
     }, [showUpdateForm, skills, reset]);
 
     // update a skill
-    const handleUpdateSkill = (updatedSkill) => {
+    const handleUpdateSkill = (id, updatedSkill) => {
         updatedSkill.serial = parseInt(updatedSkill?.serial);
         updatedSkill.level = parseInt(updatedSkill?.level);
-        console.log(updatedSkill);
+        delete updatedSkill?._id;
+        Swal.fire({
+            title: 'Updating Skill...',
+            text: 'Please, wait a moment!',
+            icon: 'info',
+            color: '#fff',
+            background: '#05030efc',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        try {
+            axiosSecure.patch(`/skills/update/${id}`, updatedSkill)
+                .then(res => {
+                    if (res?.data?.modifiedCount > 0) {
+                        toast.success("Skill Updated!");
+                        Swal.fire({
+                            title: 'Updated!',
+                            text: `Updated ${updatedSkill?.title}!`,
+                            icon: 'success',
+                            confirmButtonText: 'Okay',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
+                        setShowUpdateForm(false);
+                        refetchSkills();
+                        reset();
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    if (error) {
+                        Swal.fire({
+                            title: 'Update Failed!',
+                            text: error?.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc'
+                        })
+                    }
+                })
+        } catch (error) {
+            Swal.fire({
+                title: 'Update Failed!',
+                text: error?.message,
+                icon: 'error',
+                confirmButtonText: 'Close',
+                color: '#fff',
+                background: '#05030efc'
+            })
+        }
     }
 
-    // delete a new skill
+    // delete a skill
     const handleDeleteSkill = (id, title) => {
-        console.log({ id, title });
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: `Delete "${title}" Permanently?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff0000',
+            cancelButtonColor: '#2a7947',
+            confirmButtonText: 'Yes, Delete It!',
+            color: '#fff',
+            background: '#05030efc',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deleting Skill...',
+                    text: 'Please, wait a moment!',
+                    icon: 'info',
+                    color: '#fff',
+                    background: '#05030efc',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+                axiosSecure.delete(`/skills/delete/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                        refetchSkills();
+                            Swal.fire({
+                                title: 'Skill Deleted!',
+                                text: `Permanently Deleted "${title}"!`,
+                                icon: 'success',
+                                color: '#fff',
+                                background: '#05030efc',
+                            })
+                            toast.success('Deleted the Skill!');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: error?.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc',
+                        });
+                    })
+            }
+        })
     }
 
     useEffect(() => {
@@ -150,7 +259,8 @@ const Skills = ({ updateSkill }) => {
                                 ></div>
                             </div>
                         </div>
-                        : <form onSubmit={handleSubmit(handleUpdateSkill)} className="relative flex-1 font-kreonSerif">
+                        // update form
+                        : <form onSubmit={handleSubmit((skillData) => handleUpdateSkill(skill?._id, skillData))} className="relative flex-1 font-kreonSerif">
                             <div className='flex gap-0.5'>
                                 {/* Title */}
                                 <input
@@ -171,6 +281,7 @@ const Skills = ({ updateSkill }) => {
                                     name='level' id="level" type="number" placeholder="%" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-md shadow-blue-500" />
                             </div>
                             <div className='flex gap-0.5'>
+                                {/* Skill Type */}
                                 <input
                                     defaultValue={skill?.description}
                                     {...register("description", {

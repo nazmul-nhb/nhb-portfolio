@@ -15,6 +15,7 @@ import { GiSkills } from "react-icons/gi";
 import Skills from "../../components/Skills/Skills";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
 import SkillForm from "../../components/Skills/SkillForm";
+import useGetSkills from "../../hooks/useGetSkills";
 
 const UpdatePortfolio = () => {
     const [closing, setClosing] = useState(false);
@@ -27,6 +28,7 @@ const UpdatePortfolio = () => {
     const axiosSecure = useAxiosSecure();
     const { user, userLoading } = useAuth();
     const { refetchProjects } = useGetProjects();
+    const { refetchSkills } = useGetSkills()
 
     useEffect(() => {
         if (random !== expectedRandom || !user) {
@@ -165,7 +167,6 @@ const UpdatePortfolio = () => {
                 background: '#05030efc'
             })
         }
-
     }
 
     // delete a project
@@ -205,7 +206,7 @@ const UpdatePortfolio = () => {
                                 color: '#fff',
                                 background: '#05030efc',
                             })
-                            toast.success('Deleted the Article!');
+                            toast.success('Deleted the Project!');
                         }
                     })
                     .catch(error => {
@@ -220,12 +221,72 @@ const UpdatePortfolio = () => {
                     })
             }
         })
-
     }
 
     // add a new skill
     const handleAddNewSkill = (skillData) => {
-        console.log(skillData);
+        skillData.serial = parseInt(skillData?.serial);
+        skillData.level = parseInt(skillData?.level);
+        Swal.fire({
+            title: 'Adding Skill...',
+            text: 'Please, wait a moment!',
+            icon: 'info',
+            color: '#fff',
+            background: '#05030efc',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        try {
+            axiosSecure.post(`/skills/add`, skillData)
+                .then(res => {
+                    if (res?.data?.insertedId) {
+                        toast.success("Skill Added!");
+                        Swal.fire({
+                            title: 'Skill Added!',
+                            text: `${skillData?.title} Added!`,
+                            icon: 'success',
+                            confirmButtonText: 'Okay',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
+                        setAddOpen(false);
+                        refetchSkills();
+                    } else if (res?.data?.message) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: res.data.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    if (error) {
+                        Swal.fire({
+                            title: 'Failed!',
+                            text: error?.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc'
+                        })
+                    }
+                })
+        } catch (error) {
+            Swal.fire({
+                title: 'Failed!',
+                text: error?.message,
+                icon: 'error',
+                confirmButtonText: 'Close',
+                color: '#fff',
+                background: '#05030efc'
+            })
+        }
     }
 
     const handleClose = () => {
