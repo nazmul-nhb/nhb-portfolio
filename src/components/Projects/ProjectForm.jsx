@@ -1,14 +1,19 @@
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 
-const ProjectForm = ({ project, handleUpdateProject, setShowUpdateForm }) => {
-    const initialProjectValues = { ...project, features: project.features.join('\n') }
+const ProjectForm = ({ project, addProject,handleAddProject, handleUpdateProject, setShowUpdateForm }) => {
+    const initialProjectValues = project ? { ...project, features: project.features.join('\n') } : {};
+
     const { register, handleSubmit } = useForm({
-        defaultValues: initialProjectValues
+        defaultValues: addProject ? {} : initialProjectValues
     });
 
     return (
-        <form onSubmit={handleSubmit((updatedProject) => handleUpdateProject(updatedProject, setShowUpdateForm))} className="w-full mx-auto">
+        <form onSubmit={handleSubmit((projectData) => addProject ? handleAddProject(projectData) : handleUpdateProject(project?._id, projectData, setShowUpdateForm))} className="w-full mx-auto">
+            {/* Serial */}
+            <label htmlFor="serial" className="block text-sm font-medium text-gray-700">Serial</label>
+            <input type="number" id="serial" {...register('serial')} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring bg-transparent focus:ring-opacity-50" />
+
             {/* Title */}
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
             <input type="text" id="title" {...register('title')} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring bg-transparent focus:ring-opacity-50" />
@@ -56,6 +61,8 @@ const ProjectForm = ({ project, handleUpdateProject, setShowUpdateForm }) => {
 
 ProjectForm.propTypes = {
     project: PropTypes.object,
+    addProject: PropTypes.bool,
+    handleAddProject: PropTypes.func,
     handleUpdateProject: PropTypes.func,
     setShowUpdateForm: PropTypes.func,
 }

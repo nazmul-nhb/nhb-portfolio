@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import PropTypes from 'prop-types';
-import './Projects.css';
 import Spinner from '../Spinner/Spinner';
 import { CiEdit } from 'react-icons/ci';
 import ProjectForm from './ProjectForm';
@@ -38,23 +37,23 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
     return (
         <section className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>
             {projects?.map((project) => (
-                <div key={project._id}
+                <div key={project?._id}
                     className='w-full flex flex-col gap-2 md:gap-4'>
-                    <h3 onClick={() => setOpenProjectID(project._id)}
+                    <h3 onClick={() => setOpenProjectID(project?._id)}
                         className='flex-grow cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base md:text-xl lg:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
-                        <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
-                        {project.title}
+                        <img className='w-7 sm:w-8' src={project?.icon} alt={project?.title} />
+                        {project?.title}
                         <span className='text-xs border px-1 group-hover:border-blue-500'>Full-Stack</span>
                     </h3>
                     <figure data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
                         <img
-                            onClick={() => setOpenProjectID(project._id)}
+                            onClick={() => setOpenProjectID(project?._id)}
                             className='w-full cursor-pointer hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 hover:opacity-100'
-                            src={project.cover}
-                            alt={project.title}
+                            src={project?.cover}
+                            alt={project?.title}
                         />
                     </figure>
-                    {openProjectID === project._id && (
+                    {openProjectID === project?._id && (
                         <>
                             <div className="modal-background" onClick={handleClose}></div>
                             <dialog open
@@ -74,7 +73,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                                 title='Close'
                                             />
                                             <RiDeleteBin6Line
-                                                onClick={() => handleDeleteProject(project?._id)}
+                                                onClick={() => handleDeleteProject(project?._id, project?.title)}
                                                 className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
                                                 title='Close'
                                             />
@@ -84,12 +83,12 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                         <div className="flex flex-col gap-4 h-3/4 p-1 sm:p-6 pb-6 text-sm sm:text-base">
                                             <div className="border-b pb-1">
                                                 <h3 className='text-base sm:text-2xl font-kreonSerif flex items-center gap-2'>
-                                                    <img className='w-7 sm:w-8' src={project?.icon} alt={project.title} />
-                                                    {project.title}
+                                                    <img className='w-7 sm:w-8' src={project?.icon} alt={project?.title} />
+                                                    {project?.title}
                                                     <span className='text-xs border px-1'>Full-Stack</span>
                                                 </h3>
                                                 <h4 className='text-xs sm:text-sm md:text-lg font-kreonSerif text-right mt-1'>
-                                                    {project.subtitle}
+                                                    {project?.subtitle}
                                                 </h4>
                                             </div>
                                             <ul className='list-disc'>
