@@ -4,7 +4,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { GiQuillInk } from "react-icons/gi";
 import { NavLink, useNavigate } from "react-router-dom";
-import profile from "../../assets/pp-square.jpg"
+import logo from "../../assets/logo.png"
 import Swal from "sweetalert2";
 import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
 import toast from "react-hot-toast";
@@ -234,14 +234,17 @@ const Navbar = () => {
     return (
         <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
-            <figure className="flex items-center justify-start gap-2 font-kreonSerif">
-                <img onClick={handleOwnerLogin}
-                    className="w-10 sm:w-11 h-10 sm:h-11 rounded-full p-0.5 border cursor-pointer"
-                    src={profile} alt="profile" />
+            <div className="flex items-center justify-start gap-3 font-kreonSerif">
+                <figure onClick={handleOwnerLogin}
+                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer">
+                    <img
+                        className="w-9 sm:w-10 aspect-square hover:animate-rotate transition-all duration-1000"
+                        src={logo} alt="profile" />
+                </figure>
                 <NavLink className="text-2xl sm:text-3xl font-semibold" to={'/'}>
                     Nazmul Hassan
                 </NavLink>
-            </figure>
+            </div>
             <div
                 ref={sidebarRef} className="flex justify-between items-center text-sm xl:text-base">
                 <IoIosArrowDropleft

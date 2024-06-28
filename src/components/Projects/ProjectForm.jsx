@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 import { FaRegSave, FaSlackHash } from "react-icons/fa";
-import { RiFolderAddLine, RiScreenshot2Line } from "react-icons/ri";
+import { RiScreenshot2Line } from "react-icons/ri";
 import { PiShootingStarBold, PiSubtitlesBold, PiSubtitles  } from "react-icons/pi";
 import { GrTechnology } from "react-icons/gr";
 import { IoGitBranch } from "react-icons/io5";
@@ -179,7 +179,7 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
 
             {/* Submit Button */}
             <button type="submit" className="absolute top-4 right-8 text-3xl text-blue-300 hover:text-white transition-all duration-500">
-                {addProject ? <RiFolderAddLine /> : <FaRegSave />}
+                <FaRegSave />
             </button>
         </form>
     );
