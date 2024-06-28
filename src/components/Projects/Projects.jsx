@@ -43,7 +43,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                         className='flex-grow cursor-pointer hover:text-blue-500 group transition-all duration-500 text-base md:text-xl lg:text-2xl font-kreonSerif font-bold flex items-center gap-2'>
                         <img className='w-7 sm:w-8' src={project?.icon} alt={project?.title} />
                         {project?.title}
-                        <span className='text-xs border px-1 group-hover:border-blue-500'>Full-Stack</span>
+                        <span className='text-xs border px-1 group-hover:border-blue-500'>{project?.type}</span>
                     </h3>
                     <figure data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
                         <img
@@ -66,7 +66,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                         title='Close'
                                     />
                                     {updateProject &&
-                                        <div className='absolute top-4 right-8 text-3xl flex items-center gap-4'>
+                                        <div className='absolute bottom-4 right-8 text-3xl flex flex-col items-center gap-4'>
                                             <CiEdit
                                                 onClick={() => setShowUpdateForm(!showUpdateForm)}
                                                 className='text-blue-300 hover:text-white transition-all duration-500 cursor-pointer'
@@ -85,7 +85,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                                 <h3 className='text-base sm:text-2xl font-kreonSerif flex items-center gap-2'>
                                                     <img className='w-7 sm:w-8' src={project?.icon} alt={project?.title} />
                                                     {project?.title}
-                                                    <span className='text-xs border px-1'>Full-Stack</span>
+                                                    <span className='text-xs border px-1'>{project?.type}</span>
                                                 </h3>
                                                 <h4 className='text-xs sm:text-sm md:text-lg font-kreonSerif text-right mt-1'>
                                                     {project?.subtitle}

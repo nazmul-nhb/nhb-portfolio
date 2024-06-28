@@ -85,7 +85,9 @@ const UpdatePortfolio = () => {
                             title: 'Update Failed!',
                             text: error?.message,
                             icon: 'error',
-                            confirmButtonText: 'Close'
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc'
                         })
                     }
                 })
@@ -94,7 +96,9 @@ const UpdatePortfolio = () => {
                 title: 'Update Failed!',
                 text: error?.message,
                 icon: 'error',
-                confirmButtonText: 'Close'
+                confirmButtonText: 'Close',
+                color: '#fff',
+                background: '#05030efc'
             })
         }
 
