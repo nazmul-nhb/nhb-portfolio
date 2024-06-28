@@ -72,7 +72,7 @@ const Navbar = () => {
                     });
                 } else if (error?.message === "Firebase: Error (auth/account-exists-with-different-credential).") {
                     Swal.fire({
-                        title: 'Error!',
+                        title: 'Login Failed!',
                         text: "Account Exists for this Email with Different Credential!",
                         icon: 'error',
                         confirmButtonText: 'Close',
@@ -90,8 +90,8 @@ const Navbar = () => {
                     });
                 } else {
                     Swal.fire({
-                        title: 'Error!',
-                        text: error?.message || "Error Occurred! Login Later!",
+                        title: 'Login Failed!',
+                        text: "Error Occurred! Please, Login Later!",
                         icon: 'error',
                         confirmButtonText: 'Close',
                         color: '#fff',
@@ -190,7 +190,7 @@ const Navbar = () => {
     }
 
     const handleOwnerLogin = () => {
-        // if user is logged in, prompt to go to update page or log out
+        // if owner is logged in, prompt to go to update page or log out
         if (user) {
             return Swal.fire({
                 title: "You're Logged in!",
@@ -236,7 +236,7 @@ const Navbar = () => {
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <div className="flex items-center justify-start gap-3 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
-                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-bounce hover:animate-none">
+                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-bounce hover:animate-none flex items-center">
                     <img
                         className="w-9 sm:w-10 aspect-square hover:animate-rotate transition-all duration-1000"
                         src={logo} alt="profile" />

@@ -34,7 +34,7 @@ const Contact = () => {
             const response = await axios.post('https://nhb-portfolio-server.vercel.app/email/send', msgData);
             // console.log(response);
             if (response.status === 200) {
-                toast.success(response.data.message);
+                toast.success('Message Sent!');
                 Swal.fire({
                     title: 'Message Sent!',
                     text: `Thank You, ${msgData?.name}. Please, Check Your Email!`,

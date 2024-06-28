@@ -3,7 +3,6 @@ import { useState, createContext, useEffect } from "react";
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import useAxiosPortfolio from '../hooks/useAxiosPortfolio';
-import Spinner from "../components/Spinner/Spinner";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -51,10 +50,6 @@ const AuthProvider = ({ children }) => {
     }, [axiosPortfolio])
 
     const authInfo = { user, setUser, googleLogin, logOut, userLoading, setUserLoading };
-
-    if (userLoading) {
-        return <Spinner />
-    }
 
     return (
         <AuthContext.Provider value={authInfo}>
