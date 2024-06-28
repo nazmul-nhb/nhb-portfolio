@@ -11,10 +11,15 @@ import { IoIosCloseCircle } from "react-icons/io";
 import toast from "react-hot-toast";
 import { VscGithubProject } from "react-icons/vsc";
 import { RiFolderAddLine } from "react-icons/ri";
+import { GiSkills } from "react-icons/gi";
+import Skills from "../../components/Skills/Skills";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
+import SkillForm from "../../components/Skills/SkillForm";
 
 const UpdatePortfolio = () => {
     const [closing, setClosing] = useState(false);
     const [addOpen, setAddOpen] = useState(false);
+    const [showSkillForm, setShowSkillForm] = useState(false);
     const { random } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
@@ -218,11 +223,17 @@ const UpdatePortfolio = () => {
 
     }
 
+    // add a new skill
+    const handleAddNewSkill = (skillData) => {
+        console.log(skillData);
+    }
+
     const handleClose = () => {
         setClosing(true);
         setTimeout(() => {
             setClosing(false);
             setAddOpen(false);
+            setShowSkillForm(false);
         }, 500); // match timeout with the animation duration
     };
 
@@ -232,10 +243,17 @@ const UpdatePortfolio = () => {
                 <title>Update Portfolio - Nazmul Hassan</title>
             </Helmet>
 
+            {/* Skills Section */}
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
+                <span className="flex items-center gap-2"><GiSkills />Skills</span>
+                <HiOutlineViewGridAdd onClick={() => { setAddOpen(true); setShowSkillForm(true) }} className="cursor-pointer hover:text-blue-300 text-white transition-all duration-500" />
+            </h2>
+            <Skills updateSkill={true} />
+
             {/* Projects Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
                 <span className="flex items-center gap-2"><VscGithubProject />Projects</span>
-                <RiFolderAddLine onClick={() => setAddOpen(!addOpen)} className="cursor-pointer hover:text-blue-300 text-white transition-all duration-500" />
+                <RiFolderAddLine onClick={() => setAddOpen(true)} className="cursor-pointer hover:text-blue-300 text-white transition-all duration-500" />
             </h2>
 
             {addOpen && <>
@@ -249,8 +267,10 @@ const UpdatePortfolio = () => {
                             className='absolute -top-1 -right-1 text-2xl bg-white rounded-full text-red-700 hover:text-nhb transition-all duration-500 cursor-pointer'
                             title='Close'
                         />
-
-                        <ProjectForm addProject={true} handleAddProject={handleAddProject} />
+                        {showSkillForm
+                            ? <SkillForm addSkill={true} handleAddNewSkill={handleAddNewSkill} />
+                            : <ProjectForm addProject={true} handleAddProject={handleAddProject} />
+                        }
                     </div>
                 </dialog>
             </>}

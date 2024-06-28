@@ -70,12 +70,12 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                             <CiEdit
                                                 onClick={() => setShowUpdateForm(!showUpdateForm)}
                                                 className='text-blue-300 hover:text-white transition-all duration-500 cursor-pointer'
-                                                title='Close'
+                                                title='Edit'
                                             />
                                             <RiDeleteBin6Line
                                                 onClick={() => handleDeleteProject(project?._id, project?.title, setOpenProjectID)}
                                                 className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
-                                                title='Close'
+                                                title='Delete'
                                             />
                                         </div>
                                     }

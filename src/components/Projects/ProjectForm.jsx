@@ -31,7 +31,7 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                         required:
                             { value: true, message: "Serial is required!" }
                     })}
-                    name='serial' id="serial" type="text" placeholder="Project Serial" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
+                    name='serial' id="serial" type="number" placeholder="Project Serial" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
             {
                 errors.serial && <p className="animate-bounce">{errors.serial.message}</p>
