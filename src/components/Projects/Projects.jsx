@@ -48,7 +48,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                     <figure data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
                         <img
                             onClick={() => setOpenProjectID(project?._id)}
-                            className='w-full cursor-pointer hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 hover:opacity-100'
+                            className='w-full cursor-pointer aspect-[1/1.25] hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 hover:opacity-100'
                             src={project?.cover}
                             alt={project?.title}
                         />
@@ -73,7 +73,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                                 title='Close'
                                             />
                                             <RiDeleteBin6Line
-                                                onClick={() => handleDeleteProject(project?._id, project?.title)}
+                                                onClick={() => handleDeleteProject(project?._id, project?.title, setOpenProjectID)}
                                                 className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
                                                 title='Close'
                                             />

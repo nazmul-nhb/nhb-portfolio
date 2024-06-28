@@ -9,6 +9,8 @@ import useGetProjects from "../../hooks/useGetProjects";
 import ProjectForm from "../../components/Projects/ProjectForm";
 import { IoIosCloseCircle } from "react-icons/io";
 import toast from "react-hot-toast";
+import { VscGithubProject } from "react-icons/vsc";
+import { RiFolderAddLine } from "react-icons/ri";
 
 const UpdatePortfolio = () => {
     const [closing, setClosing] = useState(false);
@@ -40,9 +42,66 @@ const UpdatePortfolio = () => {
     const handleAddProject = (projectData) => {
         projectData.features = projectData?.features.split('\n').map(feature => feature.trim());
         projectData.serial = parseInt(projectData?.serial);
-        console.log(projectData);
-        setAddOpen(false);
-        refetchProjects();
+        Swal.fire({
+            title: 'Adding Project...',
+            text: 'Please, wait a moment!',
+            icon: 'info',
+            color: '#fff',
+            background: '#05030efc',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        try {
+            axiosSecure.post(`/projects/add`, projectData)
+                .then(res => {
+                    if (res?.data?.insertedId) {
+                        toast.success("Project Added!");
+                        Swal.fire({
+                            title: 'Project Added!',
+                            text: `${projectData?.title} Added!`,
+                            icon: 'success',
+                            confirmButtonText: 'Okay',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
+                        setAddOpen(false);
+                        refetchProjects();
+                    } else if (res?.data?.message) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: res.data.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    if (error) {
+                        Swal.fire({
+                            title: 'Failed!',
+                            text: error?.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc'
+                        })
+                    }
+                })
+        } catch (error) {
+            Swal.fire({
+                title: 'Failed!',
+                text: error?.message,
+                icon: 'error',
+                confirmButtonText: 'Close',
+                color: '#fff',
+                background: '#05030efc'
+            })
+        }
     }
 
     // update a project
@@ -51,7 +110,7 @@ const UpdatePortfolio = () => {
         updatedProject.serial = parseInt(updatedProject?.serial);
         delete updatedProject?._id;
         Swal.fire({
-            title: 'Updating Project',
+            title: 'Updating Project...',
             text: 'Please, wait a moment!',
             icon: 'info',
             color: '#fff',
@@ -64,8 +123,8 @@ const UpdatePortfolio = () => {
         try {
             axiosSecure.patch(`/projects/update/${id}`, updatedProject)
                 .then(res => {
-                    if (res.data.modifiedCount > 0) {
-                        toast.success("Project Updated");
+                    if (res?.data?.modifiedCount > 0) {
+                        toast.success("Project Updated!");
                         Swal.fire({
                             title: 'Updated!',
                             text: `Updated ${updatedProject?.title}!`,
@@ -105,9 +164,58 @@ const UpdatePortfolio = () => {
     }
 
     // delete a project
-    const handleDeleteProject = (id, title) => {
-        console.log({ id, title });
-        refetchProjects();
+    const handleDeleteProject = (id, title, setOpenProjectID) => {
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: `Delete "${title}" Permanently?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff0000',
+            cancelButtonColor: '#2a7947',
+            confirmButtonText: 'Yes, Delete It!',
+            color: '#fff',
+            background: '#05030efc',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deleting Project...',
+                    text: 'Please, wait a moment!',
+                    icon: 'info',
+                    color: '#fff',
+                    background: '#05030efc',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+                axiosSecure.delete(`/projects/delete/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetchProjects();
+                            setOpenProjectID(null);
+                            Swal.fire({
+                                title: 'Project Deleted!',
+                                text: `Permanently Deleted "${title}"!`,
+                                icon: 'success',
+                                color: '#fff',
+                                background: '#05030efc',
+                            })
+                            toast.success('Deleted the Article!');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: error?.message,
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                            color: '#fff',
+                            background: '#05030efc',
+                        });
+                    })
+            }
+        })
+
     }
 
     const handleClose = () => {
@@ -123,7 +231,12 @@ const UpdatePortfolio = () => {
             <Helmet>
                 <title>Update Portfolio - Nazmul Hassan</title>
             </Helmet>
-            <button onClick={() => setAddOpen(!addOpen)} className="text-2xl font-semibold">Add Project</button>
+
+            {/* Projects Section */}
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
+                <span className="flex items-center gap-2"><VscGithubProject />Projects</span>
+                <RiFolderAddLine onClick={() => setAddOpen(!addOpen)} className="cursor-pointer hover:text-blue-300 text-white transition-all duration-500" />
+            </h2>
 
             {addOpen && <>
                 <div className="modal-background" onClick={handleClose}></div>
