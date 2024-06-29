@@ -307,14 +307,14 @@ const UpdatePortfolio = () => {
             {/* Skills Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
                 <span className="flex items-center gap-2"><GiSkills />Skills</span>
-                <HiOutlineViewGridAdd onClick={() => { setAddOpen(true); setShowSkillForm(true) }} className="cursor-pointer hover:text-blue-300 text-white transition-all duration-500" />
+                <HiOutlineViewGridAdd onClick={() => { setAddOpen(true); setShowSkillForm(true) }} className="cursor-pointer hover:text-blue-300 animate-growShrink hover:animate-none hover:scale-110 text-white transition-all duration-500" />
             </h2>
             <Skills updateSkill={true} />
 
             {/* Projects Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
                 <span className="flex items-center gap-2"><VscGithubProject />Projects</span>
-                <RiFolderAddLine onClick={() => setAddOpen(true)} className="cursor-pointer hover:text-blue-300 text-white transition-all duration-500" />
+                <RiFolderAddLine onClick={() => setAddOpen(true)} className="cursor-pointer animate-growShrink hover:animate-none hover:scale-110 hover:text-blue-300 text-white transition-all duration-500" />
             </h2>
 
             {addOpen && <>

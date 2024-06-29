@@ -17,12 +17,12 @@ const SkillForm = ({ handleAddNewSkill }) => {
             toast.error(errors.title.message, { duration: 2000 })
             return;
         }
-        if (errors.level) {
-            toast.error(errors.level.message, { duration: 2000 })
-            return;
-        }
         if (errors.description) {
             toast.error(errors.description.message, { duration: 2000 })
+            return;
+        }
+        if (errors.level) {
+            toast.error(errors.level.message, { duration: 2000 })
             return;
         }
     }, [errors.title, errors.level, errors.description, errors.serial]);
@@ -43,9 +43,6 @@ const SkillForm = ({ handleAddNewSkill }) => {
                     })}
                     name='serial' id="serial" type="number" placeholder="Skill Serial" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.serial && <p className="animate-bounce">{errors.serial.message}</p>
-            }
 
             {/* Title */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -57,9 +54,6 @@ const SkillForm = ({ handleAddNewSkill }) => {
                     })}
                     name='title' id="title" type="text" placeholder="Skill Name" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.title && <p className="animate-bounce">{errors.title.message}</p>
-            }
 
             {/* Technology Type */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -67,13 +61,10 @@ const SkillForm = ({ handleAddNewSkill }) => {
                 <input
                     {...register("description", {
                         required:
-                            { value: true, message: "Type of Skill is required!" }
+                            { value: true, message: "Skill Type is required!" }
                     })}
                     name='description' id="description" type="text" placeholder="Type of Skill" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.description && <p className="animate-bounce">{errors.description.message}</p>
-            }
 
             {/* Skill Level */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -86,12 +77,9 @@ const SkillForm = ({ handleAddNewSkill }) => {
                     })}
                     name='level' id="level" type="number" placeholder="Skill Level (Between 0 & 100)" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.level && <p className="animate-bounce">{errors.level.message}</p>
-            }
 
             {/* Submit Button */}
-            <button type="submit" className="absolute top-4 right-8 text-3xl text-blue-300 hover:text-white transition-all duration-500">
+            <button type="submit" className="absolute top-4 right-8 text-3xl text-teal-500 hover:text-blue-50 transition-all duration-500">
                 <FaRegSave />
             </button>
         </form>

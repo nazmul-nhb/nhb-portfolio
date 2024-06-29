@@ -194,7 +194,7 @@ const Navbar = () => {
         if (user) {
             return Swal.fire({
                 title: "You're Logged in!",
-                text: `Update Your Portfolio or Log Out Now!`,
+                text: `Update Portfolio or Log Out?`,
                 icon: "info",
                 showDenyButton: true,
                 showCancelButton: true,
@@ -236,12 +236,12 @@ const Navbar = () => {
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <div className="flex items-center justify-start gap-3 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
-                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-bounce hover:animate-none flex items-center">
+                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-growShrink transition-all duration-1000 hover:animate-none flex items-center">
                     <img
                         className="w-9 sm:w-10 aspect-square hover:animate-rotate transition-all duration-1000"
                         src={logo} alt="profile" />
                 </figure>
-                <NavLink className="text-2xl sm:text-3xl font-semibold" to={'/'}>
+                <NavLink className="text-2xl sm:text-3xl font-semibold text-blue-50 hover:text-blue-300 transition-all duration-500" to={'/'}>
                     Nazmul Hassan
                 </NavLink>
             </div>

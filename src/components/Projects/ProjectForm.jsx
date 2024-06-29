@@ -9,6 +9,8 @@ import { IoMdGitMerge } from "react-icons/io";
 import { FaLink } from "react-icons/fa6";
 import { CiImageOn } from "react-icons/ci";
 import { MdOutlineTypeSpecimen } from "react-icons/md";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProject, setShowUpdateForm }) => {
     const initialProjectValues = project ? { ...project, features: project.features.join('\n') } : {};
@@ -16,6 +18,54 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: addProject ? {} : initialProjectValues
     });
+
+    // show error toasts
+    useEffect(() => {
+        if (errors.serial) {
+            toast.error(errors.serial.message, { duration: 2000 });
+            return;
+        }
+        if (errors.title) {
+            toast.error(errors.title.message, { duration: 2000 });
+            return;
+        }
+        if (errors.subtitle) {
+            toast.error(errors.subtitle.message, { duration: 2000 });
+            return;
+        }
+        if (errors.type) {
+            toast.error(errors.type.message, { duration: 2000 });
+            return;
+        }
+        if (errors.icon) {
+            toast.error(errors.icon.message, { duration: 2000 });
+            return;
+        }
+        if (errors.cover) {
+            toast.error(errors.cover.message, { duration: 2000 });
+            return;
+        }
+        if (errors.link) {
+            toast.error(errors.link.message, { duration: 2000 });
+            return;
+        }
+        if (errors.client) {
+            toast.error(errors.client.message, { duration: 2000 });
+            return;
+        }
+        if (errors.server) {
+            toast.error(errors.server.message, { duration: 2000 });
+            return;
+        }
+        if (errors.technologies) {
+            toast.error(errors.technologies.message, { duration: 2000 });
+            return;
+        }
+        if (errors.features) {
+            toast.error(errors.features.message, { duration: 2000 });
+            return;
+        }
+    }, [errors.client, errors.cover, errors.features, errors.icon, errors.link, errors.serial, errors.server, errors.subtitle, errors.technologies, errors.title, errors.type]);
 
     return (
         <form
@@ -33,9 +83,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='serial' id="serial" type="number" placeholder="Project Serial" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.serial && <p className="animate-bounce">{errors.serial.message}</p>
-            }
 
             {/* Title */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -47,9 +94,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='title' id="title" type="text" placeholder="Project Title" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.title && <p className="animate-bounce">{errors.title.message}</p>
-            }
 
             {/* Subtitle */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -61,9 +105,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='subtitle' id="subtitle" type="text" placeholder="Project Subtitle" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.subtitle && <p className="animate-bounce">{errors.subtitle.message}</p>
-            }
 
             {/* Project Type */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -75,9 +116,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='type' id="type" type="text" placeholder="Project Type (Full-Stack, Front-End etc.)" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.type && <p className="animate-bounce">{errors.type.message}</p>
-            }
 
             {/* Icon */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -89,9 +127,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='icon' id="icon" type="text" placeholder="Favicon URL" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.icon && <p className="animate-bounce">{errors.icon.message}</p>
-            }
 
             {/* Cover */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -103,9 +138,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='cover' id="cover" type="text" placeholder="Project Screenshot URL" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.cover && <p className="animate-bounce">{errors.cover.message}</p>
-            }
 
             {/* Live Link */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -117,9 +149,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='link' id="link" type="text" placeholder="Project Live Link" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.link && <p className="animate-bounce">{errors.link.message}</p>
-            }
 
             {/* Client */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -131,9 +160,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='client' id="client" type="text" placeholder="Client Side Repository Link" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.client && <p className="animate-bounce">{errors.client.message}</p>
-            }
 
             {/* Server */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -145,9 +171,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='server' id="server" type="text" placeholder="Server Side Repository Link" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.server && <p className="animate-bounce">{errors.server.message}</p>
-            }
 
             {/* Technologies */}
             <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
@@ -159,9 +182,6 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='technologies' id="technologies" type="text" placeholder="Technologies used in the Project" className="px-2 rounded-r-lg py-2  w-full border-l bg-transparent focus:outline-0 text-white" />
             </div>
-            {
-                errors.technologies && <p className="animate-bounce">{errors.technologies.message}</p>
-            }
 
             {/* Features */}
             <div className="flex md:flex-row flex-col items-start justify-start gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
@@ -173,12 +193,9 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
                     })}
                     name='features' id="features" placeholder="Features of the Project" className="h-48 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
             </div>
-            {
-                errors.features && <p className="animate-bounce">{errors.features.message}</p>
-            }
 
             {/* Submit Button */}
-            <button type="submit" className="absolute top-4 right-8 text-3xl text-blue-300 hover:text-white transition-all duration-500">
+            <button title='Save' type="submit" className="absolute top-4 right-8 text-3xl text-teal-500 hover:text-blue-50 transition-all duration-500">
                 <FaRegSave />
             </button>
         </form>

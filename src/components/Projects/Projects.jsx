@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import Spinner from '../Spinner/Spinner';
-import { CiEdit } from 'react-icons/ci';
 import ProjectForm from './ProjectForm';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import useGetProjects from '../../hooks/useGetProjects';
+import { MdEditDocument } from 'react-icons/md';
 
 const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) => {
     const [openProjectID, setOpenProjectID] = useState(null);
@@ -67,14 +67,14 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                     />
                                     {updateProject &&
                                         <div className='absolute bottom-4 right-8 text-3xl flex flex-col items-center gap-4'>
-                                            <CiEdit
+                                            <MdEditDocument 
                                                 onClick={() => setShowUpdateForm(!showUpdateForm)}
-                                                className='text-blue-300 hover:text-white transition-all duration-500 cursor-pointer'
+                                                className='text-blue-400 hover:text-blue-50 transition-all duration-500 cursor-pointer'
                                                 title='Edit'
                                             />
                                             <RiDeleteBin6Line
                                                 onClick={() => handleDeleteProject(project?._id, project?.title, setOpenProjectID)}
-                                                className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
+                                                className='text-red-500 hover:text-blue-50 transition-all duration-500 cursor-pointer'
                                                 title='Delete'
                                             />
                                         </div>

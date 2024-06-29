@@ -1,11 +1,11 @@
 import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass } from 'react-icons/si';
-import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaRegSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker } from 'react-icons/fa';
-import { RiDeleteBin6Line, RiFlutterFill, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
+import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker } from 'react-icons/fa';
+import { RiFlutterFill, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
+import { MdDeleteForever, MdEditDocument } from 'react-icons/md';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { BiLogoTypescript } from 'react-icons/bi';
 import { IoLogoCss3 } from 'react-icons/io5';
 import { BsStripe } from 'react-icons/bs';
-import { CiEdit } from 'react-icons/ci';
 import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
@@ -261,7 +261,7 @@ const Skills = ({ updateSkill }) => {
                             </div>
                         </div>
                         // update form
-                        : <form onSubmit={handleSubmit((skillData) => handleUpdateSkill(skill?._id, skillData))} className="relative flex-1 font-kreonSerif">
+                        : <form onSubmit={handleSubmit((skillData) => handleUpdateSkill(skill?._id, skillData))} className="relative flex-1 font-kreonSerif space-y-1">
                             <div className='flex gap-0.5'>
                                 {/* Title */}
                                 <input
@@ -270,7 +270,7 @@ const Skills = ({ updateSkill }) => {
                                         required:
                                             { value: true, message: "Skill Name is required!" }
                                     })}
-                                    name='title' id="title" type="text" placeholder="Skill Name" className="px-1 py-0.5 w-3/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-md shadow-blue-500" />
+                                    name='title' id="title" type="text" placeholder="Skill Name" className="px-1 py-0.5 w-3/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500" />
                                 {/* Skill Level */}
                                 <input
                                     defaultValue={skill?.level}
@@ -279,7 +279,7 @@ const Skills = ({ updateSkill }) => {
                                         min: { value: 0.0, message: "Skill Level cannot be a negative value!" },
                                         max: { value: 100.0, message: "Skill Level cannot exceed 100!" },
                                     })}
-                                    name='level' id="level" type="number" placeholder="%" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-md shadow-blue-500" />
+                                    name='level' id="level" type="number" placeholder="%" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500" />
                             </div>
                             <div className='flex gap-0.5'>
                                 {/* Skill Type */}
@@ -289,7 +289,7 @@ const Skills = ({ updateSkill }) => {
                                         required:
                                             { value: true, message: "Type of Skill is required!" }
                                     })}
-                                    name='description' id="description" type="text" placeholder="Type of Skill" className="px-1 py-0.5 w-3/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-md shadow-blue-500" />
+                                    name='description' id="description" type="text" placeholder="Type of Skill" className="px-1 py-0.5 w-3/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500" />
                                 {/* Serial */}
                                 <input
                                     defaultValue={skill?.serial}
@@ -297,24 +297,24 @@ const Skills = ({ updateSkill }) => {
                                         required:
                                             { value: true, message: "Serial is required!" }
                                     })}
-                                    name='serial' id="serial" type="number" placeholder="#" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-md shadow-blue-500" />
+                                    name='serial' id="serial" type="number" placeholder="#" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500" />
                             </div>
-                            <button type='submit' className='absolute -top-6 -left-20 text-3xl'>
-                                <FaRegSave />
+                            <button title='Save' type='submit' className='absolute -top-6 -left-20 text-3xl text-teal-500 hover:text-blue-50 transition-all duration-500'>
+                                <FaSave  />
                             </button>
                         </form>
                     }
 
                     {updateSkill &&
-                        <div className='absolute -top-1 -right-2 -bottom-1 text-2xl flex flex-col justify-between gap-4'>
-                            <CiEdit
+                        <div className='absolute -top-1 -right-3 -bottom-1 flex flex-col justify-between gap-4'>
+                            <MdEditDocument 
                                 onClick={() => setShowUpdateForm(showUpdateForm === skill._id ? null : skill._id)}
-                                className='text-blue-300 hover:text-white transition-all duration-500 cursor-pointer'
+                                className='text-2xl text-blue-400 hover:text-blue-50 transition-all duration-500 cursor-pointer'
                                 title='Edit'
                             />
-                            <RiDeleteBin6Line
+                            <MdDeleteForever  
                                 onClick={() => handleDeleteSkill(skill?._id, skill?.title)}
-                                className='text-red-400 hover:text-blue-300 transition-all duration-500 cursor-pointer'
+                                className='text-3xl text-red-500 hover:text-blue-50 transition-all duration-500 cursor-pointer'
                                 title='Delete'
                             />
                         </div>
