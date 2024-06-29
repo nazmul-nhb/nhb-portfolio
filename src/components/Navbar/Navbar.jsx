@@ -236,9 +236,9 @@ const Navbar = () => {
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <div className="flex items-center justify-start gap-2 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
-                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-growShrink transition-all duration-1000 hover:animate-none flex items-center mb-1">
+                    className="rounded-full shadow-md shadow-blue-300 cursor-pointer animate-growShrink transition-all duration-1000 hover:animate-none flex items-center inset-0">
                     <img
-                        className="w-9 sm:w-10 aspect-square hover:animate-rotate transition-all duration-1000"
+                        className="w-9 sm:w-10 rounded-full aspect-square animate-glowBorder hover:animate-rotate transition-all duration-1000"
                         src={logo} alt="profile" />
                 </figure>
                 <NavLink className="text-2xl sm:text-3xl font-semibold text-blue-50 hover:text-blue-300 transition-all duration-500" to={'/'}>

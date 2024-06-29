@@ -133,7 +133,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://drive.google.com/file/d/1ROQhAJxo109FMw5fgYqV45gNKQ_SPUbp/view"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaCloudDownloadAlt /> Resume
                         </a>
@@ -141,7 +141,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://linkedin.com/in/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white animate-glowBorder transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaLinkedin /> LinkedIn
                         </a>
@@ -149,7 +149,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://github.com/nazmul-nhb"
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400 hover:animate-pulse"
+                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <VscGithub /> GitHub
                         </a>
@@ -157,7 +157,7 @@ const Home = () => {
                 </div>
 
                 {/* Image */}
-                <div className="p-2 border shadow-md shadow-blue-400">
+                <div className="p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
                         <PhotoView src={profile}>
                             <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">

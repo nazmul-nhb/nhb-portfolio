@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import Spinner from '../Spinner/Spinner';
 import ProjectForm from './ProjectForm';
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import useGetProjects from '../../hooks/useGetProjects';
 import { MdEditDocument } from 'react-icons/md';
+import useGetProjects from '../../hooks/useGetProjects';
 
 const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) => {
     const [openProjectID, setOpenProjectID] = useState(null);
     const [closing, setClosing] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
     // get projects from server
-    const { projects, isFetching } = useGetProjects();
+    const { projects, isLoading } = useGetProjects();
 
     // disable background scrolling when modal is open
     useEffect(() => {
@@ -32,7 +32,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
         }, 500); // match timeout with the animation duration
     };
 
-    if (isFetching) return <Spinner />;
+    if (isLoading) return <Spinner />;
 
     return (
         <section className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>

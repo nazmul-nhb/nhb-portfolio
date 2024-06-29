@@ -100,7 +100,7 @@ const Contact = () => {
                 {/* Contact Form */}
                 <form
                     onSubmit={handleSubmit(handleSendMessage)}
-                    className="flex flex-col gap-4 justify-between bg-nhb bg-opacity-80 text-white p-2 sm:p-5 rounded-lg shadow-md shadow-blue-500">
+                    className="flex flex-col gap-4 justify-between bg-nhb bg-opacity-80 text-white p-2 sm:p-5 rounded-lg shadow-md shadow-blue-500 animate-glowBorder">
                     <div className="flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
                         <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg w-24 md:w-28"><LuUserCheck /> Name</label>
                         <input
@@ -131,7 +131,7 @@ const Contact = () => {
                             name='msg' id="msg" placeholder="Write Your Message Here" className="h-64 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                     </div>
                    
-                    <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-nhbBG text-white border border-white hover:text-blue-50 hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-spin">
+                    <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-nhbBG text-white border border-white hover:text-blue-50 hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-glowBorder">
                         {mailSending ? <CgMail className="animate-horizontal text-2xl" /> : <span className="flex items-center gap-1"> <CgMail /> Send Message</span>}
                     </button>
                 </form>

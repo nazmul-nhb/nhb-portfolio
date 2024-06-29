@@ -4,7 +4,7 @@ import useAxiosPortfolio from "./useAxiosPortfolio";
 const useGetProjects = () => {
     const axiosPortfolio = useAxiosPortfolio();
 
-    const { data: projects = [], isFetching, refetch: refetchProjects } = useQuery({
+    const { data: projects = [], isLoading, refetch: refetchProjects } = useQuery({
         queryKey: ['projects'],
         queryFn: async () => {
             const { data } = await axiosPortfolio(`/projects`);
@@ -12,7 +12,7 @@ const useGetProjects = () => {
         }
     });
 
-    return { projects, isFetching, refetchProjects };
+    return { projects, isLoading, refetchProjects };
 
 };
 

@@ -1,11 +1,12 @@
-import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass } from 'react-icons/si';
-import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker } from 'react-icons/fa';
+import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass, SiReacthookform, SiJsonwebtokens, SiAntdesign, SiVercel, SiNetlify } from 'react-icons/si';
+import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker, FaAws } from 'react-icons/fa';
 import { RiFlutterFill, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
 import { MdDeleteForever, MdEditDocument } from 'react-icons/md';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { BiLogoTypescript } from 'react-icons/bi';
 import { IoLogoCss3 } from 'react-icons/io5';
 import { BsStripe } from 'react-icons/bs';
+import { GrMysql } from 'react-icons/gr';
 import CountUp from 'react-countup';
 import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
@@ -46,6 +47,13 @@ const skillIcons = {
     "Stripe": <BsStripe />,
     "Figma": <FaFigma />,
     "Docker": <FaDocker  />,
+    "React Hook Form": <SiReacthookform />,
+    "JWT": <SiJsonwebtokens />,
+    "Ant Design": <SiAntdesign />,
+    "MySQL": <GrMysql />,
+    "Vercel CLI": <SiVercel />,
+    "Netlify": <SiNetlify  />,
+    "AWS": <FaAws />,
     "TanStack Query": <SiReactquery />
 };
 
