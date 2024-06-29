@@ -299,7 +299,7 @@ const Skills = ({ updateSkill }) => {
                                     })}
                                     name='serial' id="serial" type="number" placeholder="#" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500" />
                             </div>
-                            <button title='Save' type='submit' className='absolute -top-6 -left-20 text-3xl text-teal-500 hover:text-blue-50 transition-all duration-500'>
+                            <button title='Save' type='submit' className='absolute -top-6 -left-20 text-3xl text-teal-500 hover:text-blue-50 hover:scale-105 transition-all duration-500'>
                                 <FaSave  />
                             </button>
                         </form>
@@ -309,12 +309,12 @@ const Skills = ({ updateSkill }) => {
                         <div className='absolute -top-1 -right-3 -bottom-1 flex flex-col justify-between gap-4'>
                             <MdEditDocument 
                                 onClick={() => setShowUpdateForm(showUpdateForm === skill._id ? null : skill._id)}
-                                className='text-2xl text-blue-400 hover:text-blue-50 transition-all duration-500 cursor-pointer'
+                                className='text-2xl text-blue-400 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                 title='Edit'
                             />
                             <MdDeleteForever  
                                 onClick={() => handleDeleteSkill(skill?._id, skill?.title)}
-                                className='text-3xl text-red-500 hover:text-blue-50 transition-all duration-500 cursor-pointer'
+                                className='text-3xl text-red-500 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                 title='Delete'
                             />
                         </div>

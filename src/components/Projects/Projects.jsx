@@ -62,19 +62,19 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                 <div className='bg-blueBG bg-cover border-2 shadow-lg h-full rounded-lg p-1 flex flex-col overflow-y-auto !pb-6'>
                                     <IoIosCloseCircle
                                         onClick={handleClose}
-                                        className='absolute -top-1 -right-1 text-2xl bg-white rounded-full text-red-700 hover:text-nhb transition-all duration-500 cursor-pointer'
+                                        className='absolute -top-1 -right-1 text-2xl bg-white rounded-full text-red-700 hover:text-nhb hover:scale-110 transition-all duration-500 cursor-pointer'
                                         title='Close'
                                     />
                                     {updateProject &&
                                         <div className='absolute bottom-4 right-8 text-3xl flex flex-col items-center gap-4'>
                                             <MdEditDocument 
                                                 onClick={() => setShowUpdateForm(!showUpdateForm)}
-                                                className='text-blue-400 hover:text-blue-50 transition-all duration-500 cursor-pointer'
+                                                className='text-blue-400 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                                 title='Edit'
                                             />
                                             <RiDeleteBin6Line
                                                 onClick={() => handleDeleteProject(project?._id, project?.title, setOpenProjectID)}
-                                                className='text-red-500 hover:text-blue-50 transition-all duration-500 cursor-pointer'
+                                                className='text-red-500 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                                 title='Delete'
                                             />
                                         </div>

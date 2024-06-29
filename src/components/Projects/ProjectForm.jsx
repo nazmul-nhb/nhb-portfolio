@@ -195,7 +195,7 @@ const ProjectForm = ({ project, addProject, handleAddProject, handleUpdateProjec
             </div>
 
             {/* Submit Button */}
-            <button title='Save' type="submit" className="absolute top-4 right-8 text-3xl text-teal-500 hover:text-blue-50 transition-all duration-500">
+            <button title='Save' type="submit" className="absolute top-4 right-8 text-3xl text-teal-500 hover:scale-105 hover:text-blue-50 transition-all duration-500">
                 <FaRegSave />
             </button>
         </form>

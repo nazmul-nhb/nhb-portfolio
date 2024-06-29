@@ -234,9 +234,9 @@ const Navbar = () => {
     return (
         <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
-            <div className="flex items-center justify-start gap-3 font-kreonSerif">
+            <div className="flex items-center justify-start gap-2 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
-                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-growShrink transition-all duration-1000 hover:animate-none flex items-center">
+                    className="rounded-full p-0.5 shadow-md shadow-blue-300 cursor-pointer animate-growShrink transition-all duration-1000 hover:animate-none flex items-center mb-1">
                     <img
                         className="w-9 sm:w-10 aspect-square hover:animate-rotate transition-all duration-1000"
                         src={logo} alt="profile" />
