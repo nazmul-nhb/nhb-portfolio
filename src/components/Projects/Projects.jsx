@@ -48,7 +48,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                     <figure data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
                         <img
                             onClick={() => setOpenProjectID(project?._id)}
-                            className='w-full cursor-pointer aspect-[1/1.25] hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 hover:opacity-100'
+                            className='w-full cursor-pointer aspect-[1/1.25] hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 animate-glowBorder hover:opacity-100'
                             src={project?.cover}
                             alt={project?.title}
                         />
