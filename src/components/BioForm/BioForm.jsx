@@ -19,7 +19,6 @@ const BioForm = () => {
     const handleUpdateBio = (updatedBio) => {
         updatedBio.responsibilities = updatedBio?.responsibilities.split('\n').map(feature => feature.trim());
         updatedBio.highlights = updatedBio?.highlights.split('\n').map(feature => feature.trim());
-        console.log(updatedBio);
 
         Swal.fire({
             title: 'Updating Bio...',
@@ -35,17 +34,31 @@ const BioForm = () => {
         try {
             axiosSecure.patch(`/bio/update/${bio?._id}`, updatedBio)
                 .then(res => {
+                    console.log(res);
                     if (res?.data?.modifiedCount > 0) {
                         toast.success("Bio Updated!");
                         Swal.fire({
                             title: 'Bio Updated!',
-                            text: `Updated ${updatedBio?.title}'s Bio!`,
+                            text: `Updated ${updatedBio?.name}'s Bio!`,
                             icon: 'success',
                             confirmButtonText: 'Okay',
                             color: '#fff',
                             background: '#05030efc'
                         });
                         refetchBio();
+                    } else if (
+                        res?.data?.acknowledged &&
+                        res?.data?.matchedCount === 1 &&
+                        res?.data?.modifiedCount === 0
+                    ) {
+                        toast.success("Bio is Up to Date!");
+                        Swal.fire({
+                            title: 'Up to Date!',
+                            text: `Bio is Up to Date!`,
+                            icon: 'success',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
                     }
                 })
                 .catch(error => {
@@ -189,10 +202,10 @@ const BioForm = () => {
                         })}
                         name='highlights' id="highlights" placeholder="Key Points (One per Line)" className="h-32 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                 </div>
-            {/* Submit Button */}
-            <button title='Save' type="submit" className="absolute bottom-2 right-2 text-3xl text-teal-500 hover:scale-110 hover:text-blue-50 transition-all duration-500 animate-growShrink">
-                <FaRegSave />
-            </button>
+                {/* Submit Button */}
+                <button title='Save' type="submit" className="absolute bottom-2 right-2 text-3xl text-teal-500 hover:scale-110 hover:text-blue-50 transition-all duration-500 animate-growShrink">
+                    <FaRegSave />
+                </button>
             </form>
             {/* Image */}
             <div className="sticky top-20 right-0 p-2 shadow-md shadow-blue-400 animate-glowBorder">

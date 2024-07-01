@@ -135,7 +135,7 @@ const UpdatePortfolio = () => {
                         toast.success("Project Updated!");
                         Swal.fire({
                             title: 'Updated!',
-                            text: `Updated ${updatedProject?.title}!`,
+                            text: `Updated "${updatedProject?.title}"!`,
                             icon: 'success',
                             confirmButtonText: 'Okay',
                             color: '#fff',
@@ -143,6 +143,19 @@ const UpdatePortfolio = () => {
                         });
                         setShowUpdateForm(false);
                         refetchProjects();
+                    } else if (
+                        res?.data?.acknowledged &&
+                        res?.data?.matchedCount === 1 &&
+                        res?.data?.modifiedCount === 0
+                    ) {
+                        toast.success("Project's Up to Date!");
+                        Swal.fire({
+                            title: 'Up to Date!',
+                            text: `"${updatedProject?.title}" Up to Date!`,
+                            icon: 'success',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
                     }
                 })
                 .catch(error => {
@@ -202,7 +215,7 @@ const UpdatePortfolio = () => {
                             setOpenProjectID(null);
                             Swal.fire({
                                 title: 'Project Deleted!',
-                                text: `Permanently Deleted "${title}"!`,
+                                text: `"${title}" Permanently Deleted!`,
                                 icon: 'success',
                                 color: '#fff',
                                 background: '#05030efc',

@@ -125,7 +125,7 @@ const Skills = ({ updateSkill }) => {
                         toast.success("Skill Updated!");
                         Swal.fire({
                             title: 'Updated!',
-                            text: `Updated ${updatedSkill?.title}!`,
+                            text: `Updated "${updatedSkill?.title}"!`,
                             icon: 'success',
                             confirmButtonText: 'Okay',
                             color: '#fff',
@@ -134,6 +134,19 @@ const Skills = ({ updateSkill }) => {
                         setShowUpdateForm(false);
                         refetchSkills();
                         reset();
+                    } else if (
+                        res?.data?.acknowledged &&
+                        res?.data?.matchedCount === 1 &&
+                        res?.data?.modifiedCount === 0
+                    ) {
+                        toast.success("Skill's Up to Date!");
+                        Swal.fire({
+                            title: 'Up to Date!',
+                            text: `"${updatedSkill?.title}" Up to Date!`,
+                            icon: 'success',
+                            color: '#fff',
+                            background: '#05030efc'
+                        });
                     }
                 })
                 .catch(error => {

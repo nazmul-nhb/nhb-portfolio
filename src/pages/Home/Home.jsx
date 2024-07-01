@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { useTypewriter } from "react-simple-typewriter";
-import profile from '../../assets/pp-square.jpg'
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import 'react-photo-view/dist/react-photo-view.css';
 import { FaCloudDownloadAlt } from "react-icons/fa";
@@ -12,8 +11,11 @@ import { GiSkills } from "react-icons/gi";
 import { RiShieldUserLine } from "react-icons/ri";
 import { FaLinkedin } from "react-icons/fa6";
 import { VscGithub, VscGithubProject } from "react-icons/vsc";
+import useGetBio from "../../hooks/useGetBio";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Home = () => {
+    const { bio, isBioLoading } = useGetBio();
     const [contentsVisible, setContentsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState(null);
     const contentRef = useRef(null);
@@ -71,10 +73,12 @@ const Home = () => {
         };
     }, [contentsVisible]);
 
-    const [stacks] = useTypewriter({
-        words: ['Developer', 'Front-End Developer', 'Front-End React Developer', 'MERN-Stack Developer'],
+    const [myRoles] = useTypewriter({
+        words: bio?.responsibilities,
         loop: true,
     });
+
+    if (isBioLoading) return <Spinner />
 
     return (
         <section className="md:py-8 p-6 md:px-16 relative">
@@ -120,19 +124,21 @@ const Home = () => {
                 {/* Bio */}
                 <div data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
-                    <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">Nazmul Hassan</span></h2>
-                    <h3 className="text-xl">I am a {stacks}</h3>
+                    <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">{bio?.name}</span></h2>
+                    <h3 className="text-xl">I am a {myRoles}</h3>
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc">
-                        <li>Developing Responsive websites with user-friendly functionalities.</li>
-                        <li>Passionate about crafting engaging user experiences.</li>
-                        <li>Let&rsquo;s transform your ideas into dynamic web experience!</li>
+                        {
+                            bio?.highlights?.map((highlight, index) => <li key={index}>
+                                {highlight}
+                            </li>)
+                        }
                     </ul>
                     <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="700"
                         className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif mt-2">
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://drive.google.com/file/d/1ROQhAJxo109FMw5fgYqV45gNKQ_SPUbp/view"
+                            href={bio?.resume}
                             className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaCloudDownloadAlt /> Resume
@@ -140,7 +146,7 @@ const Home = () => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://linkedin.com/in/nazmul-nhb"
+                            href={bio?.linked_in}
                             className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white animate-glowBorder transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaLinkedin /> LinkedIn
@@ -148,7 +154,7 @@ const Home = () => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://github.com/nazmul-nhb"
+                            href={bio?.github}
                             className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <VscGithub /> GitHub
@@ -160,11 +166,11 @@ const Home = () => {
                 <div className="p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
                         <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
-                            <PhotoView src={profile}>
+                            <PhotoView src={bio?.profile_image}>
                                 <img
                                     className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500 hover:animate-pulse"
-                                    src={profile}
-                                    alt="Nazmul Hassan" />
+                                    src={bio?.profile_image}
+                                    alt={bio?.name} />
                             </PhotoView>
                         </figure>
                     </PhotoProvider>
