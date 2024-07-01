@@ -79,7 +79,7 @@ const SkillForm = ({ handleAddNewSkill }) => {
             </div>
 
             {/* Submit Button */}
-            <button type="submit" className="absolute top-4 right-8 text-3xl text-teal-500 hover:text-blue-50 hover:scale-105 transition-all duration-500">
+            <button type="submit" className="absolute top-4 right-8 text-3xl text-teal-500 hover:text-blue-50 hover:scale-110 animate-growShrink transition-all duration-500">
                 <FaRegSave />
             </button>
         </form>

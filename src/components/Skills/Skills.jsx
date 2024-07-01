@@ -1,4 +1,4 @@
-import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass, SiReacthookform, SiJsonwebtokens, SiAntdesign, SiVercel, SiNetlify } from 'react-icons/si';
+import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiReactquery, SiRedux, SiMongoosedotws, SiChakraui, SiMui, SiAxios, SiPreact, SiSass, SiReacthookform, SiJsonwebtokens, SiAntdesign, SiVercel, SiNetlify, SiNestjs } from 'react-icons/si';
 import { FaHtml5, FaReact, FaNodeJs, FaFigma, FaGitAlt, FaSave, FaAngular, FaVuejs, FaPython, FaBootstrap, FaDocker, FaAws } from 'react-icons/fa';
 import { RiFlutterFill, RiJavascriptFill, RiNextjsLine } from 'react-icons/ri';
 import { MdDeleteForever, MdEditDocument } from 'react-icons/md';
@@ -35,6 +35,7 @@ const skillIcons = {
     "Redux": <SiRedux />,
     "React Native": <TbBrandReactNative />,
     "Node.js": <FaNodeJs />,
+    "NestJS": <SiNestjs />,
     "Express.js": <SiExpress />,
     "MongoDB": <SiMongodb />,
     "Mongoose": <SiMongoosedotws />,

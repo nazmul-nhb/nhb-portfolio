@@ -1,20 +1,21 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import useGetBio from "../../hooks/useGetBio";
-import { FaLinkedin, FaGithub, FaRegSave } from 'react-icons/fa';
-import { MdImage, MdTextFields } from 'react-icons/md';
-import Spinner from "../Spinner/Spinner";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { FaLinkedin, FaGithub, FaRegSave } from 'react-icons/fa';
+import { MdImage, MdOutlineTaskAlt } from 'react-icons/md';
+import { GrDocumentUser } from "react-icons/gr";
+import { FaUserPen } from "react-icons/fa6";
+import { GiFallingStar } from "react-icons/gi";
+import useGetBio from "../../hooks/useGetBio";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Spinner from "../Spinner/Spinner";
+import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const BioForm = () => {
     const { bio, isBioLoading, refetchBio } = useGetBio();
     const axiosSecure = useAxiosSecure();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
-    // console.log(bio.name);
 
     const handleUpdateBio = (updatedBio) => {
         updatedBio.responsibilities = updatedBio?.responsibilities.split('\n').map(feature => feature.trim());
@@ -128,7 +129,7 @@ const BioForm = () => {
                 className="relative flex flex-col gap-4 items-start justify-between w-full mx-auto">
                 {/* Name */}
                 <div className="w-full flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg"><MdTextFields /> Name</label>
+                    <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg"><FaUserPen /> Name</label>
                     <input
                         defaultValue={bio.name}
                         {...register("name", {
@@ -150,7 +151,7 @@ const BioForm = () => {
 
                 {/* Resume */}
                 <div className="w-full flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='resume' className="flex items-center gap-1 pl-2 md:text-lg"><FaRegSave /> Resume</label>
+                    <label htmlFor='resume' className="flex items-center gap-1 pl-2 md:text-lg"><GrDocumentUser /> Resume</label>
                     <input
                         defaultValue={bio.resume}
                         {...register("resume", {
@@ -181,9 +182,9 @@ const BioForm = () => {
                         name='github' id="github" type="text" placeholder="GitHub URL" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
                 </div>
 
-                {/* Dev Types */}
+                {/* Responsibilities */}
                 <div className="w-full flex md:flex-row flex-col items-start justify-start gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='responsibilities' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-40"><MdTextFields /> Responsibilities</label>
+                    <label htmlFor='responsibilities' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-40"><MdOutlineTaskAlt /> Responsibilities</label>
                     <textarea
                         defaultValue={bio.responsibilities.join('\n')}
                         {...register("responsibilities", {
@@ -192,9 +193,9 @@ const BioForm = () => {
                         name='responsibilities' id="responsibilities" placeholder="Responsibilities (One per Line)" className="h-36 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                 </div>
 
-                {/* Key Points */}
+                {/* Highlights */}
                 <div className="w-full flex md:flex-row flex-col items-start justify-start gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='highlights' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-28"><MdTextFields /> Highlights</label>
+                    <label htmlFor='highlights' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-28"><GiFallingStar /> Highlights</label>
                     <textarea
                         defaultValue={bio.highlights.join('\n')}
                         {...register("highlights", {

@@ -59,7 +59,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                             <dialog open
                                 className={`modal-content ${closing ? 'modal-content-close' : ''} w-[96%] md:w-3/4 lg:w-3/4 xl:w-3/5 2xl:w-auto h-3/4 bg-opacity-95 p-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-transparent rounded-lg z-50 text-white`}
                             >
-                                <div className='bg-blueBG bg-cover border-2 shadow-lg h-full rounded-lg p-1 flex flex-col overflow-y-auto !pb-6'>
+                                <div className='bg-blueBG bg-cover border-2 shadow-lg animate-glowBorder h-full rounded-lg p-1 flex flex-col overflow-y-auto !pb-6'>
                                     <IoIosCloseCircle
                                         onClick={handleClose}
                                         className='absolute -top-1 -right-1 text-2xl bg-white rounded-full text-red-700 hover:text-nhb hover:scale-110 transition-all duration-500 cursor-pointer'
@@ -103,9 +103,9 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                             </h4>
                                             <div className='flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 font-semibold'>
                                                 <span className='font-bold'>Links:</span>
-                                                <a href={project?.link} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Live Link</a>
-                                                <a href={project?.client} className="border px-3  border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Client Side Repository</a>
-                                                <a href={project?.server} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500" target="_blank" rel="noopener noreferrer">Server Side Repository</a>
+                                                <a href={project?.link} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 hover:animate-glowBorder shadow-md shadow-blue-400" target="_blank" rel="noopener noreferrer">Live Link</a>
+                                                <a href={project?.client} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 hover:animate-glowBorder shadow-md shadow-blue-400" target="_blank" rel="noopener noreferrer">Client Side Repository</a>
+                                                <a href={project?.server} className="border px-3 border-white rounded-3xl hover:text-nhb hover:bg-white transition-all duration-500 hover:animate-glowBorder shadow-md shadow-blue-400" target="_blank" rel="noopener noreferrer">Server Side Repository</a>
                                                 <div className='h-4'></div>
                                             </div>
                                         </div>
