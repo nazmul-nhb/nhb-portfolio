@@ -10,12 +10,13 @@ import ProjectForm from "../../components/Projects/ProjectForm";
 import { IoIosCloseCircle } from "react-icons/io";
 import toast from "react-hot-toast";
 import { VscGithubProject } from "react-icons/vsc";
-import { RiFolderAddLine } from "react-icons/ri";
+import { RiFolderAddLine, RiShieldUserLine } from "react-icons/ri";
 import { GiSkills } from "react-icons/gi";
 import Skills from "../../components/Skills/Skills";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
 import SkillForm from "../../components/Skills/SkillForm";
 import useGetSkills from "../../hooks/useGetSkills";
+import BioForm from "../../components/BioForm/BioForm";
 
 const UpdatePortfolio = () => {
     const [closing, setClosing] = useState(false);
@@ -306,14 +307,20 @@ const UpdatePortfolio = () => {
 
             {/* Skills Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
-                <span className="flex items-center gap-2"><GiSkills />Skills</span>
+                <span className="flex items-center gap-2"><RiShieldUserLine />Update Bio</span>
+            </h2>
+            <BioForm/>
+
+            {/* Skills Section */}
+            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
+                <span className="flex items-center gap-2"><GiSkills />Update Skills</span>
                 <HiOutlineViewGridAdd onClick={() => { setAddOpen(true); setShowSkillForm(true) }} className="cursor-pointer text-2xl sm:text-3xl md:text-4xl hover:text-blue-300 animate-growShrink hover:animate-none hover:scale-110 text-white transition-all duration-500" />
             </h2>
             <Skills updateSkill={true} />
 
             {/* Projects Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
-                <span className="flex items-center gap-2"><VscGithubProject />Projects</span>
+                <span className="flex items-center gap-2"><VscGithubProject />Update Projects</span>
                 <RiFolderAddLine onClick={() => setAddOpen(true)} className="cursor-pointer text-2xl sm:text-3xl md:text-4xl animate-growShrink hover:animate-none hover:scale-110 hover:text-blue-300 text-white transition-all duration-500" />
             </h2>
 

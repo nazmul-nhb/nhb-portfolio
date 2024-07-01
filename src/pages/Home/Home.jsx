@@ -159,14 +159,14 @@ const Home = () => {
                 {/* Image */}
                 <div className="p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
-                        <PhotoView src={profile}>
-                            <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
+                        <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
+                            <PhotoView src={profile}>
                                 <img
                                     className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500 hover:animate-pulse"
                                     src={profile}
                                     alt="Nazmul Hassan" />
-                            </figure>
-                        </PhotoView>
+                            </PhotoView>
+                        </figure>
                     </PhotoProvider>
                 </div>
             </div>

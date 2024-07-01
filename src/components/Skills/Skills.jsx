@@ -17,6 +17,7 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import useGetSkills from '../../hooks/useGetSkills';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { Tooltip } from 'react-tooltip';
 
 const skillIcons = {
     "HTML": <FaHtml5 />,
@@ -25,9 +26,9 @@ const skillIcons = {
     "JavaScript": <RiJavascriptFill />,
     "Python": <FaPython />,
     "React": <FaReact />,
-    "Angular": <FaAngular  />,
+    "Angular": <FaAngular />,
     "Flutter": <RiFlutterFill />,
-    "Vue.js": <FaVuejs  />,
+    "Vue.js": <FaVuejs />,
     "Preact": <SiPreact />,
     "TypeScript": <BiLogoTypescript />,
     "Next.js": <RiNextjsLine />,
@@ -42,17 +43,17 @@ const skillIcons = {
     "Firebase": <SiFirebase />,
     "Git": <FaGitAlt />,
     "ChakraUI": <SiChakraui />,
-    "MaterialUI": <SiMui  />,
+    "MaterialUI": <SiMui />,
     "Axios": <SiAxios />,
     "Stripe": <BsStripe />,
     "Figma": <FaFigma />,
-    "Docker": <FaDocker  />,
+    "Docker": <FaDocker />,
     "React Hook Form": <SiReacthookform />,
     "JWT": <SiJsonwebtokens />,
     "Ant Design": <SiAntdesign />,
     "MySQL": <GrMysql />,
     "Vercel CLI": <SiVercel />,
-    "Netlify": <SiNetlify  />,
+    "Netlify": <SiNetlify />,
     "AWS": <FaAws />,
     "TanStack Query": <SiReactquery />
 };
@@ -188,7 +189,7 @@ const Skills = ({ updateSkill }) => {
                 axiosSecure.delete(`/skills/delete/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
-                        refetchSkills();
+                            refetchSkills();
                             Swal.fire({
                                 title: 'Skill Deleted!',
                                 text: `Permanently Deleted "${title}"!`,
@@ -238,18 +239,26 @@ const Skills = ({ updateSkill }) => {
         <section ref={ref} className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12'>
             {skills.map((skill) => (
                 <div key={skill._id}
+                    id={`skill-${skill._id}`}
                     data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
-                    className="group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400 relative"
+                    className="skillLevel hover:animate-glowBorder group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400 relative"
                     onMouseEnter={() => handleMouseEnter(skill._id)}
                     onMouseLeave={handleMouseLeave}>
+                    <Tooltip anchorSelect={`#skill-${skill._id}`} place="top">
+                        {skill.level >= 80 ? 'Expert'
+                            : (skill.level >= 70 && skill.level < 80) ? 'Comfortable'
+                                : (skill.level >= 50 && skill.level < 70)? 'Familiar'
+                                    : null
+                        }
+                    </Tooltip>
                     <div className="text-5xl group-hover:scale-125 transition-all duration-1000">
-                        {skillIcons[skill.title]}
+                      <span className="block animate-growShrink">{skillIcons[skill.title]}</span>  
                     </div>
                     {showUpdateForm !== skill._id ?
                         <div className="flex-1 font-kreonSerif">
                             <h3 className="text-lg font-semibold flex items-center justify-between group-hover:text-xl transition-all duration-1000">
                                 <span>{skill.title}</span>
-                                <span>
+                                <span className="hidden">
                                     {(hoveredSkillId === skill._id || viewedSkills[skill._id]) && (
                                         <CountUp key={viewedSkills[skill._id]}
                                             delay={0.1} start={0} end={skill.level} duration={2}
@@ -308,19 +317,19 @@ const Skills = ({ updateSkill }) => {
                                     name='serial' id="serial" type="number" placeholder="#" className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500" />
                             </div>
                             <button title='Save' type='submit' className='absolute -top-6 -left-20 text-3xl text-teal-500 hover:text-blue-50 hover:scale-105 transition-all duration-500'>
-                                <FaSave  />
+                                <FaSave />
                             </button>
                         </form>
                     }
 
                     {updateSkill &&
                         <div className='absolute -top-1 -right-3 -bottom-1 flex flex-col justify-between gap-4'>
-                            <MdEditDocument 
+                            <MdEditDocument
                                 onClick={() => setShowUpdateForm(showUpdateForm === skill._id ? null : skill._id)}
                                 className='text-2xl text-blue-400 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                 title='Edit'
                             />
-                            <MdDeleteForever  
+                            <MdDeleteForever
                                 onClick={() => handleDeleteSkill(skill?._id, skill?.title)}
                                 className='text-3xl text-red-500 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                 title='Delete'
