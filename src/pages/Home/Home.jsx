@@ -15,9 +15,9 @@ import useGetBio from "../../hooks/useGetBio";
 import Spinner from "../../components/Spinner/Spinner";
 
 const Home = () => {
-    const { bio, isBioLoading } = useGetBio();
     const [contentsVisible, setContentsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState(null);
+    const { bio, isBioLoading } = useGetBio();
     const contentRef = useRef(null);
 
     // function to handle scrolling to a section
@@ -163,7 +163,7 @@ const Home = () => {
                 </div>
 
                 {/* Image */}
-                <div className="p-2 shadow-md shadow-blue-400 animate-glowBorder">
+                <div className="relative p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
                         <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
                             <PhotoView src={bio?.profile_image}>

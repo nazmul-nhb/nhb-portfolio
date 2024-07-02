@@ -10,6 +10,7 @@ import Lottie from "react-lottie-player";
 import contactAnimation from "../../assets/contact-animation.json"
 // import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
 import axios from "axios";
+import MovingContacts from "../../components/MovingContacts/MovingContacts";
 
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -85,7 +86,7 @@ const Contact = () => {
     }, [errors.name, errors.msg, errors.email, errors.serial]);
 
     return (
-        <section className="md:py-8 p-6 md:px-16 flex flex-col lg:flex-row justify-between mb-12">
+        <section className="md:py-8 p-6 md:px-16 flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
             <Helmet>
                 <title>Contact - Nazmul Hassan</title>
             </Helmet>
@@ -93,7 +94,10 @@ const Contact = () => {
             {/* Animation */}
             <div data-aos="zoom-in-down" data-aos-duration="1500"
                 className="w-full lg:w-1/2 flex items-center justify-center gap-5">
-                <Lottie className='w-3/4' loop animationData={contactAnimation} play />
+                <div className="flex-grow flex lg:flex-col max-md:flex-col items-center justify-around">
+                    <Lottie className='w-1/2' loop animationData={contactAnimation} play />
+                    <MovingContacts/>
+                </div>
             </div>
             <div data-aos="zoom-in-up" data-aos-duration="1500" className="flex-1">
                 <h3 className="text-lg md:text-3xl lg:text-2xl xl:text-3xl text-center mb-4 md:mb-8">Let&rsquo;s Create Something <span className="font-bold animate-pulse">Great Together</span></h3>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { FaLinkedin, FaGithub, FaRegSave } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaRegSave, FaUserGraduate } from 'react-icons/fa';
 import { MdImage, MdOutlineTaskAlt } from 'react-icons/md';
 import { GrDocumentUser } from "react-icons/gr";
 import { FaUserPen } from "react-icons/fa6";
@@ -110,6 +110,10 @@ const BioForm = () => {
             toast.error(errors.github.message, { duration: 2000 });
             return;
         }
+        if (errors.education) {
+            toast.error(errors.education.message, { duration: 2000 });
+            return;
+        }
         if (errors.responsibilities) {
             toast.error(errors.responsibilities.message, { duration: 2000 });
             return;
@@ -118,7 +122,7 @@ const BioForm = () => {
             toast.error(errors.highlights.message, { duration: 2000 });
             return;
         }
-    }, [errors]);
+    }, [errors.education, errors.github, errors.highlights, errors.linked_in, errors.name, errors.profile_image, errors.responsibilities, errors.resume]);
 
     if (isBioLoading) return <Spinner />
 
@@ -180,6 +184,17 @@ const BioForm = () => {
                             required: { value: true, message: "GitHub URL is required!" }
                         })}
                         name='github' id="github" type="text" placeholder="GitHub URL" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
+                </div>
+
+                {/* Education */}
+                <div className="w-full flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
+                    <label htmlFor='education' className="flex items-center gap-1 pl-2 md:text-lg"><FaUserGraduate /> Education</label>
+                    <input
+                        defaultValue={bio.education}
+                        {...register("education", {
+                            required: { value: true, message: "Education info is required!" }
+                        })}
+                        name='education' id="education" type="text" placeholder="Education info" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
                 </div>
 
                 {/* Responsibilities */}
