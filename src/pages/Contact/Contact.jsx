@@ -10,7 +10,7 @@ import Lottie from "react-lottie-player";
 import contactAnimation from "../../assets/contact-animation.json"
 // import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
 import axios from "axios";
-import MovingContacts from "../../components/MovingContacts/MovingContacts";
+import MovingContacts from "../../components/CircularMotion/MovingContacts";
 
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -86,17 +86,17 @@ const Contact = () => {
     }, [errors.name, errors.msg, errors.email, errors.serial]);
 
     return (
-        <section className="md:py-8 p-6 md:px-16 flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
+        <section className="p-6 md:px-16 flex flex-col lg:flex-row lg:items-center justify-between">
             <Helmet>
                 <title>Contact - Nazmul Hassan</title>
             </Helmet>
 
             {/* Animation */}
             <div data-aos="zoom-in-down" data-aos-duration="1500"
-                className="w-full lg:w-1/2 flex items-center justify-center gap-5">
-                <div className="flex-grow flex lg:flex-col max-md:flex-col items-center justify-around">
-                    <Lottie className='w-1/2' loop animationData={contactAnimation} play />
-                    <MovingContacts/>
+                className="w-full lg:w-1/2 flex items-center justify-center gap-5 mb-16">
+                <div className="flex-grow flex lg:flex-col max-md:flex-col-reverse items-center justify-around">
+                    <Lottie className='sm:w-3/5' loop animationData={contactAnimation} play />
+                    <MovingContacts />
                 </div>
             </div>
             <div data-aos="zoom-in-up" data-aos-duration="1500" className="flex-1">
@@ -124,7 +124,7 @@ const Contact = () => {
                             })}
                             name='email' id="email" type="email" placeholder="Your Email Address" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
                     </div>
-                    
+
                     <div className="flex md:flex-row flex-col items-start justify-start gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
                         <label htmlFor='msg' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-28"><TbMessage2Question /> Message</label>
                         <textarea
@@ -134,7 +134,7 @@ const Contact = () => {
                             })}
                             name='msg' id="msg" placeholder="Write Your Message Here" className="h-64 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                     </div>
-                   
+
                     <button type="submit" className="w-full md:text-xl text-lg flex items-center justify-center tracking-wide uppercase px-3 py-2 font-bold rounded-lg bg-nhbBG text-white border border-white hover:text-blue-50 hover:scale-[1.03] transition-all duration-700 shadow-md shadow-blue-400 hover:animate-glowBorder">
                         {mailSending ? <CgMail className="animate-horizontal text-2xl" /> : <span className="flex items-center gap-1"> <CgMail /> Send Message</span>}
                     </button>

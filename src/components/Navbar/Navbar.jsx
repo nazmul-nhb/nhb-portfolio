@@ -123,11 +123,11 @@ const Navbar = () => {
     const promptForSecretCode = () => {
         Swal.fire({
             title: "Restricted Action!",
-            text: 'This Option is Only for Nazmul',
+            text: 'This Option is Only for Nazmul!',
             // icon: "info",
             input: "password",
             color: '#fff',
-            inputPlaceholder: 'Enter Your Secret Code!',
+            inputPlaceholder: 'Enter Secret Code!',
             background: '#05030efc',
             inputAttributes: {
                 autocapitalize: "off"
@@ -248,11 +248,11 @@ const Navbar = () => {
             <div
                 ref={sidebarRef} className="flex justify-between items-center text-sm xl:text-base">
                 <IoIosArrowDropleft
-                    className={`sm:hidden text-4xl cursor-pointer z-50 transform transition-all duration-1000 ${!openNavbar && "rotate-180"}`}
+                    className={`sm:hidden text-4xl cursor-pointer z-50 transition-all duration-1000 ${!openNavbar && "rotate-180"}`}
                     onClick={() => setOpenNavbar(!openNavbar)}
                 />
                 <ul
-                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold duration-1000 absolute sm:static sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-0 top-16 bg-nhb bg-opacity-80 flex z-10' : 'right-full top-16 shadow-none'}`}>
+                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold transition-all duration-700 absolute sm:static sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-0 top-16 bg-nhb bg-opacity-80 flex z-10' : 'right-full top-16 shadow-none'}`}>
                     <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
                     {navigationItems}
                 </ul>

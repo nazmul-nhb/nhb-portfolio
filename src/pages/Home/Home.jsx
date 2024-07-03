@@ -9,16 +9,18 @@ import { BiBookContent } from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 import { GiSkills } from "react-icons/gi";
 import { RiShieldUserLine } from "react-icons/ri";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaHandshake, FaLinkedin, FaUserGraduate } from "react-icons/fa6";
 import { VscGithub, VscGithubProject } from "react-icons/vsc";
 import useGetBio from "../../hooks/useGetBio";
 import Spinner from "../../components/Spinner/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const [contentsVisible, setContentsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState(null);
     const { bio, isBioLoading } = useGetBio();
     const contentRef = useRef(null);
+    const navigate = useNavigate();
 
     // function to handle scrolling to a section
     const scrollToSection = (sectionID) => {
@@ -85,6 +87,9 @@ const Home = () => {
             <Helmet>
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
+
+            <FaHandshake onClick={()=>navigate('/contact')}
+             className="fixed top-32 right-1 md:right-4 z-10 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
 
             {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
@@ -188,6 +193,16 @@ const Home = () => {
                 <VscGithubProject />Projects
             </h2>
             <Projects />
+
+            {/* Education Section */}
+            <div className="mb-12">
+                <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
+                    <FaUserGraduate /> Education
+                </h2>
+                <p className="text-lg">
+                    {bio?.education}
+                </p>
+            </div>
         </section>
     );
 };
