@@ -138,7 +138,7 @@ const Home = () => {
             </div>
 
             {/* Intro Section */}
-            <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-6 my-6 mb-12">
+            <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-10 my-6 mb-12">
 
                 {/* Bio */}
                 <div data-aos="zoom-in-up" data-aos-duration="1000"
