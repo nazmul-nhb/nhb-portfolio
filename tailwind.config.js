@@ -41,16 +41,16 @@ export default {
           '0%, 100%': { boxShadow: '0 0 5px rgba(15, 170, 250, 0.5), 0 0 12px rgba(15, 170, 250, 0.5)' },
           '50%': { boxShadow: '0 0 5px rgba(15, 170, 250, 0.5), 0 0 12px rgba(15, 170, 250, 0.5), 0 0 20px rgba(15, 170, 250, 0.5), 0 0 24px rgba(15, 170, 250, 0.5)' },
         },
-        glowingAll: {
-          '0%': {
-            backgroundColor: 'rgba(15, 170, 250, 0.9)',
-            boxShadow: '0 0 5px rgba(15, 170, 250, 0.5), 0 0 10px rgba(15, 170, 250, 0.5), 0 0 15px rgba(15, 170, 250, 0.5), 0 0 20px rgba(15, 170, 250, 0.5), 0 0 30px rgba(15, 170, 250, 0.5), 0 0 40px rgba(15, 170, 250, 0.5), 0 0 50px rgba(15, 170, 250, 0.5), 0 0 75px rgba(15, 170, 250, 0.5)',
-          },
-          '100%': {
-            backgroundColor: 'rgba(15, 170, 250, 0.99)',
-            boxShadow: '0 0 20px rgba(15, 170, 250, 0.5), 0 0 30px rgba(15, 170, 250, 0.5), 0 0 40px rgba(15, 170, 250, 0.5), 0 0 50px rgba(15, 170, 250, 0.5), 0 0 60px rgba(15, 170, 250, 0.5), 0 0 70px rgba(15, 170, 250, 0.5), 0 0 80px rgba(15, 170, 250, 0.5), 0 0 100px rgba(15, 170, 250, 0.5)',
-          },
-        }
+        // glowingAll: {
+        //   '0%': {
+        //     backgroundColor: 'rgba(15, 170, 250, 0.9)',
+        //     boxShadow: '0 0 5px rgba(15, 170, 250, 0.5), 0 0 10px rgba(15, 170, 250, 0.5), 0 0 15px rgba(15, 170, 250, 0.5), 0 0 20px rgba(15, 170, 250, 0.5), 0 0 30px rgba(15, 170, 250, 0.5), 0 0 40px rgba(15, 170, 250, 0.5), 0 0 50px rgba(15, 170, 250, 0.5), 0 0 75px rgba(15, 170, 250, 0.5)',
+        //   },
+        //   '100%': {
+        //     backgroundColor: 'rgba(15, 170, 250, 0.99)',
+        //     boxShadow: '0 0 20px rgba(15, 170, 250, 0.5), 0 0 30px rgba(15, 170, 250, 0.5), 0 0 40px rgba(15, 170, 250, 0.5), 0 0 50px rgba(15, 170, 250, 0.5), 0 0 60px rgba(15, 170, 250, 0.5), 0 0 70px rgba(15, 170, 250, 0.5), 0 0 80px rgba(15, 170, 250, 0.5), 0 0 100px rgba(15, 170, 250, 0.5)',
+        //   },
+        // }
       },
       animation: {
         rotate: 'rotate360 1s linear',
@@ -60,7 +60,7 @@ export default {
         growShrink: 'growShrink 3s ease-in-out infinite',
         glow: 'glowing 1.5s infinite alternate',
         glowBorder: 'glowingBorder 3s linear infinite',
-        glowAll: 'glowingAll 2s ease-in-out infinite alternate',
+        // glowAll: 'glowingAll 2s ease-in-out infinite alternate',
       },
       backgroundImage: {
         nhbBG: 'linear-gradient(110deg, #0f2d79 0%, #171157 50%, #17186a 100%)',

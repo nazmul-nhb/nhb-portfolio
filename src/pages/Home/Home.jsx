@@ -14,6 +14,7 @@ import { VscGithub, VscGithubProject } from "react-icons/vsc";
 import useGetBio from "../../hooks/useGetBio";
 import Spinner from "../../components/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
+import MovingContacts from "../../components/MovingContacts/MovingContacts";
 
 const Home = () => {
     const [contentsVisible, setContentsVisible] = useState(false);
@@ -139,7 +140,7 @@ const Home = () => {
                         }
                     </ul>
                     <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="700"
-                        className="text-sm sm:text-xl md:text-2xl flex items-center gap-2 font-kreonSerif mt-2">
+                        className="text-sm sm:text-xl md:text-2xl flex items-center justify-between gap-2 font-kreonSerif mt-2">
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -165,6 +166,7 @@ const Home = () => {
                             <VscGithub /> GitHub
                         </a>
                     </div>
+                    <MovingContacts/>
                 </div>
 
                 {/* Image */}

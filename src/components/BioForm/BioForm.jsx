@@ -35,7 +35,7 @@ const BioForm = () => {
         try {
             axiosSecure.patch(`/bio/update/${bio?._id}`, updatedBio)
                 .then(res => {
-                    console.log(res);
+                    // console.log(res);
                     if (res?.data?.modifiedCount > 0) {
                         toast.success("Bio Updated!");
                         Swal.fire({
@@ -85,7 +85,6 @@ const BioForm = () => {
                 background: '#05030efc'
             })
         }
-
     }
 
     // show error toasts

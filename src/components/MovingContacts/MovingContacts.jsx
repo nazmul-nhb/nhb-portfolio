@@ -3,35 +3,45 @@ import { FaDiscord, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import { FaFacebookF, FaYahoo } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
 
+const icons = [
+    { href: "https://t.me/nhb42", component: FaTelegramPlane, title: "Telegram", color: "text-telegram" },
+    { href: "https://facebook.com/nazmul.batchu", component: FaFacebookF, title: "Facebook", color: "text-facebook" },
+    { href: "mailto:nazmulnhb@gmail.com", component: BiLogoGmail, title: "Gmail", color: "text-google" },
+    { href: "https://discord.com/users/831030314528538664", component: FaDiscord, title: "Discord", color: "text-discord" },
+    { href: "https://wa.me/+8801623732187", component: FaWhatsapp, title: "WhatsApp", color: "text-whatsapp" },
+    { href: "mailto:nazmulnhb007@yahoo.com", component: FaYahoo, title: "Yahoo! Mail", color: "text-yahoo" },
+];
+
 const MovingContacts = () => {
     const [isPaused, setIsPaused] = useState(false);
 
     return (
-        <div className="inset-0 flex justify-center items-center rounded-full animate-glowAll">
-            <div className="w-full h-full flex justify-center items-center bg-transparent">
-                <div className={`circle-animation ${isPaused ? 'paused' : ''} text-4xl bg-transparent`}
+        <div className="w-full h-auto my-8 text-center">
+            <div className="carousel-container w-full h-auto">
+                <div
+                    className={`carousel ${isPaused ? 'paused' : ''}`}
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     onClick={() => setIsPaused(!isPaused)}
                 >
-                    <a className="flex items-center gap-2 text-github" href="https://t.me/nhb42" target="_blank" rel="noopener noreferrer" title="Telegram">
-                        <FaTelegramPlane className="hover:scale-125 hover:text-white transition-all duration-500" />
-                    </a>
-                    <a className="flex items-center gap-2 text-facebook" href="https://facebook.com/nazmul.batchu" target="_blank" rel="noopener noreferrer" title="Facebook">
-                        <FaFacebookF className="hover:scale-125 hover:text-white transition-all duration-500" />
-                    </a>
-                    <a className="flex items-center gap-2 text-google" href="mailto:nazmulnhb@gmail.com" rel="noopener noreferrer" title="Gmail">
-                        <BiLogoGmail className="hover:scale-125 hover:text-white transition-all duration-500" />
-                    </a>
-                    <a className="flex items-center gap-2 text-discord" href="https://discord.com/users/831030314528538664" target="_blank" rel="noopener noreferrer" title="Discord">
-                        <FaDiscord className="hover:scale-125 hover:text-white transition-all duration-500" />
-                    </a>
-                    <a className="flex items-center gap-2 text-whatsapp" href="https://wa.me/+8801623732187" target="_blank" rel="noopener noreferrer" title="WhatsApp">
-                        <FaWhatsapp className="hover:scale-125 hover:text-white transition-all duration-500" />
-                    </a>
-                    <a className="flex items-center gap-2 text-yahoo" href="mailto:nazmulnhb007@yahoo.com" rel="noopener noreferrer" title="Yahoo! Mail">
-                        <FaYahoo className="hover:scale-125 hover:text-white transition-all duration-500" />
-                    </a>
+                    {icons.map((icon, index) => {
+                        const IconComponent = icon.component;
+                        return (
+                            <a
+                                key={index}
+                                href={icon.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`carousel-item ${icon.color}`}
+                                style={{
+                                    transform: `rotateY(${index * 60}deg) translateZ(10rem)`,
+                                }}
+                                title={icon.title}
+                            >
+                                <IconComponent className="hover:scale-125 hover:text-white transition-all duration-500 text-4xl" />
+                            </a>
+                        );
+                    })}
                 </div>
             </div>
         </div>
