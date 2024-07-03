@@ -155,8 +155,9 @@ const Home = () => {
                             </li>)
                         }
                     </ul>
+                    {/* Buttons */}
                     <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="700"
-                        className="text-sm sm:text-xl md:text-2xl flex items-center justify-between gap-2 font-kreonSerif mt-2">
+                        className="w-full text-sm sm:text-xl md:text-2xl flex items-center justify-center md:justify-between gap-2 font-kreonSerif mt-2">
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
