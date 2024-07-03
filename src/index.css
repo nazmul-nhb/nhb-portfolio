@@ -142,3 +142,8 @@ html {
 .pointer-events-none {
     pointer-events: none;
 }
+
+/* HomePage Content Scroll */
+.scroll-margin-top {
+    scroll-margin-top: 92px;
+}

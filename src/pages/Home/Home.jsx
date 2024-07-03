@@ -94,17 +94,20 @@ const Home = () => {
             </Helmet>
 
             <FaHandshake onClick={() => navigate('/contact')}
-                className="contact fixed top-32 right-1 md:right-4 z-10 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
-            <Tooltip anchorSelect=".contact" place="left">
+                className="contact fixed top-32 right-1 md:right-4 z-30 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
+            <Tooltip className="z-30" anchorSelect=".contact" place="left">
                 Contact Me
             </Tooltip>
 
             {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
-                <BiBookContent
+                <BiBookContent id="contents"
                     className="cursor-pointer text-3xl md:text-4xl text-blue-300 animate-flip hover:text-blue-500 hover:scale-105 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
+                <Tooltip className="z-30" anchorSelect="#contents" place="left">
+                    Contents
+                </Tooltip>
                 <div
                     ref={contentRef}
                     className={`absolute flex gap-5 items-center bg-nhb bg-opacity-60 space-y-1 font-semibold text-xs sm:text-lg shadow-md shadow-blue-500 p-2 transition-transform duration-1000 ease-in-out ${contentsVisible ? 'transform translate-x-0 -top-2 right-9 md:right-11' : 'transform translate-x-full -right-full -top-2'}`}
@@ -138,7 +141,7 @@ const Home = () => {
             </div>
 
             {/* Intro Section */}
-            <div id="bio" className="flex flex-col md:flex-row justify-around items-center gap-10 my-6 mb-12">
+            <div id="bio" className="scroll-margin-top flex flex-col md:flex-row justify-around items-center gap-10 my-6 mb-12">
 
                 {/* Bio */}
                 <div data-aos="zoom-in-up" data-aos-duration="1000"
@@ -198,19 +201,19 @@ const Home = () => {
             </div>
 
             {/* Skills Section */}
-            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="skills">
+            <h2 className="scroll-margin-top pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="skills">
                 <GiSkills />Skills
             </h2>
             <Skills />
 
             {/* Projects Section */}
-            <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="projects">
+            <h2 className="scroll-margin-top pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="projects">
                 <VscGithubProject />Projects
             </h2>
             <Projects />
 
             {/* Education Section */}
-            <div id="education" className="mb-12">
+            <div id="education" className="scroll-margin-top mb-12">
                 <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
                     <FaUserGraduate /> Education
                 </h2>
