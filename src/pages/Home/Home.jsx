@@ -41,13 +41,13 @@ const Home = () => {
         const projectsSection = document.getElementById('projects');
         const educationSection = document.getElementById('education');
 
-        if (projectsSection && scrollPosition >= projectsSection.offsetTop) {
+        if (educationSection && scrollPosition >= educationSection.offsetTop) {
+            setActiveSection('education');
+        } else if (projectsSection && scrollPosition >= projectsSection.offsetTop) {
             setActiveSection('projects');
         } else if (skillsSection && scrollPosition >= skillsSection.offsetTop) {
             setActiveSection('skills');
         } else if (bioSection && scrollPosition >= bioSection.offsetTop) {
-            setActiveSection('bio');
-        } else if (educationSection && scrollPosition >= educationSection.offsetTop) {
             setActiveSection('bio');
         }
     };
