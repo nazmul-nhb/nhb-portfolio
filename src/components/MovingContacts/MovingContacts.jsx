@@ -38,7 +38,7 @@ const MovingContacts = () => {
                                 }}
                                 title={icon.title}
                             >
-                                <IconComponent className="hover:scale-125 hover:text-white transition-all duration-500 text-4xl" />
+                                <IconComponent className="hover:scale-150 hover:text-white transition-all duration-500 text-4xl" />
                             </a>
                         );
                     })}

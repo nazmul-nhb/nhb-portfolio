@@ -15,6 +15,7 @@ import useGetBio from "../../hooks/useGetBio";
 import Spinner from "../../components/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import MovingContacts from "../../components/MovingContacts/MovingContacts";
+import { Tooltip } from "react-tooltip";
 
 const Home = () => {
     const [contentsVisible, setContentsVisible] = useState(false);
@@ -38,12 +39,15 @@ const Home = () => {
         const bioSection = document.getElementById('bio');
         const skillsSection = document.getElementById('skills');
         const projectsSection = document.getElementById('projects');
+        const educationSection = document.getElementById('education');
 
         if (projectsSection && scrollPosition >= projectsSection.offsetTop) {
             setActiveSection('projects');
         } else if (skillsSection && scrollPosition >= skillsSection.offsetTop) {
             setActiveSection('skills');
         } else if (bioSection && scrollPosition >= bioSection.offsetTop) {
+            setActiveSection('bio');
+        } else if (educationSection && scrollPosition >= educationSection.offsetTop) {
             setActiveSection('bio');
         }
     };
@@ -89,8 +93,11 @@ const Home = () => {
                 <title>Portfolio - Nazmul Hassan</title>
             </Helmet>
 
-            <FaHandshake onClick={()=>navigate('/contact')}
-             className="fixed top-32 right-1 md:right-4 z-10 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
+            <FaHandshake onClick={() => navigate('/contact')}
+                className="contact fixed top-32 right-1 md:right-4 z-10 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
+            <Tooltip anchorSelect=".contact" place="left">
+                Contact Me
+            </Tooltip>
 
             {/* Table of Contents */}
             <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
@@ -100,7 +107,7 @@ const Home = () => {
                 />
                 <div
                     ref={contentRef}
-                    className={`absolute flex gap-5 items-center bg-nhb bg-opacity-60 space-y-1 font-semibold sm:text-lg shadow-md shadow-blue-500 p-2 transition-transform duration-1000 ease-in-out ${contentsVisible ? 'transform translate-x-0 -top-2 right-9 md:right-11' : 'transform translate-x-full -right-full -top-2'}`}
+                    className={`absolute flex gap-5 items-center bg-nhb bg-opacity-60 space-y-1 font-semibold text-xs sm:text-lg shadow-md shadow-blue-500 p-2 transition-transform duration-1000 ease-in-out ${contentsVisible ? 'transform translate-x-0 -top-2 right-9 md:right-11' : 'transform translate-x-full -right-full -top-2'}`}
                 >
                     <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
                     <a
@@ -120,6 +127,12 @@ const Home = () => {
                         onClick={() => scrollToSection('projects')}
                     >
                         <VscGithubProject />Projects
+                    </a>
+                    <a
+                        className={`cursor-pointer flex items-center gap-1 hover:text-blue-500 transition-all duration-500 ${activeSection === 'education' ? 'font-bold text-blue-300' : ''}`}
+                        onClick={() => scrollToSection('education')}
+                    >
+                        <FaUserGraduate />Education
                     </a>
                 </div>
             </div>
@@ -166,7 +179,7 @@ const Home = () => {
                             <VscGithub /> GitHub
                         </a>
                     </div>
-                    <MovingContacts/>
+                    <MovingContacts />
                 </div>
 
                 {/* Image */}
@@ -197,7 +210,7 @@ const Home = () => {
             <Projects />
 
             {/* Education Section */}
-            <div className="mb-12">
+            <div id="education" className="mb-12">
                 <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
                     <FaUserGraduate /> Education
                 </h2>
