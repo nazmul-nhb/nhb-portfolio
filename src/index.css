@@ -67,6 +67,7 @@ html {
 .modal-open {
     overflow: hidden;
 }
+
 /* circular contact icons */
 /* 
 .circle-animation {
@@ -135,7 +136,7 @@ html {
 
 /* pause animation */
 .carousel.paused {
-  animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 /* Disable pointer events */
@@ -145,5 +146,9 @@ html {
 
 /* HomePage Content Scroll */
 .scroll-margin-top {
-    scroll-margin-top: 92px;
+    scroll-margin-top: 80px;
+}
+
+#bio.scroll-margin-top {
+    scroll-margin-top: 128px !important;
 }

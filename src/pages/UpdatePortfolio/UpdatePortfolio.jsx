@@ -326,7 +326,7 @@ const UpdatePortfolio = () => {
 
             {/* Skills Section */}
             <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex justify-between items-center">
-                <span className="flex items-center gap-2"><GiSkills />Update Skills</span>
+                <span className="flex items-center gap-2"><GiSkills />Update Skills & Tools</span>
                 <HiOutlineViewGridAdd onClick={() => { setAddOpen(true); setShowSkillForm(true) }} className="cursor-pointer text-2xl sm:text-3xl md:text-4xl hover:text-blue-300 animate-growShrink hover:animate-none hover:scale-110 text-white transition-all duration-500" />
             </h2>
             <Skills updateSkill={true} />

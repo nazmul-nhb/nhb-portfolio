@@ -126,10 +126,10 @@ const BioForm = () => {
     if (isBioLoading) return <Spinner />
 
     return (
-        <div className="relative flex flex-col md:flex-row justify-around items-center md:items-start gap-6 my-6 mb-12">
+        <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-8 my-6 mb-12">
             <form
                 onSubmit={handleSubmit(handleUpdateBio)}
-                className="relative flex flex-col gap-4 items-start justify-between w-full mx-auto">
+                className="flex flex-col gap-5 items-center justify-between w-full mx-auto">
                 {/* Name */}
                 <div className="w-full flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
                     <label htmlFor='name' className="flex items-center gap-1 pl-2 md:text-lg"><FaUserPen /> Name</label>
@@ -218,12 +218,12 @@ const BioForm = () => {
                         name='highlights' id="highlights" placeholder="Key Points (One per Line)" className="h-32 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                 </div>
                 {/* Submit Button */}
-                <button title='Save' type="submit" className="absolute bottom-2 right-2 text-3xl text-teal-500 hover:scale-110 hover:text-blue-50 transition-all duration-500 animate-growShrink">
-                    <FaRegSave />
+                <button title='Save' type="submit" className="flex items-center gap-1 px-3 py-0.5 text-xl md:text-2xl border border-white rounded-3xl hover:text-nhb hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400">
+                    <FaRegSave /> Save Data
                 </button>
             </form>
             {/* Image */}
-            <div className="sticky top-20 right-0 p-2 shadow-md shadow-blue-400 animate-glowBorder">
+            <div className="p-2 shadow-md shadow-blue-400 animate-glowBorder">
                 <PhotoProvider>
                     <figure data-aos="zoom-out-down " data-aos-duration="1000" data-aos-delay="400">
                         <PhotoView src={bio.profile_image}>

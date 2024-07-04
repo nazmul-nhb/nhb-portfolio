@@ -140,10 +140,10 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Intro Section */}
+            {/* Bio Section */}
             <div id="bio" className="scroll-margin-top flex flex-col md:flex-row justify-around items-center gap-10 my-6 mb-12">
 
-                {/* Bio */}
+                {/* Intro */}
                 <div data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">{bio?.name}</span></h2>
@@ -202,14 +202,14 @@ const Home = () => {
             </div>
 
             {/* Skills Section */}
-            <h2 className="scroll-margin-top pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="skills">
-                <GiSkills />Skills
+            <h2 id="skills" className="scroll-margin-top pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
+                <GiSkills /> Skills & Tools
             </h2>
             <Skills />
 
             {/* Projects Section */}
-            <h2 className="scroll-margin-top pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2" id="projects">
-                <VscGithubProject />Projects
+            <h2 id="projects" className="scroll-margin-top pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
+                <VscGithubProject /> Projects
             </h2>
             <Projects />
 
