@@ -101,13 +101,13 @@ const Home = () => {
 
             {/* Table of Contents */}
             <div className="fixed top-20 right-2 md:right-4 z-10 flex items-center">
-                <BiBookContent id="contents"
+                <BiBookContent id="contents" title="Contents"
                     className="cursor-pointer text-3xl md:text-4xl text-blue-300 animate-flip hover:text-blue-500 hover:scale-105 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}
                 />
-                <Tooltip className="z-30" anchorSelect="#contents" place="left">
+                {/* <Tooltip className="z-30" anchorSelect="#contents" place="left">
                     Contents
-                </Tooltip>
+                </Tooltip> */}
                 <div
                     ref={contentRef}
                     className={`absolute flex gap-5 items-center bg-nhb bg-opacity-60 space-y-1 font-semibold text-xs sm:text-lg shadow-md shadow-blue-500 p-2 transition-transform duration-1000 ease-in-out ${contentsVisible ? 'transform translate-x-0 -top-2 right-9 md:right-11' : 'transform translate-x-full -right-full -top-2'}`}
