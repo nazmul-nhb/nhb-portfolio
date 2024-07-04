@@ -94,13 +94,13 @@ const Home = () => {
             </Helmet>
 
             <FaHandshake onClick={() => navigate('/contact')}
-                className="contact fixed top-32 right-1 md:right-4 z-30 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
+                className="contact fixed top-32 right-2 md:right-4 z-10 cursor-pointer text-3xl md:text-4xl text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500" />
             <Tooltip className="z-30" anchorSelect=".contact" place="left">
                 Contact Me
             </Tooltip>
 
             {/* Table of Contents */}
-            <div className="fixed top-20 right-1 md:right-4 z-10 flex items-center">
+            <div className="fixed top-20 right-2 md:right-4 z-10 flex items-center">
                 <BiBookContent id="contents"
                     className="cursor-pointer text-3xl md:text-4xl text-blue-300 animate-flip hover:text-blue-500 hover:scale-105 transition-all duration-500"
                     onClick={() => setContentsVisible(!contentsVisible)}

@@ -112,7 +112,7 @@ html {
 
 /* Style for the 3D container */
 .carousel-container {
-    perspective: 100%;
+    perspective: 100rem;
 }
 
 /* Style for the rotating element */

@@ -83,7 +83,7 @@ const Contact = () => {
     }, [errors.name, errors.msg, errors.email, errors.serial]);
 
     return (
-        <section className="p-6 md:px-16 flex flex-col lg:flex-row lg:items-center justify-between mb-16">
+        <section className="p-6 pb-12 md:px-16 flex flex-col lg:flex-row lg:items-center justify-between">
             <Helmet>
                 <title>Contact - Nazmul Hassan</title>
             </Helmet>

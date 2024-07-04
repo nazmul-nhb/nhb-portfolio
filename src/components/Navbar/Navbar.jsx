@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IoIosArrowDropleft } from "react-icons/io";
+import { IoIosArrowDropdown } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { RiContactsBook3Line } from "react-icons/ri";
 import { GiQuillInk } from "react-icons/gi";
@@ -247,12 +247,12 @@ const Navbar = () => {
             </div>
             <div
                 ref={sidebarRef} className="flex justify-between items-center text-sm xl:text-base">
-                <IoIosArrowDropleft
-                    className={`sm:hidden text-4xl cursor-pointer z-50 transition-all duration-1000 ${!openNavbar && "rotate-180"}`}
+                <IoIosArrowDropdown
+                    className={`sm:hidden text-4xl cursor-pointer z-50 transition-all duration-1000 ${openNavbar && "-rotate-180"}`}
                     onClick={() => setOpenNavbar(!openNavbar)}
                 />
                 <ul
-                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold transition-all duration-700 absolute sm:static sm:shadow-none h-screen sm:h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-0 top-16 bg-nhb bg-opacity-80 flex z-10' : 'right-full top-16 shadow-none'}`}>
+                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold transition-all duration-700 absolute sm:static sm:shadow-none h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-1.5 -bottom-32 bg-nhb bg-opacity-80 flex z-10' : 'right-1.5 bottom-full shadow-none'}`}>
                     <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
                     {navigationItems}
                 </ul>
