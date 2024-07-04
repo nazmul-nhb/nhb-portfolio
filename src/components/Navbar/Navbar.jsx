@@ -232,7 +232,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="max-w-[1920px] bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1 sm:px-6 py-3 md:px-12 sticky top-0 h-16 z-20">
+        <nav className="max-w-[1920px] w-full bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1 sm:px-6 py-3 md:px-12 fixed top-0 left-0 right-0 h-16 z-50">
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <div className="flex items-center justify-start gap-2 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
