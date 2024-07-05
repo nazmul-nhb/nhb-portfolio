@@ -162,7 +162,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href={bio?.resume}
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-nhb hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-1 border border-white rounded-3xl hover:text-nhb hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaCloudDownloadAlt /> Resume
                         </a>
@@ -170,7 +170,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href={bio?.linked_in}
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white animate-glowBorder transition-all duration-700 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-1 border border-white rounded-3xl hover:text-linkedin hover:scale-105 hover:bg-white animate-glowBorder transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <FaLinkedin /> LinkedIn
                         </a>
@@ -178,7 +178,7 @@ const Home = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href={bio?.github}
-                            className="flex items-center gap-1 px-3 py-0.5 border border-white rounded-3xl hover:text-github hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
+                            className="flex items-center gap-1 px-3 py-1 border border-white rounded-3xl hover:text-github hover:bg-white animate-glowBorder hover:scale-105 transition-all duration-700 font-semibold shadow-md shadow-blue-400"
                         >
                             <VscGithub /> GitHub
                         </a>
