@@ -91,7 +91,7 @@ const Contact = () => {
             {/* Animation */}
             <div data-aos="zoom-in-down" data-aos-duration="1500"
                 className="w-full lg:w-1/2 flex items-center justify-center">
-                <Lottie className='sm:w-3/5' loop animationData={contactAnimation} play />
+                <Lottie className='sm:w-3/5 xl:w-4/5' loop animationData={contactAnimation} play />
             </div>
             <div data-aos="zoom-in-up" data-aos-duration="1500" className="flex-1">
                 <h3 className="text-lg md:text-3xl lg:text-2xl xl:text-3xl text-center mb-4 md:mb-8">Let&rsquo;s Create Something <span className="font-bold animate-pulse">Great Together</span></h3>
