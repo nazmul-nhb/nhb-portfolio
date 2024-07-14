@@ -9,7 +9,7 @@ import { BiBookContent } from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 import { GiSkills } from "react-icons/gi";
 import { RiShieldUserLine } from "react-icons/ri";
-import { FaHandshake, FaLinkedin, FaUserGraduate } from "react-icons/fa6";
+import { FaGraduationCap, FaHandshake, FaLinkedin, FaUserGraduate } from "react-icons/fa6";
 import { VscGithub, VscGithubProject } from "react-icons/vsc";
 import useGetBio from "../../hooks/useGetBio";
 import Spinner from "../../components/Spinner/Spinner";
@@ -83,6 +83,16 @@ const Home = () => {
     const [myRoles] = useTypewriter({
         words: bio?.responsibilities,
         loop: true,
+    });
+
+    // process education info
+    const processedEducation = bio?.education?.map(edu => {
+        const [degree, institution, result] = edu.split(";").map(item => item.trim());
+        return {
+            degree,
+            institution,
+            result
+        };
     });
 
     if (isBioLoading) return <Spinner />
@@ -218,9 +228,17 @@ const Home = () => {
                 <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
                     <FaUserGraduate /> Education
                 </h2>
-                <p className="text-lg">
-                    {bio?.education}
-                </p>
+                {
+                    processedEducation?.map((edu, idx) => <div key={idx}
+                        className="text-lg font-medium mb-4 indent-2"
+                    >
+                        <h3 className="flex items-center text-xl font-semibold">
+                            <FaGraduationCap className="text-2xl animate-growShrink" />{edu.degree}
+                            </h3>
+                        <h4 className="ml-6">{edu.institution}</h4>
+                        <h4 className="ml-6">{edu.result}</h4>
+                    </div>)
+                }
             </div>
         </section>
     );

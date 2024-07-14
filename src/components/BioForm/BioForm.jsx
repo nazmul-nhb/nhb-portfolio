@@ -19,6 +19,7 @@ const BioForm = () => {
 
     const handleUpdateBio = (updatedBio) => {
         updatedBio.responsibilities = updatedBio?.responsibilities.split('\n').map(feature => feature.trim());
+        updatedBio.education = updatedBio?.education.split('\n').map(feature => feature.trim());
         updatedBio.highlights = updatedBio?.highlights.split('\n').map(feature => feature.trim());
 
         Swal.fire({
@@ -186,14 +187,14 @@ const BioForm = () => {
                 </div>
 
                 {/* Education */}
-                <div className="w-full flex items-center gap-2 rounded-lg bg-transparent border-blue-200 border shadow-md shadow-blue-500">
-                    <label htmlFor='education' className="flex items-center gap-1 pl-2 md:text-lg"><FaUserGraduate /> Education</label>
-                    <input
-                        defaultValue={bio.education}
+                <div className="w-full flex md:flex-row flex-col items-start justify-start gap-2 bg-transparent rounded-lg border-blue-200 border shadow-md shadow-blue-500">
+                    <label htmlFor='education' className="flex items-center gap-1 justify-start pl-2 pt-1.5 md:text-lg w-full md:w-40"><FaUserGraduate /> Education</label>
+                    <textarea
+                        defaultValue={bio.education.join('\n')}
                         {...register("education", {
                             required: { value: true, message: "Education info is required!" }
                         })}
-                        name='education' id="education" type="text" placeholder="Education info" className="px-2 rounded-r-lg py-2 w-full border-l bg-transparent focus:outline-0 text-white" />
+                        name='education' id="education" placeholder="Education info (One per Line)" className="h-36 px-2 rounded-tr-none md:rounded-r-lg py-2 w-full border-t md:border-t-0 md:border-l bg-transparent focus:outline-none text-white"></textarea>
                 </div>
 
                 {/* Responsibilities */}
