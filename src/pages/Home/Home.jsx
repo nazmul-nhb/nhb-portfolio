@@ -230,10 +230,10 @@ const Home = () => {
                 </h2>
                 {
                     processedEducation?.map((edu, idx) => <div key={idx}
-                        className="text-lg font-medium mb-4 indent-2"
+                        className="text-sm sm:text-base md:text-lg font-medium mb-4 indent-2"
                     >
-                        <h3 className="flex items-center text-xl font-semibold">
-                            <FaGraduationCap className="text-2xl animate-growShrink" />{edu.degree}
+                        <h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
+                            <FaGraduationCap className="text-lg sm:text-xl md:text-2xl animate-growShrink" />{edu.degree}
                             </h3>
                         <h4 className="ml-6">{edu.institution}</h4>
                         <h4 className="ml-6">{edu.result}</h4>
