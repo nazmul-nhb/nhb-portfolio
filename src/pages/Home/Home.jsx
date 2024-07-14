@@ -228,17 +228,19 @@ const Home = () => {
                 <h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
                     <FaUserGraduate /> Education
                 </h2>
-                {
-                    processedEducation?.map((edu, idx) => <div key={idx}
-                        className="text-sm sm:text-base md:text-lg font-medium mb-4 indent-2"
-                    >
-                        <h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
-                            <FaGraduationCap className="text-lg sm:text-xl md:text-2xl animate-growShrink" />{edu.degree}
+                <div className="space-y-4">
+                    {
+                        processedEducation?.map((edu, idx) => <div key={idx}
+                            className="text-sm sm:text-base md:text-lg font-medium indent-2"
+                        >
+                            <h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
+                                <FaGraduationCap className="text-lg sm:text-xl md:text-2xl animate-growShrink" />{edu.degree}
                             </h3>
-                        <h4 className="ml-6">{edu.institution}</h4>
-                        <h4 className="ml-6">{edu.result}</h4>
-                    </div>)
-                }
+                            <h4 className="ml-[18px] sm:ml-5 md:ml-6">{edu.institution}</h4>
+                            <h4 className="ml-[18px] sm:ml-5 md:ml-6">{edu.result}</h4>
+                        </div>)
+                    }
+                </div>
             </div>
         </section>
     );
