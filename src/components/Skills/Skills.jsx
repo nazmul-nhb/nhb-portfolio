@@ -250,23 +250,25 @@ const Skills = ({ updateSkill }) => {
     if (isLoading) return <Spinner />;
 
     return (
-        <section ref={ref} className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12'>
+        <section
+            // data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
+            ref={ref} className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12'>
             {skills.map((skill) => (
                 <div key={skill._id}
                     id={`skill-${skill._id}`}
-                    data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
+                    // data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
                     className="skillLevel hover:animate-glowBorder group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400 relative"
                     onMouseEnter={() => handleMouseEnter(skill._id)}
                     onMouseLeave={handleMouseLeave}>
                     <Tooltip anchorSelect={`#skill-${skill._id}`} place="top">
                         {skill.level >= 80 ? 'Expert'
                             : (skill.level >= 70 && skill.level < 80) ? 'Comfortable'
-                                : (skill.level >= 50 && skill.level < 70)? 'Familiar'
+                                : (skill.level >= 50 && skill.level < 70) ? 'Familiar'
                                     : null
                         }
                     </Tooltip>
                     <div className="text-5xl group-hover:scale-125 transition-all duration-1000">
-                      <span className="block animate-growShrink">{skillIcons[skill.title]}</span>  
+                        <span className="block animate-growShrink">{skillIcons[skill.title]}</span>
                     </div>
                     {showUpdateForm !== skill._id ?
                         <div className="flex-1 font-kreonSerif">

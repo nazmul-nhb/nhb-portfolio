@@ -35,7 +35,9 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
     if (isLoading) return <Spinner />;
 
     return (
-        <section className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>
+        <section
+            //  data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300"
+            className='grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12'>
             {projects?.map((project) => (
                 <div key={project?._id}
                     className='w-full flex flex-col gap-2 md:gap-4'>
@@ -45,7 +47,9 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                         {project?.title}
                         <span className='text-xs border px-1 group-hover:border-blue-500'>{project?.type}</span>
                     </h3>
-                    <figure data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
+                    <figure
+                    // data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300"
+                    >
                         <img
                             onClick={() => setOpenProjectID(project?._id)}
                             className='w-full cursor-pointer aspect-[1/1.25] hover:scale-[1.02] sm:hover:scale-105 transition-all duration-500 rounded-md shadow-lg shadow-blue-500 opacity-95 animate-glowBorder hover:opacity-100'
@@ -67,7 +71,7 @@ const Projects = ({ updateProject, handleDeleteProject, handleUpdateProject }) =
                                     />
                                     {updateProject &&
                                         <div className='absolute bottom-4 right-8 text-3xl flex flex-col items-center gap-4'>
-                                            <MdEditDocument 
+                                            <MdEditDocument
                                                 onClick={() => setShowUpdateForm(!showUpdateForm)}
                                                 className='text-blue-400 hover:text-blue-50 hover:scale-105 transition-all duration-500 cursor-pointer'
                                                 title='Edit'

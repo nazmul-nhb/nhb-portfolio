@@ -1,18 +1,23 @@
+import { useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import ScrollButtons from '../components/ScrollButtons/ScrollButtons';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init();
 
 const Root = () => {
+    const containerRef = useRef(null);
+
     return (
-        <div className="h-dvh overflow-y-auto portfolio-scrollbar bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat">
+        <div className="h-dvh overflow-y-auto scrollbar-hide bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat">
             <Navbar />
-            <main className="max-w-[1920px] min-h-[calc(100vh-64px)] mx-auto bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 overflow-x-hidden">
-                <Outlet/>
+            <main ref={containerRef} className="max-w-[1920px] min-h-[calc(100vh-64px)] mx-auto bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 h-dvh overflow-x-hidden overflow-y-auto portfolio-scrollbar">
+                <Outlet />
             </main>
+            <ScrollButtons containerRef={containerRef} />
             <Footer />
         </div>
     );
