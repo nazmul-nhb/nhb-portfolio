@@ -12,9 +12,9 @@ const Root = () => {
     const containerRef = useRef(null);
 
     return (
-        <div className="h-dvh overflow-y-auto scrollbar-hide bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat">
+        <div className="max-w-[1920px] mx-auto h-screen overflow-y-auto scrollbar-hide bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat">
             <Navbar />
-            <main ref={containerRef} className="max-w-[1920px] min-h-[calc(100vh-64px)] mx-auto bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 h-dvh overflow-x-hidden overflow-y-auto portfolio-scrollbar">
+            <main ref={containerRef} className="max-w-[1920px] min-h-[calc(100vh-64px)] mx-auto bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 h-screen overflow-x-hidden overflow-y-auto portfolio-scrollbar">
                 <Outlet />
             </main>
             <ScrollButtons containerRef={containerRef} />

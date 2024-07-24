@@ -7,7 +7,7 @@ import logo from "../../assets/logo.png"
 const Footer = () => {
     return (
         <footer className="max-w-[1920px] mx-auto md:py-8 p-6 md:px-12 bg-blueBG bg-bottom bg-cover text-white border-t">
-            <section className="relative mx-16 flex sm:flex-row flex-col items-center sm:justify-between text-center sm:text-left gap-6">
+            <section className="relative mx-16 flex sm:flex-row flex-col items-center sm:justify-between text-center sm:text-left gap-6 pt-8">
                 {/* Logo */}
                 <div className="sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:top-1/2 sm:-translate-y-1/2">
                     <figure
