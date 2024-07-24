@@ -8,13 +8,13 @@ AOS.init();
 
 const Root = () => {
     return (
-        <>
-            <Navbar></Navbar>
+        <div className="h-dvh overflow-y-auto portfolio-scrollbar bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat">
+            <Navbar />
             <main className="max-w-[1920px] min-h-[calc(100vh-64px)] mx-auto bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 overflow-x-hidden">
-                <Outlet></Outlet>
+                <Outlet/>
             </main>
-            <Footer></Footer>
-        </>
+            <Footer />
+        </div>
     );
 };
 

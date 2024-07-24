@@ -85,5 +85,40 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities }) => {
+      const newUtilities = {
+        '.scrollbar-hide': {
+          'scrollbar-width': 'none', /* For Firefox */
+          '-ms-overflow-style': 'none',  /* For Internet Explorer and Edge */
+        },
+        '.scrollbar-hide::-webkit-scrollbar': {
+          'display': 'none', /* For Chrome, Safari, and Opera */
+        },
+        '.scrollbar-thin': {
+          'scrollbar-width': 'thin', /* For Firefox */
+        },
+        '.portfolio-scrollbar': {
+          'scrollbar-width': 'thin',
+          'scrollbar-color': '#fff transparent',
+        },
+        '.portfolio-scrollbar::-webkit-scrollbar': {
+          'width': '8px',
+        },
+        '.portfolio-scrollbar::-webkit-scrollbar-track': {
+          'background': 'transparent',
+        },
+        '.portfolio-scrollbar::-webkit-scrollbar-thumb': {
+          'background-color': '#fff',
+          'border-radius': '10px',
+          'border': '3px solid transparent',
+          'background-clip': 'padding-box',
+        },
+        '.portfolio-scrollbar::-webkit-scrollbar-button': {
+          'display': 'none',
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    }
+  ],
 }

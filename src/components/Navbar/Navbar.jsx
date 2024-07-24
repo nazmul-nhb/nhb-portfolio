@@ -231,7 +231,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="max-w-[1920px] w-full bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 pr-1.5 sm:px-6 py-3 md:px-12 fixed top-0 left-0 right-0 h-16 z-50">
+        <nav className="max-w-[1920px] w-full bg-nhb bg-opacity-80 text-white flex items-center justify-between gap-0 md:gap-4 mx-auto shadow-lg shadow-blue-800 px-2 sm:px-6 py-3 md:px-12 fixed top-0 left-0 right-0 h-16 z-50">
             <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
             <div className="flex items-center justify-start gap-2 font-kreonSerif">
                 <figure onClick={handleOwnerLogin}
@@ -251,7 +251,7 @@ const Navbar = () => {
                     onClick={() => setOpenNavbar(!openNavbar)}
                 />
                 <ul
-                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold transition-all duration-700 absolute sm:static sm:shadow-none h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-1.5 -bottom-32 bg-nhb bg-opacity-80 flex z-10' : 'right-1.5 bottom-full shadow-none'}`}>
+                    className={`w-3/5 sm:w-full flex flex-col sm:flex-row justify-start sm:justify-center gap-2 sm:gap-5 text-base sm:text-lg font-semibold transition-all duration-700 absolute sm:static sm:shadow-none h-auto pl-6 p-4 sm:p-0 ${openNavbar ? 'shadow-md shadow-blue-500 right-3 -bottom-32 bg-nhb bg-opacity-80 flex z-10' : 'right-3 bottom-full shadow-none'}`}>
                     <div className="absolute inset-0 backdrop-filter backdrop-blur-lg -z-10"></div>
                     {navigationItems}
                 </ul>
