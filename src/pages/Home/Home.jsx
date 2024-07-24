@@ -154,7 +154,8 @@ const Home = () => {
             <div id="bio" className="scroll-margin-top flex flex-col md:flex-row justify-around items-center gap-10 my-6 mb-12">
 
                 {/* Intro */}
-                <div data-aos="zoom-in-up" data-aos-duration="1000"
+                <div
+                    data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
                     <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">{bio?.name}</span></h2>
                     <h3 className="text-xl">I am a {myRoles}</h3>
@@ -166,7 +167,8 @@ const Home = () => {
                         }
                     </ul>
                     {/* Buttons */}
-                    <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="700"
+                    <div
+                        data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="700"
                         className="w-full text-sm sm:text-xl md:text-2xl flex items-center justify-center md:justify-between gap-2 font-kreonSerif mt-2">
                         <a
                             target="_blank"
@@ -199,7 +201,9 @@ const Home = () => {
                 {/* Image */}
                 <div className="relative p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
-                        <figure data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400">
+                        <figure
+                            // data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400"
+                        >
                             <PhotoView src={bio?.profile_image}>
                                 <img
                                     className="cursor-pointer w-48 lg:w-64 aspect-square hover:scale-105 transition-all duration-500 hover:animate-pulse"
