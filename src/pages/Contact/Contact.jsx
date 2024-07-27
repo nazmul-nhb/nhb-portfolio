@@ -9,11 +9,13 @@ import { TbMessage2Question } from "react-icons/tb";
 import Lottie from "react-lottie-player";
 import contactAnimation from "../../assets/contact-animation.json"
 import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
+import useMessageCount from "../../hooks/useMessageCount";
 
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [mailSending, setMailSending] = useState(false);
     const axiosPortfolio = useAxiosPortfolio();
+    const { countRefetch } = useMessageCount();
 
     const handleSendMessage = async (msgData) => {
         setMailSending(true);
@@ -42,6 +44,7 @@ const Contact = () => {
                     background: '#05030efc'
                 });
                 reset();
+                countRefetch();
             } else {
                 Swal.fire({
                     title: 'Message Sending Failed!',

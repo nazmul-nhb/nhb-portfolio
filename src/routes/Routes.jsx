@@ -7,6 +7,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import UpdatePortfolio from "../pages/UpdatePortfolio/UpdatePortfolio";
 import PrivateRoute from "./PrivateRoute";
 import Messages from "../pages/Messages/Messages";
+import Message from "../pages/Messages/Message";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: '/messages',
                 element: <PrivateRoute> <Messages /> </PrivateRoute>
+            },
+            {
+                path: '/message/:id',
+                element: <PrivateRoute> <Message /> </PrivateRoute>
             },
         ],
     },
