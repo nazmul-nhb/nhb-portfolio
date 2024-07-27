@@ -6,6 +6,7 @@ import Contact from "../pages/Contact/Contact";
 import Blogs from "../pages/Blogs/Blogs";
 import UpdatePortfolio from "../pages/UpdatePortfolio/UpdatePortfolio";
 import PrivateRoute from "./PrivateRoute";
+import Messages from "../pages/Messages/Messages";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
             {
                 path: '/update/:random',
                 element: <PrivateRoute> <UpdatePortfolio /> </PrivateRoute>
+            },
+            {
+                path: '/messages',
+                element: <PrivateRoute> <Messages /> </PrivateRoute>
             },
         ],
     },
