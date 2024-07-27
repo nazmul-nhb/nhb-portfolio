@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import PropTypes from 'prop-types';
-import Spinner from '../Spinner/Spinner';
+import { Spinner } from '../Spinner/Spinner';
 import ProjectForm from './ProjectForm';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { MdEditDocument } from 'react-icons/md';

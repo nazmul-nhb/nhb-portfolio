@@ -12,7 +12,7 @@ import { RiShieldUserLine } from "react-icons/ri";
 import { FaGraduationCap, FaHandshake, FaLinkedin, FaUserGraduate } from "react-icons/fa6";
 import { VscGithub, VscGithubProject } from "react-icons/vsc";
 import useGetBio from "../../hooks/useGetBio";
-import Spinner from "../../components/Spinner/Spinner";
+import { LogoSpinner } from "../../components/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import MovingContacts from "../../components/MovingContacts/MovingContacts";
 import { Tooltip } from "react-tooltip";
@@ -81,7 +81,7 @@ const Home = () => {
     }, [contentsVisible]);
 
     const [myRoles] = useTypewriter({
-        words: bio?.responsibilities,
+        words: bio?.responsibilities || ["Web Developer"],
         loop: true,
     });
 
@@ -95,7 +95,7 @@ const Home = () => {
         };
     });
 
-    if (isBioLoading) return <Spinner />
+    if (isBioLoading) return <LogoSpinner />
 
     return (
         <section className="md:py-8 p-6 md:px-16 relative">
@@ -157,7 +157,7 @@ const Home = () => {
                 <div
                     data-aos="zoom-in-up" data-aos-duration="1000"
                     className="flex flex-col items-center md:items-start gap-2">
-                    <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">{bio?.name}</span></h2>
+                    <h2 className="text-2xl md:text-4xl font-bold">I&rsquo;m <span className="animate-pulse">{bio?.name || "Nazmul Hassan"}</span></h2>
                     <h3 className="text-xl">I am a {myRoles}</h3>
                     <ul className="text-center md:text-left flex flex-col gap-2 pl-4 md:list-disc">
                         {
@@ -202,7 +202,7 @@ const Home = () => {
                 <div className="relative p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
                         <figure
-                            // data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400"
+                        // data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400"
                         >
                             <PhotoView src={bio?.profile_image}>
                                 <img

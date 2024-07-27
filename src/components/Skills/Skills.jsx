@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import Spinner from '../Spinner/Spinner';
+import { Spinner } from '../Spinner/Spinner';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import useGetSkills from '../../hooks/useGetSkills';

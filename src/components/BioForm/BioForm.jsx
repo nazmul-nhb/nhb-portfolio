@@ -8,7 +8,7 @@ import { FaUserPen } from "react-icons/fa6";
 import { GiFallingStar } from "react-icons/gi";
 import useGetBio from "../../hooks/useGetBio";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import Spinner from "../Spinner/Spinner";
+import { Spinner } from "../Spinner/Spinner";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
@@ -227,7 +227,7 @@ const BioForm = () => {
             <div className="p-2 shadow-md shadow-blue-400 animate-glowBorder">
                 <PhotoProvider>
                     <figure
-                        // data-aos="zoom-out-down " data-aos-duration="1000" data-aos-delay="400"
+                    // data-aos="zoom-out-down " data-aos-duration="1000" data-aos-delay="400"
                     >
                         <PhotoView src={bio.profile_image}>
                             <img

@@ -2,7 +2,7 @@ import { CgMail } from "react-icons/cg";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa6";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
     return (
