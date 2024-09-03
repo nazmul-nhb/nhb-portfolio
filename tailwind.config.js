@@ -78,6 +78,7 @@ export default {
         reddit: '#ff4500',
         discord: '#5865f2',
         yahoo: '#6001d2',
+        leetcode: '#ffa116',
       },
       fontFamily: {
         kreonSerif: '"Kreon", serif;',
