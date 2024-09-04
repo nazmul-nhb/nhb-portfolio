@@ -32,7 +32,7 @@ const Footer = () => {
                 <SocialLinks />
             </section>
             {/* Copyright */}
-            <p className="text-center text-sm py-8">
+            <p className="text-center text-sm pt-8">
                 {new Date().getFullYear()} &copy; Nazmul Hassan.
                 <br />
                 All Rights Reserved.
