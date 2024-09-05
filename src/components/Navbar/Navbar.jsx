@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { IoHomeOutline } from "react-icons/io5";
-import { RiContactsBook3Line } from "react-icons/ri";
-import { GiCompass, GiQuillInk } from "react-icons/gi";
+import { MdContactMail } from "react-icons/md";
+import { GrAchievement } from "react-icons/gr";
+import { GiCompass } from "react-icons/gi";
+import { ImProfile } from "react-icons/im";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png"
 import Swal from "sweetalert2";
@@ -45,12 +46,33 @@ const Navbar = () => {
 
     // navbar links
     const navigationItems = (
-        <>
-            <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/'}><IoHomeOutline className="sm:hidden" />Home</NavLink>
-            <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/contact'}><RiContactsBook3Line className="sm:hidden" />Contact Me</NavLink>
-            <NavLink onClick={() => setOpenNavbar(false)} className={navClasses} to={'/blogs'}><GiQuillInk className="sm:hidden" />Blogs</NavLink>
-        </>
-    );
+		<>
+			<NavLink
+				onClick={() => setOpenNavbar(false)}
+				className={navClasses}
+				to={"/"}
+			>
+				<ImProfile className="sm:hidden" />
+				Portfolio
+			</NavLink>
+			<NavLink
+				onClick={() => setOpenNavbar(false)}
+				className={navClasses}
+				to={"/contact"}
+			>
+				<MdContactMail className="sm:hidden" />
+				Contact Me
+			</NavLink>
+			<NavLink
+				onClick={() => setOpenNavbar(false)}
+				className={navClasses}
+				to={"/achievements"}
+			>
+				<GrAchievement className="sm:hidden" />
+				Achievements
+			</NavLink>
+		</>
+	);
 
     // google login
     const handleGoogleLogin = (randomURL) => {

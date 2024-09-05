@@ -3,7 +3,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Root from "../layouts/Root";
 import Contact from "../pages/Contact/Contact";
-import Blogs from "../pages/Blogs/Blogs";
+import Achievements from "../pages/Achievements/Achievements";
 import UpdatePortfolio from "../pages/UpdatePortfolio/UpdatePortfolio";
 import PrivateRoute from "./PrivateRoute";
 import Messages from "../pages/Messages/Messages";
@@ -24,8 +24,8 @@ export const router = createBrowserRouter([
                 element: <Contact />
             },
             {
-                path: '/blogs',
-                element: <Blogs />
+                path: '/achievements',
+                element: <Achievements />
             },
             {
                 path: '/update/:random',
