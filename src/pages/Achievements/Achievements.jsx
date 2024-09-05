@@ -92,7 +92,9 @@ const Achievements = () => {
 									<PhotoView src={cert.image}>
 										<h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
 											<LiaCertificateSolid className="text-lg sm:text-xl md:text-2xl animate-growShrink cursor-pointer" />
-											{cert.title}
+											<span className="w-full overflow-x-auto whitespace-nowrap overflow-ellipsis scrollbar-hide">
+												{cert.title}
+											</span>
 										</h3>
 									</PhotoView>
 								</div>
