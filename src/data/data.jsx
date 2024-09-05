@@ -131,3 +131,22 @@ export const skillIcons = {
 	AWS: <FaAws />,
 	"TanStack Query": <SiReactquery />,
 };
+
+export const packages = [
+	{
+		title: "ID Generator",
+		install: "npm i @nazmul-nhb/id-generator",
+		link: "https://www.npmjs.com/package/@nazmul-nhb/id-generator",
+		repo: "https://github.com/nazmul-nhb/id-generator",
+	},
+];
+
+export const certificates = [
+	{
+		title: "Complete Web Development Course with Jhankar Mahbub",
+		organization: "Programming Hero",
+		duration: "January 2024 — June 2024",
+		image: "https://live.staticflickr.com/65535/53972766374_edec2ab5ce_o.png",
+		link: "https://drive.google.com/file/d/1i9e_KiTOfOq4aKzqYlK7lZWNzwsUcCXD/view",
+	},
+];
