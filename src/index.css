@@ -1,71 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
+}
+
+body {
+	--sb-track-color: #1332a2b0;
+	--sb-thumb-color: #0f2166;
+	--sb-size: 8px;
+}
+
+body::-webkit-scrollbar {
+	width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+	background: var(--sb-track-color);
+}
+
+body::-webkit-scrollbar-thumb {
+	background: var(--sb-thumb-color);
+	border-radius: 4px;
+	border: 2px solid #bdc9f7;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+	body {
+		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+	}
 }
 
 /* blur background when modal is open */
 .modal-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 49;
-    animation: fadeIn 0.5s ease-in-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	z-index: 49;
+	animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+	from {
+		opacity: 0;
+	}
 
-    to {
-        opacity: 1;
-    }
+	to {
+		opacity: 1;
+	}
 }
 
 .modal-content {
-    animation: zoomIn 0.5s ease-in-out;
+	animation: zoomIn 0.5s ease-in-out;
 }
 
 @keyframes zoomIn {
-    from {
-        transform: scale(0.5) translate(-50%, -50%);
-        opacity: 0;
-    }
+	from {
+		transform: scale(0.5) translate(-50%, -50%);
+		opacity: 0;
+	}
 
-    to {
-        transform: scale(1) translate(-50%, -50%);
-        opacity: 1;
-    }
+	to {
+		transform: scale(1) translate(-50%, -50%);
+		opacity: 1;
+	}
 }
 
 .modal-content-close {
-    animation: zoomOut 0.5s ease-in-out;
+	animation: zoomOut 0.5s ease-in-out;
 }
 
 @keyframes zoomOut {
-    from {
-        transform: scale(1) translate(-50%, -50%);
-        opacity: 1;
-    }
+	from {
+		transform: scale(1) translate(-50%, -50%);
+		opacity: 1;
+	}
 
-    to {
-        transform: scale(0.5) translate(-50%, -50%);
-        opacity: 0;
-    }
+	to {
+		transform: scale(0.5) translate(-50%, -50%);
+		opacity: 0;
+	}
 }
 
 /* disable scrolling */
 .modal-open {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 /* circular contact icons */
@@ -102,53 +128,53 @@ html {
 
 /* Define the keyframes for the carousel rotation */
 @keyframes carousel {
-    0% {
-        transform: rotateY(0deg);
-    }
+	0% {
+		transform: rotateY(0deg);
+	}
 
-    100% {
-        transform: rotateY(360deg);
-    }
+	100% {
+		transform: rotateY(360deg);
+	}
 }
 
 /* Style for the 3D container */
 .carousel-container {
-    perspective: 100rem;
+	perspective: 100rem;
 }
 
 /* Style for the rotating element */
 .carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: carousel 36s linear infinite;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	animation: carousel 36s linear infinite;
 }
 
 /* Style for the individual items */
 .carousel-item {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 0;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform-origin: 0 0;
+	transform: translate(-50%, -50%);
 }
 
 /* pause animation */
 .carousel.paused {
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 
 /* Disable pointer events */
 .pointer-events-none {
-    pointer-events: none;
+	pointer-events: none;
 }
 
 /* HomePage Content Scroll */
 .scroll-margin-top {
-    scroll-margin-top: 80px;
+	scroll-margin-top: 80px;
 }
 
 #bio.scroll-margin-top {
-    scroll-margin-top: 128px !important;
+	scroll-margin-top: 128px !important;
 }

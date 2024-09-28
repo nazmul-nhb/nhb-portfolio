@@ -1,8 +1,6 @@
-import { useRef } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import ScrollButtons from "../components/ScrollButtons/ScrollButtons";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useAuth from "../hooks/useAuth";
@@ -12,13 +10,12 @@ import useMessageCount from "../hooks/useMessageCount";
 AOS.init();
 
 const Root = () => {
-	const containerRef = useRef(null);
 	const navigate = useNavigate();
 	const { user } = useAuth();
 	const { messageCount } = useMessageCount();
 
 	return (
-		<div className="max-w-[1920px] mx-auto h-screen overflow-y-auto scrollbar-hide bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat">
+		<div className="max-w-[1920px] mx-auto">
 			{user && (
 				<span className="fixed top-20 left-4 z-10 cursor-pointer text-blue-300 animate-growShrink hover:text-blue-500 transition-all duration-500">
 					<CgMail
@@ -33,16 +30,11 @@ const Root = () => {
 				</span>
 			)}
 			<Navbar />
-			<div
-				ref={containerRef}
-				className="max-w-[1920px] h-screen overflow-x-hidden overflow-y-auto portfolio-scrollbar"
-			>
-				<main className="mx-auto min-h-screen bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 overflow-x-hidden">
-					<Outlet />
-				</main>
-				<Footer />
-			</div>
-			<ScrollButtons containerRef={containerRef} />
+
+			<main className="mx-auto min-h-screen bg-blueBG bg-fixed bg-center bg-cover bg-no-repeat text-white mt-16 overflow-x-hidden">
+				<Outlet />
+			</main>
+			<Footer />
 		</div>
 	);
 };
