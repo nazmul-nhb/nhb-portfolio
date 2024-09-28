@@ -8,7 +8,12 @@ const useGetPackageInfo = (packageNames) => {
 		queryFn: async () => {
 			const requests = packageNames.map((packageName) =>
 				axios.get(
-					`https://npm-downloads-count-nhb.vercel.app/package?packageName=${packageName}`
+					`https://npm-downloads-count-nhb.vercel.app/package?packageName=${packageName}`,
+					{
+						headers: {
+							Accept: "application/json",
+						},
+					}
 				)
 			);
 			const results = await Promise.all(requests);
