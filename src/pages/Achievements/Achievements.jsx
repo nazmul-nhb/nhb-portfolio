@@ -7,7 +7,7 @@ import { LiaCertificateSolid } from "react-icons/lia";
 import { RiNpmjsLine } from "react-icons/ri";
 import { TbBrandNpm } from "react-icons/tb";
 import toast from "react-hot-toast";
-import { FaCopy } from "react-icons/fa";
+import { FaCopy, FaLink } from "react-icons/fa";
 import useGetPackageInfo from "../../hooks/useGetPackageInfo";
 
 const Achievements = () => {
@@ -47,7 +47,7 @@ const Achievements = () => {
 						return (
 							<div
 								key={idx}
-								className="text-sm sm:text-base md:text-lg font-medium indent-2"
+								className="text-sm sm:text-base md:text-lg font-medium indent-2 flex flex-col items-start"
 							>
 								<h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
 									<RiNpmjsLine className="text-lg sm:text-xl md:text-2xl animate-growShrink" />
@@ -60,9 +60,16 @@ const Achievements = () => {
 										{pkg.title}
 									</a>
 								</h3>
-								<h4 className="ml-[18px] sm:ml-5 md:ml-6 flex items-center gap-2 ">
-									<span>{pkg.install}</span>
+								<h4 className="ml-[18px] sm:ml-5 md:ml-6 flex items-center gap-2">
+									<code
+										title="Copy Installation Command"
+										className="font-light cursor-pointer hover:text-blue-300 transition-all duration-500"
+										onClick={() => handleCopy(pkg.install)}
+									>
+										{pkg.install}
+									</code>
 									<FaCopy
+										title="Copy Installation Command"
 										onClick={() => handleCopy(pkg.install)}
 										className="cursor-pointer hover:text-blue-300 transition-all duration-500"
 									/>
@@ -72,8 +79,9 @@ const Achievements = () => {
 										href={pkg.repo}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="hover:text-blue-300 transition-all duration-500"
+										className="hover:text-blue-300 transition-all duration-500 flex items-center gap-0.5 ml-2"
 									>
+										<FaLink />
 										GitHub Repository
 									</a>
 								</h4>
@@ -82,15 +90,24 @@ const Achievements = () => {
 										href={pkg.link}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="hover:text-blue-300 transition-all duration-500"
+										className="hover:text-blue-300 transition-all duration-500 flex items-center gap-0.5 ml-2"
 									>
+										<FaLink />
 										NPM Registry
 									</a>
 								</h4>
 								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
-									{isPackageLoading
-										? "Total Downloads: Loading..."
-										: `Total Downloads: ${packageInfo?.downloads}`}
+									<a
+										href={`https://npm-downloads-count-nhb.vercel.app/package?packageName=${pkg.packageName}`}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:text-blue-300 transition-all duration-500 flex items-center gap-0.5 ml-2"
+									>
+										<FaLink />
+										{isPackageLoading
+											? "Total Downloads: Loading..."
+											: `Total Downloads: ${packageInfo?.downloads}`}
+									</a>
 								</h4>
 							</div>
 						);
