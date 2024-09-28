@@ -135,12 +135,14 @@ export const skillIcons = {
 export const packages = [
 	{
 		title: "ID Generator",
+		packageName: "@nazmul-nhb/id-generator",
 		install: "npm i @nazmul-nhb/id-generator",
 		link: "https://www.npmjs.com/package/@nazmul-nhb/id-generator",
 		repo: "https://github.com/nazmul-nhb/id-generator",
 	},
 	{
 		title: "Color Generator",
+		packageName: "color-generator-fl",
 		install: "npm i color-generator-fl",
 		link: "https://www.npmjs.com/package/color-generator-fl",
 		repo: "https://github.com/nazmul-nhb/color-generator",

@@ -8,8 +8,15 @@ import { RiNpmjsLine } from "react-icons/ri";
 import { TbBrandNpm } from "react-icons/tb";
 import toast from "react-hot-toast";
 import { FaCopy } from "react-icons/fa";
+import useGetPackageInfo from "../../hooks/useGetPackageInfo";
 
 const Achievements = () => {
+	// Get all package names from the package data
+	const packageNames = packages.map((pkg) => pkg.packageName);
+
+	// Use the hook to fetch package info for all packages
+	const { packagesInfo, isPackageLoading } = useGetPackageInfo(packageNames);
+
 	const handleCopy = (text) => {
 		navigator.clipboard
 			.writeText(text)
@@ -34,51 +41,60 @@ const Achievements = () => {
 					data-aos-delay="200"
 					className="space-y-6"
 				>
-					{packages?.map((pkg, idx) => (
-						<div
-							key={idx}
-							className="text-sm sm:text-base md:text-lg font-medium indent-2"
-						>
-							<h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
-								<RiNpmjsLine className="text-lg sm:text-xl md:text-2xl animate-growShrink" />
-								<a
-									href={pkg.link}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="hover:text-reddit transition-all duration-500"
-								>
-									{pkg.title}
-								</a>
-							</h3>
-							<h4 className="ml-[18px] sm:ml-5 md:ml-6 flex items-center gap-2 ">
-								<span>{pkg.install}</span>
-								<FaCopy
-									onClick={() => handleCopy(pkg.install)}
-									className="cursor-pointer hover:text-reddit transition-all duration-500"
-								/>
-							</h4>
-							<h4 className="ml-[18px] sm:ml-5 md:ml-6">
-								<a
-									href={pkg.repo}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="hover:text-reddit transition-all duration-500"
-								>
-									GitHub Repository
-								</a>
-							</h4>
-							<h4 className="ml-[18px] sm:ml-5 md:ml-6">
-								<a
-									href={pkg.link}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="hover:text-reddit transition-all duration-500"
-								>
-									NPM Repository
-								</a>
-							</h4>
-						</div>
-					))}
+					{packages?.map((pkg, idx) => {
+						const packageInfo = packagesInfo[idx];
+
+						return (
+							<div
+								key={idx}
+								className="text-sm sm:text-base md:text-lg font-medium indent-2"
+							>
+								<h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
+									<RiNpmjsLine className="text-lg sm:text-xl md:text-2xl animate-growShrink" />
+									<a
+										href={pkg.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:text-reddit transition-all duration-500"
+									>
+										{pkg.title}
+									</a>
+								</h3>
+								<h4 className="ml-[18px] sm:ml-5 md:ml-6 flex items-center gap-2 ">
+									<span>{pkg.install}</span>
+									<FaCopy
+										onClick={() => handleCopy(pkg.install)}
+										className="cursor-pointer hover:text-reddit transition-all duration-500"
+									/>
+								</h4>
+								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
+									<a
+										href={pkg.repo}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:text-reddit transition-all duration-500"
+									>
+										GitHub Repository
+									</a>
+								</h4>
+								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
+									<a
+										href={pkg.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:text-reddit transition-all duration-500"
+									>
+										NPM Registry
+									</a>
+								</h4>
+								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
+									{isPackageLoading
+										? "Total Downloads: Loading..."
+										: `Total Downloads: ${packageInfo?.downloads}`}
+								</h4>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 
