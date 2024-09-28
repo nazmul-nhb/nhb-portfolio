@@ -139,6 +139,12 @@ export const packages = [
 		link: "https://www.npmjs.com/package/@nazmul-nhb/id-generator",
 		repo: "https://github.com/nazmul-nhb/id-generator",
 	},
+	{
+		title: "Color Generator",
+		install: "npm i color-generator-fl",
+		link: "https://www.npmjs.com/package/color-generator-fl",
+		repo: "https://github.com/nazmul-nhb/color-generator",
+	},
 ];
 
 export const certificates = [
