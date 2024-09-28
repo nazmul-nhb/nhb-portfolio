@@ -35,6 +35,19 @@ body::-webkit-scrollbar-thumb {
 	}
 }
 
+/* Hide Scrollbar */
+.scrollbar-hide {
+	/* For Firefox */
+	scrollbar-width: none;
+	/* For Internet Explorer and Edge */
+	-ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	/* For Chrome, Safari, and Opera */
+	display: none;
+}
+
 /* blur background when modal is open */
 .modal-background {
 	position: fixed;
