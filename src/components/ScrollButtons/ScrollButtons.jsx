@@ -1,27 +1,32 @@
 import { useState, useEffect } from "react";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
+
 const ScrollButtons = () => {
 	const [showTopButton, setShowTopButton] = useState(false);
-	const [showBottomButton, setShowBottomButton] = useState(true);
+    const [showBottomButton, setShowBottomButton] = useState(true);
+    
 	const handleScroll = () => {
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 		const scrollHeight = document.documentElement.scrollHeight;
 		const clientHeight = document.documentElement.clientHeight;
-		setShowTopButton(scrollTop > 160);
-		setShowBottomButton(scrollTop + clientHeight < scrollHeight - 360);
-	};
+		setShowTopButton(scrollTop > 80);
+		setShowBottomButton(scrollTop + clientHeight < scrollHeight - 80);
+    };
+    
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, []);
+    }, []);
+    
 	const scrollToTop = () => {
 		window.scrollTo({
 			top: 0,
 			behavior: "smooth",
 		});
-	};
+    };
+    
 	const scrollToBottom = () => {
 		window.scrollTo({
 			top: document.documentElement.scrollHeight,

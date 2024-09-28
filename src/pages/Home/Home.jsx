@@ -202,7 +202,7 @@ const Home = () => {
                 <div className="relative p-2 shadow-md shadow-blue-400 animate-glowBorder">
                     <PhotoProvider>
                         <figure
-                        // data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400"
+                        data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="400"
                         >
                             <PhotoView src={bio?.profile_image}>
                                 <img
