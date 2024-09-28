@@ -220,7 +220,9 @@ const Skills = ({ updateSkill }) => {
 				<div
 					key={skill._id}
 					id={`skill-${skill._id}`}
-					data-aos="zoom-in-down" data-aos-duration="500" data-aos-delay="400"
+					data-aos="zoom-in-down"
+					data-aos-duration="500"
+					data-aos-delay="400"
 					className="skillLevel hover:animate-glowBorder group flex items-center gap-3 p-4 bg-gray-800 text-blue-300 rounded-lg shadow-md shadow-blue-400 relative"
 					onMouseEnter={() => handleMouseEnter(skill._id)}
 					onMouseLeave={handleMouseLeave}
