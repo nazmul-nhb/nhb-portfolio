@@ -55,7 +55,7 @@ const Achievements = () => {
 										href={pkg.link}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="hover:text-reddit transition-all duration-500"
+										className="hover:text-blue-300 transition-all duration-500"
 									>
 										{pkg.title}
 									</a>
@@ -64,7 +64,7 @@ const Achievements = () => {
 									<span>{pkg.install}</span>
 									<FaCopy
 										onClick={() => handleCopy(pkg.install)}
-										className="cursor-pointer hover:text-reddit transition-all duration-500"
+										className="cursor-pointer hover:text-blue-300 transition-all duration-500"
 									/>
 								</h4>
 								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
@@ -72,7 +72,7 @@ const Achievements = () => {
 										href={pkg.repo}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="hover:text-reddit transition-all duration-500"
+										className="hover:text-blue-300 transition-all duration-500"
 									>
 										GitHub Repository
 									</a>
@@ -82,7 +82,7 @@ const Achievements = () => {
 										href={pkg.link}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="hover:text-reddit transition-all duration-500"
+										className="hover:text-blue-300 transition-all duration-500"
 									>
 										NPM Registry
 									</a>
@@ -114,7 +114,7 @@ const Achievements = () => {
 							className="text-sm sm:text-base md:text-lg font-medium indent-2"
 						>
 							<PhotoProvider>
-								<div className="cursor-pointer hover:text-reddit transition-all duration-500">
+								<div className="cursor-pointer hover:text-blue-300 transition-all duration-500">
 									<PhotoView src={cert.image}>
 										<h3 className="flex items-center text-base sm:text-lg md:text-xl font-semibold">
 											<LiaCertificateSolid className="text-lg sm:text-xl md:text-2xl animate-growShrink cursor-pointer" />
@@ -131,7 +131,7 @@ const Achievements = () => {
 									href={cert.link}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="hover:text-reddit transition-all duration-500"
+									className="hover:text-blue-300 transition-all duration-500"
 								>
 									{cert.organization}
 								</a>
