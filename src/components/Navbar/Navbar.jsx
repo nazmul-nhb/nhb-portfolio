@@ -4,7 +4,6 @@ import { GrAchievement } from "react-icons/gr";
 import { GiCompass } from "react-icons/gi";
 import { ImProfile } from "react-icons/im";
 import { NavLink, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png"
 import Swal from "sweetalert2";
 import useAxiosPortfolio from "../../hooks/useAxiosPortfolio";
 import toast from "react-hot-toast";
@@ -260,7 +259,7 @@ const Navbar = () => {
                     className="rounded-full shadow-md shadow-blue-300 cursor-pointer animate-growShrink inset-0">
                     <img
                         className="w-9 sm:w-10 rounded-full aspect-square animate-glowBorder hover:animate-rotate"
-                        src={logo} alt="logo" />
+                        src="/logo.svg" loading="eager" alt="Logo" />
                 </figure>
                 <NavLink className="text-2xl sm:text-3xl font-semibold text-blue-50 hover:text-blue-300 transition-all duration-500" to={'/'}>
                     Nazmul Hassan

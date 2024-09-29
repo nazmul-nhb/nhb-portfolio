@@ -2,7 +2,6 @@ import { CgMail } from "react-icons/cg";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa6";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import logo from "../../assets/logo.png";
 
 const Footer = () => {
     return (
@@ -14,7 +13,7 @@ const Footer = () => {
                         className="rounded-full shadow-md shadow-blue-300 animate-growShrink inset-0">
                         <img
                             className="w-24 sm:w-32 rounded-full aspect-square animate-glow"
-                            src={logo} alt="logo" />
+                            src="/logo.svg" loading="eager" alt="Logo" />
                     </figure>
                 </div>
                 {/* Contacts */}
