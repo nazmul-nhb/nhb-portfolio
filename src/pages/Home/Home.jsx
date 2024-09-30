@@ -32,33 +32,36 @@ const Home = () => {
 	// function to handle scrolling to a section
 	const scrollToSection = (sectionID) => {
 		const section = document.getElementById(sectionID);
+
 		if (section) {
 			section.scrollIntoView({ behavior: "smooth", block: "start" });
+			window.history.pushState(null, "", `#${sectionID}`);
 			setContentsVisible(false);
 		}
 	};
 
 	// function to handle scroll events and update active section
 	const handleScroll = () => {
-		const scrollPosition = window.scrollY + 128;
-		const bioSection = document.getElementById("bio");
-		const skillsSection = document.getElementById("skills");
-		const projectsSection = document.getElementById("projects");
-		const educationSection = document.getElementById("education");
+		const position = window.scrollY + 128;
+		const sections = ["bio", "skills", "projects", "education"];
 
-		if (educationSection && scrollPosition >= educationSection.offsetTop) {
-			setActiveSection("education");
-		} else if (
-			projectsSection &&
-			scrollPosition >= projectsSection.offsetTop
-		) {
-			setActiveSection("projects");
-		} else if (skillsSection && scrollPosition >= skillsSection.offsetTop) {
-			setActiveSection("skills");
-		} else if (bioSection && scrollPosition >= bioSection.offsetTop) {
-			setActiveSection("bio");
-		}
+		sections.forEach((sectionID) => {
+			const section = document.getElementById(sectionID);
+
+			if (section && position >= section.offsetTop) {
+				setActiveSection(sectionID);
+			}
+		});
 	};
+
+	// update url with selected section id
+	useEffect(() => {
+		const sectionID = window.location.hash.replace("#", "");
+
+		if (sectionID) {
+			scrollToSection(sectionID);
+		}
+	}, []);
 
 	// effect to add scroll event listener and clean up
 	useEffect(() => {
