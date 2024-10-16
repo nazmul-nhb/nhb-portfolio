@@ -1,9 +1,12 @@
 import { Helmet } from "react-helmet-async";
-import { GrCertificate } from "react-icons/gr";
-import { certificates, packages } from "../../data/data";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
-import { LiaCertificateSolid } from "react-icons/lia";
+import {
+	// certificates,
+	packages,
+} from "../../data/data";
+// import { PhotoProvider, PhotoView } from "react-photo-view";
+// import "react-photo-view/dist/react-photo-view.css";
+// import { GrCertificate } from "react-icons/gr";
+// import { LiaCertificateSolid } from "react-icons/lia";
 import { RiNpmjsLine } from "react-icons/ri";
 import { TbBrandNpm } from "react-icons/tb";
 import toast from "react-hot-toast";
@@ -116,7 +119,7 @@ const Achievements = () => {
 			</div>
 
 			{/* Certifications */}
-			<div id="education" className="scroll-margin-top mb-12">
+			{/* <div id="education" className="scroll-margin-top mb-12">
 				<h2 className="pb-1 border-b my-6 font-bold text-xl sm:text-2xl md:text-3xl flex items-center gap-2">
 					<GrCertificate /> Certifications
 				</h2>
@@ -159,7 +162,7 @@ const Achievements = () => {
 						</div>
 					))}
 				</div>
-			</div>
+			</div> */}
 		</section>
 	);
 };
