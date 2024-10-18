@@ -1,10 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import useMessageCount from "../../hooks/useMessageCount";
-import { useEffect } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { LogoSpinner } from "../../components/Spinner/Spinner";
-import useGetMessages from "../../hooks/useGetMessages";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
 import { formatDate } from "../../utilities/formatDate";
@@ -12,8 +9,6 @@ import { formatDate } from "../../utilities/formatDate";
 const Message = () => {
 	const { id } = useParams();
 	const axiosSecure = useAxiosSecure();
-	const { countRefetch } = useMessageCount();
-	const { msgRefetch } = useGetMessages();
 	const navigate = useNavigate();
 
 	const { data: message = {}, isLoading: msgLoading } = useQuery({
@@ -23,11 +18,6 @@ const Message = () => {
 			return data;
 		},
 	});
-
-	useEffect(() => {
-		countRefetch();
-		msgRefetch();
-	}, [countRefetch, msgRefetch]);
 
 	if (msgLoading) return <LogoSpinner />;
 
@@ -44,13 +34,14 @@ const Message = () => {
 						onClick={() => {
 							navigate(-1);
 						}}
-						className=" cursor-pointer text-xl font-semibold mb-2 flex items-center flex-wrap gap-2 sticky top-0 bg-nhb/5 backdrop-filter backdrop-blur-sm z-10 p-2 -mx-6 rounded-t-lg hover:text-blue-300 transition-all duration-500"
+						className=" cursor-pointer text-xl font-semibold mb-2 flex items-center flex-wrap gap-2 sticky top-0 bg-nhb/5 backdrop-filter backdrop-blur-sm z-10 p-3 -mx-6 rounded-t-lg hover:text-blue-300 transition-all duration-500"
 					>
 						<FaArrowLeft className="text-lg md:text-xl" />
 						<span>Message from: {sender}</span>
 					</h2>
 					<p className="text-sm mb-2">
-						You opened this message {views} times!
+						You opened this message {views}{" "}
+						{views > 1 ? "times" : "time"}!
 					</p>
 					<p className="text-sm mb-2">
 						Email:{" "}
