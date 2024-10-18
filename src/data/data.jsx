@@ -19,6 +19,10 @@ import {
 	SiMongoose,
 	SiJquery,
 	SiWebpack,
+	SiDeno,
+	SiNuxtdotjs,
+	SiGraphql,
+	SiPostgresql,
 } from "react-icons/si";
 import {
 	FaHtml5,
@@ -106,6 +110,8 @@ export const skillIcons = {
 	"Redux Toolkit": <SiRedux />,
 	"React Native": <TbBrandReactNative />,
 	"Node.js": <FaNodeJs />,
+	"Nuxt.js": <SiNuxtdotjs />,
+	Deno: <SiDeno />,
 	NestJS: <SiNestjs />,
 	"Express.js": <SiExpress />,
 	MongoDB: <SiMongodb />,
@@ -126,6 +132,8 @@ export const skillIcons = {
 	jQuery: <SiJquery />,
 	"Ant Design": <SiAntdesign />,
 	MySQL: <GrMysql />,
+	GraphQL: <SiGraphql />,
+	PostgreSQL: <SiPostgresql />,
 	"Vercel CLI": <SiVercel />,
 	Netlify: <SiNetlify />,
 	AWS: <FaAws />,

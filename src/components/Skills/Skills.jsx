@@ -284,7 +284,7 @@ const Skills = ({ updateSkill }) => {
 							)}
 							className="relative flex-1 font-kreonSerif space-y-1"
 						>
-							<div className="flex gap-0.5">
+							<div className="flex gap-1">
 								{/* Title */}
 								<input
 									defaultValue={skill?.title}
@@ -298,7 +298,7 @@ const Skills = ({ updateSkill }) => {
 									id="title"
 									type="text"
 									placeholder="Skill Name"
-									className="px-1 py-0.5 w-3/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
+									className="px-1 py-0.5 w-4/5 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
 								/>
 								{/* Skill Level */}
 								<input
@@ -323,10 +323,10 @@ const Skills = ({ updateSkill }) => {
 									id="level"
 									type="number"
 									placeholder="%"
-									className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
+									className="px-1 py-0.5 w-1/5 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
 								/>
 							</div>
-							<div className="flex gap-0.5">
+							<div className="flex gap-1">
 								{/* Skill Type */}
 								<input
 									defaultValue={skill?.description}
@@ -341,7 +341,7 @@ const Skills = ({ updateSkill }) => {
 									id="description"
 									type="text"
 									placeholder="Type of Skill"
-									className="px-1 py-0.5 w-3/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
+									className="px-1 py-0.5 w-4/5 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
 								/>
 								{/* Serial */}
 								<input
@@ -356,7 +356,7 @@ const Skills = ({ updateSkill }) => {
 									id="serial"
 									type="number"
 									placeholder="#"
-									className="px-1 py-0.5 w-1/4 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
+									className="px-1 py-0.5 w-1/5 border-l focus:outline-0 text-white bg-transparent border-blue-200 border shadow-sm shadow-blue-500"
 								/>
 							</div>
 							<button
