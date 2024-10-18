@@ -23,6 +23,17 @@ import {
 	SiNuxtdotjs,
 	SiGraphql,
 	SiPostgresql,
+	SiRadixui,
+	SiShadcnui,
+	SiJest,
+	SiCypress,
+	SiTestinglibrary,
+	SiVitest,
+	SiApollographql,
+	SiElectron,
+	SiWebassembly,
+	SiRedis,
+	SiNginx,
 } from "react-icons/si";
 import {
 	FaHtml5,
@@ -122,6 +133,8 @@ export const skillIcons = {
 	Git: <FaGitAlt />,
 	ChakraUI: <SiChakraui />,
 	MaterialUI: <SiMui />,
+	"Radix UI": <SiRadixui />,
+	"shadcn/ui": <SiShadcnui />,
 	Axios: <SiAxios />,
 	Stripe: <BsStripe />,
 	Figma: <FaFigma />,
@@ -138,6 +151,15 @@ export const skillIcons = {
 	Netlify: <SiNetlify />,
 	AWS: <FaAws />,
 	"TanStack Query": <SiReactquery />,
+	Jest: <SiJest />,
+	Cypress: <SiCypress />,
+	"React Testing Library": <SiTestinglibrary />,
+	Vitest: <SiVitest />,
+	"Apollo Client": <SiApollographql />,
+	"Electron.js": <SiElectron />,
+	WebAssembly: <SiWebassembly />,
+	Redis: <SiRedis />,
+	Nginx: <SiNginx />,
 };
 
 export const packages = [
