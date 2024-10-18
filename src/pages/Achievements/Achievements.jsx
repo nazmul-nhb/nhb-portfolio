@@ -23,7 +23,7 @@ const Achievements = () => {
 	const handleCopy = (text) => {
 		navigator.clipboard
 			.writeText(text)
-			.then(() => toast.success("Code Copied!"))
+			.then(() => toast.success(`Copied ${text}`))
 			.catch((err) => toast.error(`Failed to Copy: ${err.message}`));
 	};
 
@@ -63,19 +63,18 @@ const Achievements = () => {
 										{pkg.title}
 									</a>
 								</h3>
+								<p className="indent-2 w-[92%] sm:w-4/5 md:w-3/4 lg:w-1/2 mb-2 ml-6">
+									{pkg.details}
+								</p>
 								<h4 className="ml-[18px] sm:ml-5 md:ml-6 flex items-center gap-2">
 									<code
 										title="Copy Installation Command"
-										className="font-light cursor-pointer hover:text-blue-300 transition-all duration-500"
+										className="hover:text-blue-300 transition-all duration-500 flex items-center gap-0.5 ml-2 font-light cursor-pointer"
 										onClick={() => handleCopy(pkg.install)}
 									>
-										{pkg.install}
+										<FaCopy />
+										Copy Command
 									</code>
-									<FaCopy
-										title="Copy Installation Command"
-										onClick={() => handleCopy(pkg.install)}
-										className="cursor-pointer hover:text-blue-300 transition-all duration-500"
-									/>
 								</h4>
 								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
 									<a

@@ -143,6 +143,8 @@ export const skillIcons = {
 export const packages = [
 	{
 		title: "ID Generator",
+		details:
+			"ID Generator is a simple utility package for generating unique ID strings with customizable options. It allows users to create IDs with optional prefixes, suffixes, timestamps, and custom separators.",
 		packageName: "@nazmul-nhb/id-generator",
 		install: "npm i @nazmul-nhb/id-generator",
 		link: "https://www.npmjs.com/package/@nazmul-nhb/id-generator",
@@ -150,6 +152,8 @@ export const packages = [
 	},
 	{
 		title: "Color Generator",
+		details:
+			"Color Generator is a utility that generates hex color codes based on the first character of a string or number. It supports strings, numbers, or arrays as input and allows for customizable opacity (0-100%), offering flexible color options for styling.",
 		packageName: "color-generator-fl",
 		install: "npm i color-generator-fl",
 		link: "https://www.npmjs.com/package/color-generator-fl",
