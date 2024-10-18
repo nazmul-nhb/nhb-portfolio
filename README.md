@@ -19,9 +19,11 @@ Welcome to my personal portfolio! This website showcases my skills, projects, ac
 2. **Floating Navigation Buttons**:
     - **A Floating Navigation Button**: The homepage features **a floating button** with a smooth animation. It hides the menu to the right of the screen and reappears from the right when clicked. Upon expansion, the button provides quick navigation to key sections like Bio, Skills, Projects and Education. Clicking on any section name scrolls smoothly to the corresponding section, and the active section is highlighted, clearly indicating which section the user is currently viewing.
     - **Scroll to Top/Bottom Buttons**: Instant navigation to the top or bottom of the page for convenience.
+    - **Floating Messages Button (Secret)**: A floating button appears in the top left corner below the navbar, displaying the count of unread messages. Clicking this button opens a dedicated section where I can view all messages sent through the contact form. Each message includes sender details and content, with the option to delete any message for better organization. Additionally, all messages sent through the form are also delivered to my email for easy tracking. Refer to `Contact Me Page`
 
 3. **Contact Me Page**:
     - Contains a contact form allowing visitors to send messages directly to my inbox.
+    - **Auto-Reply Feature**: Upon sending a message, the sender receives an automatic reply from my email, confirming that I have received their message and a copy of their original message.
     - **Backend**: Powered by **NodeMailer** integrated with **Google APIs** to securely handle message delivery.
 
 4. **Achievements Page**:
