@@ -27,7 +27,7 @@ Welcome to my personal portfolio! This website showcases my skills, projects, ac
     - **Backend**: Powered by **NodeMailer** integrated with **Google APIs** to securely handle message delivery.
 
 4. **Achievements Page**:
-    - Highlights my published **npm packages** and certifications related to the technologies I have learned and mastered.
+    - Highlights my published **npm packages** with brief introduction, installation command and related links.
 
 5. **Interactive Carousel**:
     - A **moving animation** carousel showcasing my contact information, dynamically under my bio info.

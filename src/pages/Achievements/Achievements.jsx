@@ -68,12 +68,14 @@ const Achievements = () => {
 								</p>
 								<h4 className="ml-[18px] sm:ml-5 md:ml-6 flex items-center gap-2">
 									<code
-										title="Copy Installation Command"
+										title="Copy Package Name"
 										className="hover:text-blue-300 transition-all duration-500 flex items-center gap-0.5 ml-2 font-light cursor-pointer"
-										onClick={() => handleCopy(pkg.install)}
+										onClick={() =>
+											handleCopy(pkg.packageName)
+										}
 									>
 										<FaCopy />
-										Copy Command
+										Copy Package Name
 									</code>
 								</h4>
 								<h4 className="ml-[18px] sm:ml-5 md:ml-6">
