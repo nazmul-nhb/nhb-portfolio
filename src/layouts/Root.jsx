@@ -1,18 +1,32 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import useAuth from "../hooks/useAuth";
 import { CgMail } from "react-icons/cg";
 import useMessageCount from "../hooks/useMessageCount";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 AOS.init();
 
 const Root = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const { user } = useAuth();
 	const { messageCount } = useMessageCount();
+
+	useEffect(() => {
+		if (!location.hash) {
+			window.scrollTo(0, 0);
+		} else {
+			const element = document.querySelector(location.hash);
+
+			if (element) {
+				element.scrollIntoView({ behavior: "smooth" });
+			}
+		}
+	}, [location]);
 
 	return (
 		<div className="max-w-[1920px] mx-auto">
