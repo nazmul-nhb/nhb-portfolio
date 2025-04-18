@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@sweetalert2/theme-borderless':
-        specifier: ^5.0.16
-        version: 5.0.26
       '@sweetalert2/themes':
         specifier: ^5.0.16
         version: 5.0.26(sweetalert2@11.15.10)
@@ -761,9 +758,6 @@ packages:
     resolution: {integrity: sha512-D6qjsXGcvhTjv0kI4fU8tUuBDF/Ueee4SVX79VfNDXZa64TfCW1Slkb6Z7O1p7vflqZjcmOVdZlqf8gvJxc6og==}
     cpu: [x64]
     os: [win32]
-
-  '@sweetalert2/theme-borderless@5.0.26':
-    resolution: {integrity: sha512-iO4XjDm4q6wv9eHeBl+sOW2NHPyC8LaVNiYtiwts+YpEUGkfsSkN7FYlMeXpESM2ZVbi3vpOphjAJKZ/vJY7jA==}
 
   '@sweetalert2/themes@5.0.26':
     resolution: {integrity: sha512-1oNGq3k7Pe0NSA3VbTCc3XsYjVVPPz++hLJgFcYW4p8vG8G1qP0ZnhyRwB9l4lrDbAlnZTp1PtDf8CWfrp/nRA==}
@@ -2970,8 +2964,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.30.1':
     optional: true
-
-  '@sweetalert2/theme-borderless@5.0.26': {}
 
   '@sweetalert2/themes@5.0.26(sweetalert2@11.15.10)':
     dependencies:

@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import { FaCopy, FaLink } from "react-icons/fa";
 import useGetPackageInfo from "../../hooks/useGetPackageInfo";
 
-const Achievements = () => {
+const Packages = () => {
 	// Get all package names from the package data
 	const packageNames = packages.map((pkg) => pkg.packageName);
 
@@ -30,7 +30,7 @@ const Achievements = () => {
 	return (
 		<section className="md:py-8 p-6 md:px-16">
 			<Helmet>
-				<title>Achievements - Nazmul Hassan</title>
+				<title>Published Packages - Nazmul Hassan</title>
 			</Helmet>
 
 			{/* Published Packages */}
@@ -168,4 +168,4 @@ const Achievements = () => {
 	);
 };
 
-export default Achievements;
+export default Packages;

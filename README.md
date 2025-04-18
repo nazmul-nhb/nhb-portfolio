@@ -6,7 +6,7 @@
 
 ## Overview
 
-Welcome to my personal portfolio! This website showcases my skills, projects, achievements, and contact information in an interactive and visually appealing manner. The portfolio is designed with a focus on simplicity and functionality while incorporating advanced features for a smooth user experience.
+Welcome to my personal portfolio! This website showcases my skills, projects, published packages, and contact information in an interactive and visually appealing manner. The portfolio is designed with a focus on simplicity and functionality while incorporating advanced features for a smooth user experience.
 
 ### Key Features
 
@@ -26,7 +26,7 @@ Welcome to my personal portfolio! This website showcases my skills, projects, ac
     - **Auto-Reply Feature**: Upon sending a message, the sender receives an automatic reply from my email, confirming that I have received their message and a copy of their original message.
     - **Backend**: Powered by **NodeMailer** integrated with **Google APIs** to securely handle message delivery.
 
-4. **Achievements Page**:
+4. **Packages Page**:
     - Highlights my published **npm packages** with brief introduction, installation command and related links.
 
 5. **Interactive Carousel**:
