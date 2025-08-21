@@ -175,7 +175,7 @@ export const packages = [
 		details:
 			'NHB Toolbox is a TypeScript utility library focused on solving real-world JavaScript/TypeScript problems to boost reusability and consistency. It offers 200+ utilities, including advanced FormData generation, data sanitization, type conversions, and unique ID creation. Core classes like Chronos and Color handle date/time and color transformations. The library is fully typed, ESM-ready, tree-shakable, and optimized for both frontend and backend use.',
 		packageName: 'nhb-toolbox',
-		link: 'https://toolbox.nazmul-nhb.dev/',
+		link: 'https://www.npmjs.com/package/nhb-toolbox',
 		repo: 'https://github.com/nazmul-nhb/nhb-toolbox',
 	},
 	{
