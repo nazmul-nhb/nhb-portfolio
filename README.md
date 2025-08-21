@@ -1,6 +1,7 @@
 # Nazmul Hassan || Portfolio
 
-- [Live Link](https://nazmul-nhb.vercel.app/)
+- [Live Link](https://nazmul-nhb.dev/)
+- [Vercel Deployment Link](https://nazmul-nhb.vercel.app/)
 
 ---
 
@@ -61,4 +62,4 @@ Welcome to my personal portfolio! This website showcases my skills, projects, pu
 
 Please visit my portfolio to explore more features and learn more about me:
 
-- [nazmul-nhb.vercel.app](https://nazmul-nhb.vercel.app/)
+- [nazmul-nhb.vercel.app](https://www.nazmul-nhb.dev/)

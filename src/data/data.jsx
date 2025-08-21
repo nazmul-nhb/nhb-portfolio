@@ -173,10 +173,34 @@ export const packages = [
 	{
 		title: 'NHB Toolbox',
 		details:
-			'NHB Toolbox is a TypeScript utility library focused on solving real-world JavaScript/TypeScript problems to boost reusability and consistency. It offers 160+ utilities, including advanced FormData generation, data sanitization, type conversions, and unique ID creation. Core classes like Chronos and Color handle date/time and color transformations. The library is fully typed, ESM-ready, tree-shakable, and optimized for both frontend and backend use.',
+			'NHB Toolbox is a TypeScript utility library focused on solving real-world JavaScript/TypeScript problems to boost reusability and consistency. It offers 200+ utilities, including advanced FormData generation, data sanitization, type conversions, and unique ID creation. Core classes like Chronos and Color handle date/time and color transformations. The library is fully typed, ESM-ready, tree-shakable, and optimized for both frontend and backend use.',
 		packageName: 'nhb-toolbox',
-		link: 'https://www.npmjs.com/package/nhb-toolbox',
+		link: 'https://toolbox.nazmul-nhb.dev/',
 		repo: 'https://github.com/nazmul-nhb/nhb-toolbox',
+	},
+	{
+		title: 'NHB Hooks',
+		details:
+			'A lightweight, tree-shakable collection of essential React hooks designed for common use cases. Only the hooks you import are included in your final bundle, ensuring optimal performance.',
+		packageName: 'nhb-hooks',
+		link: 'https://www.npmjs.com/package/nhb-hooks',
+		repo: 'https://github.com/nazmul-nhb/nhb-hooks',
+	},
+	{
+		title: 'NHB Scripts',
+		details:
+			'A developer-first toolkit to automate common dev tasks in JavaScript/TypeScript projects. Built to reduce repetitive boilerplate and improve developer velocity — no magic, just clean logic.',
+		packageName: 'nhb-scripts',
+		link: 'https://www.npmjs.com/package/nhb-scripts',
+		repo: 'https://github.com/nazmul-nhb/nhb-scripts',
+	},
+	{
+		title: 'NHB Express',
+		details:
+			'A developer-first toolkit to automate common dev tasks in JavaScript/TypeScript projects. Built to reduce repetitive boilerplate and improve developer velocity — no magic, just clean logic.',
+		packageName: 'nhb-express',
+		link: 'https://www.npmjs.com/package/nhb-express',
+		repo: 'https://github.com/nazmul-nhb/nhb-express',
 	},
 	{
 		title: 'Anagram Generator',
@@ -193,22 +217,6 @@ export const packages = [
 		packageName: 'tiny-query-dom',
 		link: 'https://www.npmjs.com/package/tiny-query-dom',
 		repo: 'https://github.com/nazmul-nhb/tiny-query-dom',
-	},
-	{
-		title: 'ID Generator',
-		details:
-			'ID Generator is a simple utility package for generating unique ID strings with customizable options. It allows users to create IDs with optional prefixes, suffixes, timestamps, and custom separators.',
-		packageName: '@nazmul-nhb/id-generator',
-		link: 'https://www.npmjs.com/package/@nazmul-nhb/id-generator',
-		repo: 'https://github.com/nazmul-nhb/id-generator',
-	},
-	{
-		title: 'Color Generator',
-		details:
-			'Color Generator is a utility package that generates hex color codes based on the first character of a string or number. It supports strings, numbers, or arrays as input and allows for customizable opacity (0-100%), offering flexible color options for styling.',
-		packageName: 'color-generator-fl',
-		link: 'https://www.npmjs.com/package/color-generator-fl',
-		repo: 'https://github.com/nazmul-nhb/color-generator',
 	},
 ];
 
